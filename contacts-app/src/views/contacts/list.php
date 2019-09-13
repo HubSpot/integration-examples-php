@@ -1,15 +1,5 @@
 <?php include __DIR__.'/../_partials/header.php' ?>
 
-<!--<pre><code>The search flow is handled in the SearchController::search, located at src/app/Controller/SearchController.php</code></pre>
-<form>
-  <fieldset>
-    <label for="search">Search</label>
-    <input type="text" placeholder="Search..." name="search" id="search">
-    <input class="button-primary" type="submit" value="Search">
-  </fieldset>
-</form>
--->
-
 <table>
   <thead>
   <tr>

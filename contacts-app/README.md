@@ -17,5 +17,3 @@ cd hubspot-php-sample-app
 docker-compose up
 ```
 You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
-
-  

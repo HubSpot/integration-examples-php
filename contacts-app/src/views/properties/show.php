@@ -14,13 +14,6 @@
         <label for="type">Type</label>
         <input disabled type="text" name="type" id="type" value="<?= $property->type ?>" />
 
-
-        <!--        label] => Avatar FileManager key-->
-<!--        [description] => The path in the FileManager CDN for this contact's avatar override image. Automatically set by HubSpot.-->
-<!--        [groupName] => contactinformation-->
-<!--        [type] => string-->
-
-
         <input class="button-primary" type="submit" value="Save">
     </fieldset>
 </form>
