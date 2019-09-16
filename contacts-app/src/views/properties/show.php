@@ -1,6 +1,6 @@
 <?php include __DIR__.'/../_partials/header.php' ?>
 
-<form method="post" action="/properties/show.php">
+<form method="post">
     <fieldset>
         <label for="name">Name</label>
         <input type="text" name="name" id="name" value="<?= $property->name ?>" />
@@ -12,11 +12,10 @@
         <input type="text" name="groupName" id="groupName" value="<?= $property->groupName ?>" />
 
         <label for="type">Type</label>
-        <input disabled type="text" name="type" id="type" value="<?= $property->type ?>" />
+        <input readonly type="text" name="type" id="type" value="<?= $property->type ?>" />
 
         <input class="button-primary" type="submit" value="Save">
     </fieldset>
 </form>
-
 
 <?php include __DIR__.'/../_partials/footer.php' ?>

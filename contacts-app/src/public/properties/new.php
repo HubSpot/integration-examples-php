@@ -6,12 +6,13 @@ $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
 if (isset($_POST['name'])) {
     $propertyFields = $_POST;
-    $response = $hubSpot->contactProperties()->update($propertyFields['name'], $propertyFields);
+    $response = $hubSpot->contactProperties()->create($propertyFields);
     $name = $response->data->name;
     header('Location: /properties/show.php?name='.$name);
 }
 
-$response = $hubSpot->contactProperties()->get($_GET['name']);
-$property = $response->getData();
+$property = (object)[
+    'type' => 'string',
+];
 
 include '../../views/properties/show.php';

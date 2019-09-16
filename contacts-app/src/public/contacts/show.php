@@ -2,9 +2,10 @@
 
 use Helpers\ContactPropertiesHelper;
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
-require_once __DIR__ . '/../../Helpers/ContactPropertiesHelper.php';
-$hubSpot = SevenShores\Hubspot\Factory::create($_ENV['HUBSPOT_API_KEY']);
+require_once '../../Helpers/ContactPropertiesHelper.php';
+include_once '../../Helpers/HubspotClientHelper.php';
+
+$hubSpot = Helpers\HubspotClientHelper::createFactory();
 
 if (isset($_POST['email'])) {
     $contactFields = $_POST;
@@ -21,12 +22,21 @@ if (isset($_POST['email'])) {
 }
 
 $contactFields = [];
+$owners = [];
 if (isset($_GET['vid'])) {
     $id = $_GET['vid'];
+    // request contact data
     $response = $hubSpot->contacts()->getById($id);
     $contact = $response->data;
+
+    // request available properties
     $response = $hubSpot->contactProperties()->all();
-    foreach ($response->getData() as $property) {
+    $properties = $response->getData();
+
+    $response = $hubSpot->owners()->all();
+    $owners = $response->getData();
+
+    foreach ($properties as $property) {
         $propertyName = $property->name;
         if (ContactPropertiesHelper::isEditable($property)) {
             $contactFields[] = [
