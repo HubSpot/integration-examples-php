@@ -23,10 +23,9 @@ if (isset($_POST['email'])) {
 $contactFields = [];
 if (isset($_GET['vid'])) {
     $id = $_GET['vid'];
-    $response = $hubSpot->contacts()->getById($id);
-    $contact = $response->data;
-    $response = $hubSpot->contactProperties()->all();
-    foreach ($response->getData() as $property) {
+    $contact = $hubSpot->contacts()->getById($id)->getData();
+    $properties = $hubSpot->contactProperties()->all()->getData();
+    foreach ($properties as $property) {
         $propertyName = $property->name;
         if (ContactPropertiesHelper::isEditable($property)) {
             $contactFields[] = [
