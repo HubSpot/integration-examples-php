@@ -16,6 +16,7 @@ if (isset($_POST['email'])) {
             'value' => $value,
         ];
     }
+    // https://developers.hubspot.com/docs/methods/contacts/create_or_update
     $response = $hubSpot->contacts()->createOrUpdate($contactFields['email'], $properties);
     $vid = $response->data->vid;
     header('Location: /contacts/show.php?vid='.$vid);
@@ -25,8 +26,11 @@ $contactFields = [];
 $owners = [];
 if (isset($_GET['vid'])) {
     $id = $_GET['vid'];
+    // https://developers.hubspot.com/docs/methods/contacts/get_contact
     $contact = $hubSpot->contacts()->getById($id)->getData();
+    // https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
     $properties = $hubSpot->contactProperties()->all()->getData();
+    // https://developers.hubspot.com/docs/methods/owners/get_owners
     $owners = $hubSpot->owners()->all()->getData();
 
     foreach ($properties as $property) {
