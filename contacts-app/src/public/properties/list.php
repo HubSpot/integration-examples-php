@@ -1,7 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
-$hubSpot = SevenShores\Hubspot\Factory::create($_ENV['HUBSPOT_API_KEY']);
+include_once '../../Helpers/HubspotClientHelper.php';
+
+$hubSpot = Helpers\HubspotClientHelper::createFactory();
 
 $response = $hubSpot->contactProperties()->all();
 $properties = $response->getData();
