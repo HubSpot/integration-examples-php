@@ -3,16 +3,16 @@
 <form method="post">
     <fieldset>
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<?= $property->name ?>" />
+        <input type="text" name="name" id="name" value="<?= htmlentities($property->name) ?>" />
         <label for="label">Label</label>
-        <input type="text" name="label" id="label" value="<?= $property->label ?>" />
+        <input type="text" name="label" id="label" value="<?= htmlentities($property->label) ?>" />
         <label for="description">Description</label>
-        <textarea name="description" id="description"><?= $property->description ?></textarea>
+        <textarea name="description" id="description"><?= htmlentities($property->description) ?></textarea>
         <label for="groupName">Group Name</label>
-        <input type="text" name="groupName" id="groupName" value="<?= $property->groupName ?>" />
+        <input type="text" name="groupName" id="groupName" value="<?= htmlentities($property->groupName) ?>" />
 
         <label for="type">Type</label>
-        <input readonly type="text" name="type" id="type" value="<?= $property->type ?>" />
+        <input readonly type="text" name="type" id="type" value="<?= htmlentities($property->type) ?>" />
 
         <input class="button-primary" type="submit" value="Save">
     </fieldset>
