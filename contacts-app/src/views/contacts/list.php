@@ -19,8 +19,8 @@
   <?php foreach ($contacts as $contact) { ?>
     <tr>
       <td><a href="/contacts/show.php?vid=<?= $contact['vid'] ?>"><?= $contact['vid'] ?></a></td>
-      <td><?= $contact['properties']['firstname']['value'].' '.$contact['properties']['lastname']['value'] ?></td>
-      <td><?= $contact['properties']['company']['value'] ?></td>
+      <td><?= htmlentities($contact['properties']['firstname']['value']).' '.htmlentities($contact['properties']['lastname']['value']) ?></td>
+      <td><?= htmlentities($contact['properties']['company']['value']) ?></td>
     </tr>
   <?php }?>
   </tbody>

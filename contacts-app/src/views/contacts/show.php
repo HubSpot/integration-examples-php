@@ -4,19 +4,24 @@
   <fieldset>
     <?php
       foreach ($contactFields as $field) { ?>
-          <label for="<?= $field['name'] ?>"><?= $field['label'] ?></label>
-          <?php if ($field['name'] === 'hubspot_owner_id') { ?>
-              <select name="<?= $field['name'] ?>" id="<?= $field['name'] ?>">
+          <?php
+            $nameSanitized = htmlentities($field['name']);
+            $labelSanitized = htmlentities($field['label']);
+            $valueSanitized = htmlentities($field['value']);
+          ?>
+          <label for="<?= $nameSanitized ?>"><?= $labelSanitized ?></label>
+          <?php if ($nameSanitized === 'hubspot_owner_id') { ?>
+              <select name="<?= $nameSanitized ?>" id="<?= $nameSanitized ?>">
                   <option value="">Not assigned</option>
                   <?php foreach ($owners as $owner) { ?>
                     <option
                         value="<?= $owner->ownerId ?>"
-                        <?php if ($field['value'] == $owner->ownerId) { ?>selected<?php } ?>
+                        <?php if ($valueSanitized == $owner->ownerId) { ?>selected<?php } ?>
                     ><?= $owner->firstName.' '.$owner->lastName ?></option>
                   <?php } ?>
               </select>
           <?php } else { ?>
-              <input type="text" name="<?= $field['name'] ?>" id="<?= $field['name'] ?>" value="<?= $field['value'] ?>">
+              <input type="text" name="<?= $nameSanitized ?>" id="<?= $nameSanitized ?>" value="<?= $valueSanitized ?>">
           <?php } ?>
     <?php } ?>
 

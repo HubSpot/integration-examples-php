@@ -12,8 +12,11 @@ if (isset($_POST['name'])) {
     header('Location: /properties/show.php?name='.$name);
 }
 
-// https://developers.hubspot.com/docs/methods/companies/get_contact_property
-$response = $hubSpot->contactProperties()->get($_GET['name']);
-$property = $response->getData();
+$property = [];
+if (isset($_GET['name'])) {
+    // https://developers.hubspot.com/docs/methods/companies/get_contact_property
+    $response = $hubSpot->contactProperties()->get($_GET['name']);
+    $property = $response->getData();
+}
 
 include '../../views/properties/show.php';
