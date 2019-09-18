@@ -1,6 +1,6 @@
 <?php
 
-$contactFields = array([
+$formFields = array([
     'name' => 'email',
     'label' => 'Email',
     'value' => '',

@@ -1,47 +1,57 @@
 <?php
 
 use Helpers\ContactPropertiesHelper;
+use Helpers\HubspotClientHelper;
 
 require_once '../../Helpers/ContactPropertiesHelper.php';
 include_once '../../Helpers/HubspotClientHelper.php';
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
+$contactProperties = [];
 if (isset($_POST['email'])) {
-    $contactFields = $_POST;
+    $contactProperties = $_POST;
     $properties = [];
-    foreach ($contactFields as $key => $value) {
+    foreach ($contactProperties as $key => $value) {
         $properties[] = [
             'property' => $key,
             'value' => $value,
         ];
     }
     // https://developers.hubspot.com/docs/methods/contacts/create_or_update
-    $response = $hubSpot->contacts()->createOrUpdate($contactFields['email'], $properties);
-    $vid = $response->data->vid;
-    header('Location: /contacts/show.php?vid='.$vid);
+    $createOrUpdateResponse = $hubSpot->contacts()->createOrUpdate($contactProperties['email'], $properties);
+    if (HubspotClientHelper::isSuccessfulResponse($createOrUpdateResponse)) {
+        $vid = $createOrUpdateResponse->getData()->vid;
+        header('Location: /contacts/show.php?vid=' . $vid);
+        exit();
+    }
+
+    $errorResponse = $createOrUpdateResponse;
 }
 
-$contactFields = [];
-$owners = [];
 if (isset($_GET['vid'])) {
     $id = $_GET['vid'];
     // https://developers.hubspot.com/docs/methods/contacts/get_contact
     $contact = $hubSpot->contacts()->getById($id)->getData();
-    // https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
-    $properties = $hubSpot->contactProperties()->all()->getData();
-    // https://developers.hubspot.com/docs/methods/owners/get_owners
-    $owners = $hubSpot->owners()->all()->getData();
+    foreach ($contact->properties as $key => $property) {
+        $contactProperties[$key] = $property->value;
+    }
+}
 
-    foreach ($properties as $property) {
-        $propertyName = $property->name;
-        if (ContactPropertiesHelper::isEditable($property)) {
-            $contactFields[] = [
-                'name' => $property->name,
-                'label' => $property->label,
-                'value' => $contact->properties->$propertyName->value,
-            ];
-        }
+// https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
+$properties = $hubSpot->contactProperties()->all()->getData();
+// https://developers.hubspot.com/docs/methods/owners/get_owners
+$owners = $hubSpot->owners()->all()->getData();
+
+$formFields = [];
+foreach ($properties as $property) {
+    $propertyName = $property->name;
+    if (ContactPropertiesHelper::isEditable($property)) {
+        $formFields[] = [
+            'name' => $property->name,
+            'label' => $property->label,
+            'value' => $contactProperties[$propertyName],
+        ];
     }
 }
 

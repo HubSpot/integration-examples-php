@@ -1,5 +1,9 @@
 <?php include __DIR__.'/../_partials/header.php' ?>
 
+<?php if (isset($errorResponse)) {
+    include __DIR__ . '/../_partials/error_response.php';
+} ?>
+
 <form method="post">
     <fieldset>
         <label for="name">Name</label>
