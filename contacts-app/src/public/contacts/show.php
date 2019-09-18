@@ -20,7 +20,7 @@ if (isset($_POST['email'])) {
     }
     // https://developers.hubspot.com/docs/methods/contacts/create_or_update
     $createOrUpdateResponse = $hubSpot->contacts()->createOrUpdate($contactProperties['email'], $properties);
-    if (HubspotClientHelper::isSuccessfulResponse($createOrUpdateResponse)) {
+    if (HubspotClientHelper::isResponseSuccessful($createOrUpdateResponse)) {
         $vid = $createOrUpdateResponse->getData()->vid;
         header('Location: /contacts/show.php?vid=' . $vid);
         exit();

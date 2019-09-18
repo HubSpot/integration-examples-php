@@ -22,13 +22,7 @@ class HubspotClientHelper
         );
     }
 
-    public static function isSuccessfulResponse(Response $response) {
+    public static function isResponseSuccessful(Response $response) {
         return $response->getStatusCode() === self::HTTP_OK;
-    }
-
-    public static function createErrorObject(Response $response) {
-        $error = $response->getData() ?: (object)[];
-        $error->statusCode = $response->getStatusCode();
-        return $error;
     }
 }

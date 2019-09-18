@@ -11,7 +11,7 @@ if (isset($_POST['name'])) {
     // https://developers.hubspot.com/docs/methods/contacts/v2/update_contact_property
     $response = $hubSpot->contactProperties()->update($propertyFields['name'], $propertyFields);
 
-    if (HubspotClientHelper::isSuccessfulResponse($response)) {
+    if (HubspotClientHelper::isResponseSuccessful($response)) {
         $name = $response->data->name;
         header('Location: /properties/show.php?name='.$name);
         exit();
