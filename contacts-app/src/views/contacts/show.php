@@ -1,9 +1,13 @@
 <?php include __DIR__.'/../_partials/header.php' ?>
 
+<?php if (isset($errorResponse)) {
+    include __DIR__ . '/../_partials/error_response.php';
+} ?>
+
 <form method="post" action="/contacts/show.php">
   <fieldset>
     <?php
-      foreach ($contactFields as $field) { ?>
+      foreach ($formFields as $field) { ?>
           <?php
             $nameSanitized = htmlentities($field['name']);
             $labelSanitized = htmlentities($field['label']);
