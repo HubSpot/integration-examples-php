@@ -2,8 +2,6 @@
 
 use Helpers\HubspotClientHelper;
 
-include_once '../../Helpers/HubspotClientHelper.php';
-
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
 if (isset($_POST['name'])) {
@@ -25,4 +23,4 @@ if (isset($_POST['name'])) {
     ];
 }
 
-include '../../views/properties/show.php';
+include __DIR__.'/../../views/properties/show.php';

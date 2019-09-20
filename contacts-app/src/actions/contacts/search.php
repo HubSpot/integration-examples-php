@@ -1,7 +1,5 @@
 <?php
 
-include_once '../../Helpers/HubspotClientHelper.php';
-
 $contacts = [];
 $search = $_GET['search'];
 
@@ -16,4 +14,4 @@ $hubSpot = Helpers\HubspotClientHelper::createFactory();
 $response = $hubSpot->contacts()->search($_GET['search']);
 $contacts = $response['contacts'];
 
-include '../../views/contacts/list.php';
+include __DIR__.'/../../views/contacts/list.php';

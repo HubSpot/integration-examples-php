@@ -3,11 +3,6 @@
 use Helpers\UrlHelper;
 use Oauth\HubspotOauth2Client;
 
-include_once '../../Oauth/HubspotOauth2Client.php';
-include_once '../../Helpers/UrlHelper.php';
-
-session_start();
-
 $oauth2Client = new HubspotOauth2Client([
     'clientId' => $_ENV['HUBSPOT_CLIENT_ID'],
     'clientSecret' => $_ENV['HUBSPOT_CLIENT_SECRET'],

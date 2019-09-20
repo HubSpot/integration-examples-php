@@ -6,8 +6,6 @@ namespace Helpers;
 use SevenShores\Hubspot\Factory;
 use SevenShores\Hubspot\Http\Response;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class HubspotClientHelper
 {
     const HTTP_OK = 200;
@@ -17,7 +15,7 @@ class HubspotClientHelper
         $useOauth = isset($_SESSION['accessToken']);
         $key = $useOauth ? $_SESSION['accessToken'] : $_ENV['HUBSPOT_API_KEY'];
         if (empty($key)) {
-            throw new \Exception("Please specify api key or authorize via oauth");
+            throw new \Exception("Please specify API key or authorize via OAuth");
         }
         $client = new Factory(
             [

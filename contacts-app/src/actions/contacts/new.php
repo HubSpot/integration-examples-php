@@ -6,4 +6,4 @@ $formFields = array([
     'value' => '',
 ]);
 
-include '../../views/contacts/show.php';
+include __DIR__.'/../../views/contacts/show.php';

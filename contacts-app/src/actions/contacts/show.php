@@ -3,9 +3,6 @@
 use Helpers\ContactPropertiesHelper;
 use Helpers\HubspotClientHelper;
 
-require_once '../../Helpers/ContactPropertiesHelper.php';
-include_once '../../Helpers/HubspotClientHelper.php';
-
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
 $contactProperties = [];
@@ -55,4 +52,4 @@ foreach ($properties as $property) {
     }
 }
 
-include '../../views/contacts/show.php';
+include __DIR__.'/../../views/contacts/show.php';
