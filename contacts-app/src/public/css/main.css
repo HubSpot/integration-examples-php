@@ -46,3 +46,8 @@
 .navigation .navigation-link.active {
     color: #606c76
 }
+
+.error-wrapper .result {
+    color: white;
+    background-color: red;
+}

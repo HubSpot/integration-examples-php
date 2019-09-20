@@ -2,7 +2,13 @@
 
 include_once '../../Helpers/HubspotClientHelper.php';
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+try {
+    $hubSpot = Helpers\HubspotClientHelper::createFactory();
+} catch (Throwable $t) {
+    $message = $t->getMessage();
+    include '../../views/message.php';
+    exit();
+}
 
 // https://developers.hubspot.com/docs/methods/contacts/get_contacts
 $response = $hubSpot->contacts()->all([

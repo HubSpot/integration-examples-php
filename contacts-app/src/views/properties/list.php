@@ -12,10 +12,10 @@
   <tbody>
   <?php foreach ($properties as $property) { ?>
     <tr>
-      <td><a href="/properties/show.php?name=<?= $property->name ?>"><?= $property->name ?></a></td>
-      <td><?= $property->label ?></td>
-      <td><?= $property->description ?></td>
-      <td><?= $property->type ?></td>
+      <td><a href="/properties/show.php?name=<?= htmlentities($property->name) ?>"><?= htmlentities($property->name) ?></a></td>
+      <td><?= htmlentities($property->label) ?></td>
+      <td><?= htmlentities($property->description) ?></td>
+      <td><?= htmlentities($property->type) ?></td>
     </tr>
   <?php }?>
   </tbody>
