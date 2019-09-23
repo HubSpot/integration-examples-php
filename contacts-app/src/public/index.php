@@ -22,8 +22,9 @@ try {
             require $path;
             exit();
         default:
+            http_response_code(404);
+            exit();
     }
-
 } catch (Throwable $t) {
     $message = $t->getMessage();
     include __DIR__.'/../views/error.php';
