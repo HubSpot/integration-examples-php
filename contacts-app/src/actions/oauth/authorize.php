@@ -12,4 +12,3 @@ $oauth2Client = new HubspotOauth2Client([
 $authUrl = $oauth2Client->getAuthorizationUrl();
 
 header('Location: '.$authUrl);
-exit();

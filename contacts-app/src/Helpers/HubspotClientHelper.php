@@ -11,7 +11,6 @@ class HubspotClientHelper
     const HTTP_OK = 200;
 
     public static function createFactory() {
-        session_start();
         $useOauth = isset($_SESSION['accessToken']);
         $key = $useOauth ? $_SESSION['accessToken'] : $_ENV['HUBSPOT_API_KEY'];
         if (empty($key)) {
@@ -26,7 +25,7 @@ class HubspotClientHelper
             [
                 'http_errors' => false // pass any Guzzle related option to any request, e.g. throw no exceptions
             ],
-            true,
+            true
         );
         return $client;
     }

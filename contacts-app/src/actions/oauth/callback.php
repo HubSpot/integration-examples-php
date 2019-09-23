@@ -15,4 +15,3 @@ $accessToken = $oauth2Client->getAccessToken($_GET['code']);
 $_SESSION['accessToken'] = $accessToken;
 
 header('Location: /');
-exit();
