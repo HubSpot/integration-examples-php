@@ -2,7 +2,18 @@
 
 This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs/methods/contacts/contacts-overview) endpoints and their related actions.
 
+### HubSpot Public API links are used in this application
+
 ### Setup App
+  - [Create or update a contact](https://developers.hubspot.com/docs/methods/contacts/create_or_update)
+  - [Get a contact record by its vid](https://developers.hubspot.com/docs/methods/contacts/get_contact)
+  - [Get all contacts](https://developers.hubspot.com/docs/methods/contacts/get_contacts)
+  - [Get All Contacts Properties](https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties)
+  - [Get List of Owners](https://developers.hubspot.com/docs/methods/owners/get_owners)
+  - [Update a contact property](https://developers.hubspot.com/docs/methods/contacts/v2/update_contact_property)
+  - [Create a contact property](https://developers.hubspot.com/docs/methods/contacts/v2/create_contacts_property)
+  - [Search for contacts by email, name, or company name](https://developers.hubspot.com/docs/methods/contacts/search_contacts)
+
 
 Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 
