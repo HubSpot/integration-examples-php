@@ -6,4 +6,6 @@ $formFields = array([
     'value' => '',
 ]);
 
+$notUpdated = true;
+
 include __DIR__.'/../../views/contacts/show.php';
