@@ -1,8 +1,8 @@
 <?php
 
-include_once '../../Helpers/HubspotClientHelper.php';
+use Helpers\HubspotClientHelper;
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactory();
 
 // https://developers.hubspot.com/docs/methods/contacts/get_contacts
 $response = $hubSpot->contacts()->all([
@@ -10,4 +10,4 @@ $response = $hubSpot->contacts()->all([
 ]);
 $contacts = $response['contacts'];
 
-include '../../views/contacts/list.php';
+include __DIR__.'/../../views/contacts/list.php';

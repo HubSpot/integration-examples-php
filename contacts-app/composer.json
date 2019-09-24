@@ -1,5 +1,12 @@
 {
     "require": {
-        "ryanwinchester/hubspot-php": "~1.0"
+        "ryanwinchester/hubspot-php": "~1.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
     }
 }

@@ -9,7 +9,13 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 ### Configure
 
 1. Copy .env.template to .env
-2. Paste your HubSpot API Key as the value for HUBSPOT_API_KEY in .env
+2. Specify authorization data in .env:
+    
+    - Paste your HubSpot API Key as the value for HUBSPOT_API_KEY
+    
+    or
+    
+    - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
 
 ### Running
 
