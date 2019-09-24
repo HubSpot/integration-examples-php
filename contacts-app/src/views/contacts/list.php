@@ -30,6 +30,9 @@
   <a href="/contacts/new.php">
     <input class="button-primary" type="button" value="New Contact">
   </a>
+    <a href="/contacts/export.php">
+        <input class="button-primary" type="button" value="Export To CSV">
+    </a>
 </div>
 
 <?php include __DIR__.'/../_partials/footer.php' ?>
