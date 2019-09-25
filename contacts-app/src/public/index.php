@@ -13,10 +13,13 @@ try {
         case '/contacts/new.php':
         case '/contacts/show.php':
         case '/contacts/search.php':
+        case '/contacts/engagement.php':
         case '/contacts/export.php':
         case '/properties/list.php':
         case '/properties/new.php':
         case '/properties/show.php':
+        case '/engagements/new.php':
+        case '/engagements/show.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
             $path = __DIR__ .'/../actions'. $uri;
