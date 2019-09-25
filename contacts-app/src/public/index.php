@@ -13,7 +13,6 @@ try {
         case '/contacts/new.php':
         case '/contacts/show.php':
         case '/contacts/search.php':
-        case '/contacts/engagement.php':
         case '/contacts/export.php':
         case '/properties/list.php':
         case '/properties/new.php':

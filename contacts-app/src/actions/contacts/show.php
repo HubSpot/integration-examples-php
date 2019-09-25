@@ -36,7 +36,6 @@ if (isset($_GET['vid'])) {
     $contactId = $_GET['vid'];
     // https://developers.hubspot.com/docs/methods/engagements/get_associated_engagements
     $engagements = $hubSpot->engagements()->associated('CONTACT', $contactId)->getData()->results;
-
 }
 
 // https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
