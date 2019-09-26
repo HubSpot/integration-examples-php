@@ -33,6 +33,9 @@ if (isset($_GET['vid'])) {
     foreach ($contact->properties as $key => $property) {
         $contactProperties[$key] = $property->value;
     }
+    $contactId = $_GET['vid'];
+    // https://developers.hubspot.com/docs/methods/engagements/get_associated_engagements
+    $engagements = $hubSpot->engagements()->associated('CONTACT', $contactId)->getData()->results;
 }
 
 // https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
