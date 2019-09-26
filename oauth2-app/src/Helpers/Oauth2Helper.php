@@ -8,14 +8,23 @@ use Oauth\HubspotOauth2Client;
 class Oauth2Helper
 {
     const APP_REQUIRED_SCOPE = "contacts";
+    const CALLBACK_PATH = '/oauth/callback.php';
+
+    private static $hubSpotOauth2Client = null;
 
     public static function getHubspotOauth2Client() {
-        return new HubspotOauth2Client([
-            'clientId' => $_ENV['HUBSPOT_CLIENT_ID'],
-            'clientSecret' => $_ENV['HUBSPOT_CLIENT_SECRET'],
-            'redirectUri' => UrlHelper::generateServerUri().'/oauth/callback.php',
-            'scope' => self::APP_REQUIRED_SCOPE,
-        ]);
+        if (!self::$hubSpotOauth2Client) {
+            if (empty($_ENV['HUBSPOT_CLIENT_ID']) || empty($_ENV['HUBSPOT_CLIENT_SECRET'])) {
+                throw new \Exception("Please specify HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET in .env");
+            }
+            self::$hubSpotOauth2Client = new HubspotOauth2Client([
+                'clientId' => $_ENV['HUBSPOT_CLIENT_ID'],
+                'clientSecret' => $_ENV['HUBSPOT_CLIENT_SECRET'],
+                'redirectUri' => UrlHelper::generateServerUri().self::CALLBACK_PATH,
+                'scope' => self::APP_REQUIRED_SCOPE,
+            ]);
+        }
+        return self::$hubSpotOauth2Client;
     }
 
     public static function saveTokens($tokens) {
