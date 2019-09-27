@@ -1,5 +1,12 @@
 <?php include __DIR__.'/../_partials/header.php' ?>
 
+<pre>
+// src/actions/companies/list.php
+$hubSpot->companies()->all([
+    'properties' => ['name', 'domain'],
+]);
+</pre>
+
 <table>
   <thead>
   <tr>
