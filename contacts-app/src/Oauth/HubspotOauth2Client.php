@@ -7,7 +7,6 @@ class HubspotOauth2Client
 {
     const AUTHORIZE_URL = "https://app.hubspot.com/oauth/authorize";
     const TOKEN_URL = "https://api.hubapi.com/oauth/v1/token";
-    const APP_REQUIRED_SCOPE = "contacts";
 
     protected $clientId;
     protected $clientSecret;
@@ -33,20 +32,28 @@ class HubspotOauth2Client
         ]);
     }
 
-    public function getAccessToken($code) {
-        $authCodeProof = [
+    public function getTokens($code) {
+        $proof = [
             'grant_type' => 'authorization_code',
             'client_id' => $this->clientId,
             'client_secret' => $this->clientSecret,
             'redirect_uri' => $this->redirectUri,
             'code' => $code,
         ];
-        $tokens = (array)json_decode($this->httpPost(self::TOKEN_URL, $authCodeProof));
-        if (!isset($tokens['access_token'])) {
-            var_dump($tokens);
-            exit();
-        }
-        return $tokens['access_token'];
+        $tokens = (array)json_decode($this->httpPost(self::TOKEN_URL, $proof));
+        return $tokens;
+    }
+
+    public function refreshToken($refreshToken) {
+        $proof = [
+            'grant_type' => 'refresh_token',
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret,
+            'redirect_uri' => $this->redirectUri,
+            'refresh_token' => $refreshToken,
+        ];
+        $tokens = (array)json_decode($this->httpPost(self::TOKEN_URL, $proof));
+        return $tokens;
     }
 
     protected function httpPost($url, $data) {

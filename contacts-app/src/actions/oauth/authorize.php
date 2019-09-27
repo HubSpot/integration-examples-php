@@ -1,14 +1,8 @@
 <?php
 
-use Helpers\UrlHelper;
-use Oauth\HubspotOauth2Client;
+use Helpers\Oauth2Helper;
 
-$oauth2Client = new HubspotOauth2Client([
-    'clientId' => $_ENV['HUBSPOT_CLIENT_ID'],
-    'redirectUri' => UrlHelper::generateServerUri().'/oauth/callback.php',
-    'scope' => HubspotOauth2Client::APP_REQUIRED_SCOPE,
-]);
-
+$oauth2Client = Oauth2Helper::getHubspotOauth2Client();
 $authUrl = $oauth2Client->getAuthorizationUrl();
 
 header('Location: '.$authUrl);
