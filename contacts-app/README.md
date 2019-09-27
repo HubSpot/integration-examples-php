@@ -1,6 +1,6 @@
 # HubSpot-php sample app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs/methods/contacts/contacts-overview) endpoints and their related actions.
+This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs/methods/contacts/contacts-overview) endpoints and their related actions. This app also demonstrates the use of some of [Contacts Properties API](https://developers.hubspot.com/docs/methods/contacts/contact-properties-overview) and [Engagements API](https://developers.hubspot.com/docs/methods/engagements/engagements-overview)
 
 ### HubSpot Public API links used in this application
 
@@ -12,6 +12,8 @@ This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester
   - [Update a contact property](https://developers.hubspot.com/docs/methods/contacts/v2/update_contact_property)
   - [Create a contact property](https://developers.hubspot.com/docs/methods/contacts/v2/create_contacts_property)
   - [Search for contacts by email, name, or company name](https://developers.hubspot.com/docs/methods/contacts/search_contacts)
+  - [Create an Engagement](https://developers.hubspot.com/docs/methods/engagements/create_engagement)
+  - [Get all engagements](https://developers.hubspot.com/docs/methods/engagements/get-all-engagements)
 
   Application also demonstrates [contacts pagination](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/update_readme/contacts-app/src/actions/contacts/export.php) by saving first 10 pages of contacts into a csv file
 
