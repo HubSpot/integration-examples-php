@@ -10,6 +10,7 @@ if (isset($_POST['engagement'])) {
 
     $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
+    //https://developers.hubspot.com/docs/methods/engagements/create_engagement
     $response = $hubSpot->engagements()->create($engagement, $associations, $metadata);
 
     $clientId = $associations['contactIds'][0];
