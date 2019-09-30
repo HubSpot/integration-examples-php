@@ -1,11 +1,29 @@
 <?php include __DIR__.'/../_partials/header.php' ?>
 
+<?php if (!empty($searchDomain)) { ?>
+<pre>
+// src/actions/companies/search.php
+$hubSpot->companies()->searchByDomain($searchDomain, [
+    'name', 'domain',
+])
+</pre>
+<?php } ?>
+
+<form action="/companies/search.php">
+    <fieldset>
+        <input type="text" name="search" placeholder="Search by domain.." id="search" value="<?= $search ?>">
+    </fieldset>
+</form>
+
+
+<?php if (empty($searchDomain)) { ?>
 <pre>
 // src/actions/companies/list.php
 $hubSpot->companies()->all([
     'properties' => ['name', 'domain'],
 ]);
 </pre>
+<?php } ?>
 
 <table>
   <thead>
