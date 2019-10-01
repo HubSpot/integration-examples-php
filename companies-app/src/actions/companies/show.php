@@ -19,17 +19,23 @@ function format_properties_for_request($keyValueProperties) {
 $companyProperties = [];
 if (isset($_POST['name'])) {
     $companyProperties = $_POST;
+    $redirectParams = [];
     if (!isset($companyProperties['id'])) {
-        $response = $hubSpot->companies()->create(format_properties_for_request($properties));
+        // https://developers.hubspot.com/docs/methods/companies/create_company
+        $response = $hubSpot->companies()->create(format_properties_for_request($companyProperties));
+        $redirectParams['created'] = true;
     } else {
         $id = $companyProperties['id'];
         unset($companyProperties['id']);
-        // https://developers.hubspot.com/docs/methods/contacts/create_or_update
+        // https://developers.hubspot.com/docs/methods/companies/update_company
         $response = $hubSpot->companies()->update($id, format_properties_for_request($companyProperties));
+        $redirectParams['updated'] = true;
     }
 
+    $redirectParams['id'] = $response->getData()->companyId;
+
     if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /companies/show.php?id=' . $response->getData()->companyId);
+        header('Location: /companies/show.php?'.http_build_query($redirectParams));
         exit();
     }
 
@@ -38,14 +44,14 @@ if (isset($_POST['name'])) {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    // https://developers.hubspot.com/docs/methods/contacts/get_contact
+    // https://developers.hubspot.com/docs/methods/companies/get_company
     $company = $hubSpot->companies()->getById($id)->getData();
     foreach ($company->properties as $key => $property) {
         $companyProperties[$key] = $property->value;
     }
 }
 
-// https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
+// https://developers.hubspot.com/docs/methods/companies/get_company_properties
 $properties = $hubSpot->companyProperties()->all()->getData();
 
 $formFields = [];

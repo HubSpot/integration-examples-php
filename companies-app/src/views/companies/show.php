@@ -3,14 +3,23 @@
 <?php 
       if (isset($errorResponse)) {
            include __DIR__ . '/../_partials/error_response.php';
-      } else if (!$_GET['notUpdated'] && !$notUpdated) {
-           print ("<h3 style='text-align:center;'>Successfully updated Contact properties</h3>");
-      }
+      } else if ($_GET['updated']) { ?>
+           <h3 style='text-align:center;'>Successfully updated Company properties</h3>
+      <?php } else if ($_GET['created']) { ?>
+          <h3 style='text-align:center;'>Successfully created Company</h3>
+      <?php }
 ?>
 
 <div class="row">
     <div class="column">
-        <h3>Properties</h3>
+
+        <?php if (isset($company)) { ?>
+<pre>
+// src/actions/companies/show.php
+$hubSpot->companies()->getById($companyId)->getData();
+</pre>
+        <?php } ?>
+
         <form method="post" action="/companies/show.php">
             <fieldset>
                 <?php if (isset($id)) { ?>
@@ -39,6 +48,18 @@
                     <?php } ?>
                 <?php } ?>
 
+                <?php if (isset($company)) { ?>
+<pre>
+// src/actions/companies/show.php
+$hubSpot->companies()->update($companyId, $companyProperties);
+</pre>
+                <? } else { ?>
+<pre>
+// src/actions/companies/show.php
+$hubSpot->companies()->create($companyProperties);
+</pre>
+
+                <?php } ?>
                 <input class="button-primary" type="submit" value="Save">
             </fieldset>
         </form>
