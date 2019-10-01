@@ -37,12 +37,19 @@ $hubSpot->companies()->all([
 
   <?php foreach ($companies as $company) { ?>
     <tr>
-      <td><?= htmlentities($company->companyId) ?></a></td>
+      <td><a href="/companies/show.php?id=<?= htmlentities($company->companyId)?>"><?= htmlentities($company->companyId) ?></a></td>
       <td><?= htmlentities($company->properties->name->value) ?></td>
       <td><?= htmlentities($company->properties->domain->value) ?></td>
     </tr>
   <?php }?>
   </tbody>
 </table>
+
+<div>
+    <a href="/companies/new.php">
+        <input class="button-primary" type="button" value="New Company">
+    </a>
+</div>
+
 
 <?php include __DIR__.'/../_partials/footer.php' ?>

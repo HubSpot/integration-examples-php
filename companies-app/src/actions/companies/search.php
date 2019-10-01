@@ -1,8 +1,6 @@
 <?php
 
-$contacts = [];
 $searchDomain = $_GET['search'];
-
 if (empty($searchDomain)) {
     header('Location: /companies/list.php');
     exit();
