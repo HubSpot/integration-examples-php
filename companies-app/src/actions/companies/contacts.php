@@ -10,18 +10,26 @@ const CONTACT_TO_COMPANY_DEFINITION_ID = 1;
 if (isset($_POST['contactsIds'])) {
     $contactsIds = array_keys($_POST['contactsIds']);
     foreach ($contactsIds as $contactId) {
-        // https://developers.hubspot.com/docs/methods/crm-associations/associate-objects
-        $hubSpot->crmAssociations()->create([
+        $data = [
             'fromObjectId' => $contactId,
             'toObjectId' => $companyId,
             'category' => 'HUBSPOT_DEFINED',
             'definitionId' => CONTACT_TO_COMPANY_DEFINITION_ID,
-        ]);
+        ];
+        $redirectParams = [
+            'id' => $companyId,
+        ];
+        if (isset($_POST['addToCompany'])) {
+            // https://developers.hubspot.com/docs/methods/crm-associations/associate-objects
+            $hubSpot->crmAssociations()->create($data);
+            $redirectParams['contactsAdded'] = true;
+        } else if (isset($_POST['deleteFromCompany'])) {
+            // https://developers.hubspot.com/docs/methods/crm-associations/delete-association
+            $hubSpot->crmAssociations()->delete($data);
+            $redirectParams['contactsDeleted'] = true;
+        }
     }
-    header('Location: /companies/show.php?'.http_build_query([
-        'id' => $companyId,
-        'contactsAdded' => true,
-    ]));
+    header('Location: /companies/show.php?'.http_build_query($redirectParams));
 }
 
 $search = $_GET['search'];

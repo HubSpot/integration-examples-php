@@ -41,8 +41,8 @@ $hubSpot->crmAssociations()->create([
     'definitionId' => CONTACT_TO_COMPANY_DEFINITION_ID,
 ])
 </pre>
-
-    <input type="submit" value="Add Selected" />
+    <input type="submit" name="addToCompany" value="Add selected to company" />
+    <input type="submit" name="deleteFromCompany" value="Delete selected from Company" />
 </form>
 
 <?php include __DIR__.'/../_partials/footer.php' ?>

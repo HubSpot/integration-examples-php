@@ -65,6 +65,9 @@ $hubSpot->companies()->create($companyProperties);
             <?php if ($_GET['contactsAdded']) { ?>
                 <h3 class="alert-success">Successfully added contacts</h3>
             <?php } ?>
+            <?php if ($_GET['contactsDeleted']) { ?>
+                <h3 class="alert-success">Successfully deleted contacts</h3>
+            <?php } ?>
 <pre>
 // src/actions/companies/show.php
 $hubSpot->companies()->getAssociatedContacts($companyId)
@@ -88,7 +91,7 @@ $hubSpot->companies()->getAssociatedContacts($companyId)
             </table>
 
             <a href="/companies/contacts.php?companyId=<?= htmlentities($id) ?>">
-                <input class="button-primary" type="button" value="Add Contacts">
+                <input class="button-primary" type="button" value="Manage Contacts">
             </a>
         <?php } ?>
     </div>
