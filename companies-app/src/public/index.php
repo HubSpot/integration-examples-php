@@ -28,7 +28,10 @@ try {
         case '/' :
             header('Location: /companies/list.php');
             exit();
+        case '/companies/new.php':
         case '/companies/list.php':
+        case '/companies/search.php':
+        case '/companies/show.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
             $path = __DIR__ .'/../actions'. $uri;
