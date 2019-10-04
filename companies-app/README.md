@@ -13,7 +13,6 @@ This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester
   - [Get all Company Properties](https://developers.hubspot.com/docs/methods/companies/get_company_properties)
   - [Associate CRM objects](https://developers.hubspot.com/docs/methods/crm-associations/associate-objects)
   - [Delete an association](https://developers.hubspot.com/docs/methods/crm-associations/delete-association)
-  
 
 ### Setup App
 
