@@ -31,6 +31,7 @@ try {
         case '/companies/new.php':
         case '/companies/list.php':
         case '/companies/search.php':
+        case '/companies/contacts.php':
         case '/companies/show.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':

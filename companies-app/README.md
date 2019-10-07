@@ -5,6 +5,14 @@ This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester
 ### HubSpot Public API links used in this application
 
   - [Get all companies](https://developers.hubspot.com/docs/methods/companies/get-all-companies)
+  - [Create a Company](https://developers.hubspot.com/docs/methods/companies/create_company)
+  - [Update a Company](https://developers.hubspot.com/docs/methods/companies/update_company)
+  - [Search for companies by domain](https://developers.hubspot.com/docs/methods/companies/search_companies_by_domain)
+  - [Get a Company](https://developers.hubspot.com/docs/methods/companies/get_company)
+  - [Get Contacts at a Company](https://developers.hubspot.com/docs/methods/companies/get_company_contacts)
+  - [Get all Company Properties](https://developers.hubspot.com/docs/methods/companies/get_company_properties)
+  - [Associate CRM objects](https://developers.hubspot.com/docs/methods/crm-associations/associate-objects)
+  - [Delete an association](https://developers.hubspot.com/docs/methods/crm-associations/delete-association)
 
 ### Setup App
 

@@ -3,15 +3,19 @@
 <?php 
       if (isset($errorResponse)) {
            include __DIR__ . '/../_partials/error_response.php';
-      } else if ($_GET['updated']) { ?>
-           <h3 style='text-align:center;'>Successfully updated Company properties</h3>
-      <?php } else if ($_GET['created']) { ?>
-          <h3 style='text-align:center;'>Successfully created Company</h3>
-      <?php }
+           exit();
+      }
 ?>
 
 <div class="row">
     <div class="column">
+        <h3>Company Properties</h3>
+
+        <?php if ($_GET['updated']) { ?>
+            <h3 class="alert-success">Successfully updated Company properties</h3>
+        <?php } else if ($_GET['created']) { ?>
+            <h3 class="alert-success" '>Successfully created Company</h3>
+        <?php } ?>
 
         <?php if (isset($company)) { ?>
 <pre>
@@ -52,6 +56,44 @@ $hubSpot->companies()->create($companyProperties);
             </fieldset>
         </form>
 
+    </div>
+
+    <div class="column">
+        <?php if (isset($contacts)) { ?>
+            <h3>Contacts</h3>
+
+            <?php if ($_GET['contactsAdded']) { ?>
+                <h3 class="alert-success">Successfully added contacts</h3>
+            <?php } ?>
+            <?php if ($_GET['contactsDeleted']) { ?>
+                <h3 class="alert-success">Successfully deleted contacts</h3>
+            <?php } ?>
+<pre>
+// src/actions/companies/show.php
+$hubSpot->companies()->getAssociatedContacts($companyId)
+</pre>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php foreach ($contacts as $contact) { ?>
+                    <tr>
+                        <td><?= htmlentities($contact['id']) ?></td>
+                        <td><?= htmlentities($contact['firstname'].' '.$contact['lastname']) ?></td>
+                    </tr>
+                <?php }?>
+                </tbody>
+            </table>
+
+            <a href="/companies/contacts.php?companyId=<?= htmlentities($id) ?>">
+                <input class="button-primary" type="button" value="Manage Contacts">
+            </a>
+        <?php } ?>
     </div>
 </div>
 

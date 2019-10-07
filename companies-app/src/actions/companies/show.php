@@ -49,6 +49,16 @@ if (isset($_GET['id'])) {
     foreach ($company->properties as $key => $property) {
         $companyProperties[$key] = $property->value;
     }
+
+    $contactsObj = $hubSpot->companies()->getAssociatedContacts($id)->getData()->contacts;
+    $contacts = [];
+    foreach ($contactsObj as $contactObj) {
+        $contact = ['id' => $contactObj->vid];
+        foreach ($contactObj->properties as $property) {
+            $contact[$property->name] = $property->value;
+        }
+        $contacts[] = $contact;
+    }
 }
 
 // https://developers.hubspot.com/docs/methods/companies/get_company_properties
