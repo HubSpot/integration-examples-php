@@ -3,8 +3,8 @@
 <table>
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
+        <th>Contact ID</th>
+        <th>Contact Name</th>
         <th>Events</th>
     </tr>
     </thead>

@@ -9,6 +9,7 @@ class Oauth2Helper
 {
     const APP_REQUIRED_SCOPE = "contacts";
     const CALLBACK_PATH = '/oauth/callback.php';
+    const SESSION_TOKENS_KEY = 'tokens';
 
     private static $hubSpotOauth2Client = null;
 
@@ -27,9 +28,13 @@ class Oauth2Helper
         return self::$hubSpotOauth2Client;
     }
 
+    public static function isAuthenticated() {
+        return isset($_SESSION[self::SESSION_TOKENS_KEY]);
+    }
+
     public static function saveTokens($tokens) {
         $tokens['expires_at'] = time() + $tokens['expires_in'] * 0.95;
-        $_SESSION['tokens'] = $tokens;
+        $_SESSION[self::SESSION_TOKENS_KEY] = $tokens;
     }
 
     public static function refreshAndGetAccessToken() {
@@ -37,7 +42,7 @@ class Oauth2Helper
             throw new \Exception("Please authorize via OAuth2");
         }
 
-        $tokens = $_SESSION['tokens'];
+        $tokens = $_SESSION[self::SESSION_TOKENS_KEY];
         if (time() > $tokens['expires_at']) {
             $oauth2Client = self::getHubspotOauth2Client();
             $tokens = $oauth2Client->refreshToken($tokens['refresh_token']);
