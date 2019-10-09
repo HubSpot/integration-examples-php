@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  web:
+    env_file:
+      - .env
+    build: .
+    ports:
+      - 8999:80
+    volumes:
+      - ./src:/app/src
+      - ./db:/app/db
