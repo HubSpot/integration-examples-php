@@ -46,3 +46,13 @@
 .row.authorize-button {
     justify-content: center;
 }
+
+.event.deletion {
+    color: white;
+    background-color: red;
+}
+
+.event.creation {
+    color: #3c763d;
+    background-color: #dff0d8;
+}

@@ -14,7 +14,11 @@
         <tr>
             <td><?= htmlentities($contact['id']) ?></a></td>
             <td><?= htmlentities($contact['properties']->firstname->value).' '.htmlentities($contact['properties']->lastname->value) ?></td>
-            <td><?= htmlentities(implode(', ', $contact['events'])) ?></td>
+            <td>
+                <?php foreach ($contact['events'] as $event) { ?>
+                    <span class="event <?= htmlentities($event) ?>"><?= htmlentities($event) ?></span>
+                <?php } ?>
+            </td>
         </tr>
     <?php } ?>
     </tbody>
