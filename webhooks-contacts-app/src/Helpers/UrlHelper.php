@@ -3,8 +3,6 @@
 
 namespace Helpers;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class UrlHelper
 {
     public static function generateServerUri() {
