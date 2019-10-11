@@ -26,4 +26,6 @@ foreach ($contactsIds as $contactsId) {
     $contacts[] = $contact;
 }
 
+EventsRepository::markAllEventsAsShown();
+
 include __DIR__.'/../../views/webhooks/events.php';

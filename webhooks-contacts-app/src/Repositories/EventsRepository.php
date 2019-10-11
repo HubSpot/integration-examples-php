@@ -18,6 +18,7 @@ create table if not exists events
     object_id   int      default null,
     event_id    int      default null,
     occurred_at datetime default null,
+    shown       tinyint(1) default 0,
     created_at  datetime default (datetime('now', 'localtime'))
 );
 "
@@ -54,5 +55,17 @@ create table if not exists events
             $events[] = $row['event_type'];
         }
         return $events;
+    }
+
+    public static function getNotShownEventsCount() {
+        $db = DBClientHelper::getClient();
+        $query = $db->query("select count(*) from events where shown = 0");
+        $result = $query->fetchArray();
+        return $result[0];
+    }
+
+    public static function markAllEventsAsShown() {
+        $db = DBClientHelper::getClient();
+        $db->exec("update events set shown = 1 where shown = 0");
     }
 }

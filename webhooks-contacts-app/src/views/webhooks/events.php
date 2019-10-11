@@ -1,5 +1,6 @@
 <?php include __DIR__ . '/../_partials/header.php' ?>
 
+<h3 class="alert-not-shown-events">New webhooks are received. <a href="#">Reload</a> the page to see updates</h3>
 <table>
     <thead>
     <tr>

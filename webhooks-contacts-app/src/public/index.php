@@ -16,6 +16,7 @@ try {
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
         case '/webhooks/handle.php':
+        case '/ajax/events.php':
             $path = __DIR__ . '/../actions' . $uri;
             require $path;
             exit();
