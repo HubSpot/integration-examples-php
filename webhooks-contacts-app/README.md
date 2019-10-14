@@ -20,12 +20,6 @@ The best way to run this project (with the least configuration), is using docker
 ```bash
 docker-compose up
 ```
-You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
 
-To test Web Hooks run
-
-```bash
-ngrok http 8999
-```
-
+Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.
 Required web hooks url should look like https://***.ngrok.io/webhooks/handle.php

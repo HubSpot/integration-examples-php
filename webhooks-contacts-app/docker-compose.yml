@@ -5,8 +5,13 @@ services:
     env_file:
       - .env
     build: .
-    ports:
-      - 8999:80
     volumes:
       - ./src:/app/src
       - ./db:/app/db
+  ngrok:
+    image: gtriggiano/ngrok-tunnel
+    environment:
+      TARGET_HOST: web
+      TARGET_PORT: 80
+    depends_on:
+      - web
