@@ -1,8 +1,7 @@
 # HubSpot-php sample Webhooks app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Webhooks API](https://developers.hubspot.com/docs/methods/webhooks/webhooks-overview) endpoints and their related actions.
-
-### HubSpot Public API links used in this application
+This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester/hubspot-php). 
+Currently, this app focuses on demonstrating the functionality of [Webhooks API](https://developers.hubspot.com/docs/methods/webhooks/webhooks-overview), contact creation/deletion in particular.
 
 ### Setup App
 
@@ -22,4 +21,12 @@ docker-compose up
 ```
 
 Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.
-Required web hooks url should look like https://***.ngrok.io/webhooks/handle.php
+
+### Configure webhooks
+
+Required webhooks url should look like https://***.ngrok.io/webhooks/handle.php
+
+Following [Webhooks Setup](https://developers.hubspot.com/docs/methods/webhooks/webhooks-overview) guide please note:
+- Every time the app is restarted you should update the webhooks url
+- The app supports `contact.creation` and `contact.deletion` subscription types only
+- Subscription are paused by default. You need to activate them manually after creating
