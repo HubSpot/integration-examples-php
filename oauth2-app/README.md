@@ -2,16 +2,14 @@
 
 This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Companies API](https://developers.hubspot.com/docs/methods/companies/companies-overview) endpoints and their related actions.
 
+Please see the documentation on [How do I create an app in HubSpot?](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
+
 ### HubSpot Public API links used in this application
 
   - [Initiate an Integration with OAuth 2.0](https://developers.hubspot.com/docs/methods/oauth2/initiate-oauth-integration)
   - [Get OAuth 2.0 Access Token and Refresh Tokens](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)
   - [Refresh OAuth 2.0 Access Token](https://developers.hubspot.com/docs/methods/oauth2/refresh-access-token)
-  - [Get all companies](https://developers.hubspot.com/docs/methods/companies/get-all-companies)
-  - [Get all Company Properties](https://developers.hubspot.com/docs/methods/companies/get_company_properties)
-  - [Search for companies by domain](https://developers.hubspot.com/docs/methods/companies/search_companies_by_domain)
-  - [Create a Company](https://developers.hubspot.com/docs/methods/companies/create_company)
-  - [Update a Company](https://developers.hubspot.com/docs/methods/companies/update_company)
+  - [Get all contacts](https://developers.hubspot.com/docs/methods/contacts/get_contacts)
     
 ### Setup App
 
