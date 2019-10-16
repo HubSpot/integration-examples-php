@@ -10,6 +10,8 @@ services:
       - ./db:/app/db
   ngrok:
     image: gtriggiano/ngrok-tunnel
+    ports:
+      - 4040:4040
     environment:
       TARGET_HOST: web
       TARGET_PORT: 80
