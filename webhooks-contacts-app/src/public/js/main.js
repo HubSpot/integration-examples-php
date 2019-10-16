@@ -19,7 +19,7 @@ async function displayNotShownEventsAlertIfNeed() {
 }
 
 $(document).ready(async () => {
-    setInterval(displayNotShownEventsAlertIfNeed, 3000);
+    setInterval(displayNotShownEventsAlertIfNeed, 10000);
     $('.alert-not-shown-events').click(() => {
        reloadPage();
        return false;
