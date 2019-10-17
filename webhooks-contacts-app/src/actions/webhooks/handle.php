@@ -4,6 +4,8 @@ use Helpers\KafkaHelper;
 
 $requestBody = file_get_contents('php://input');
 
+verify_hubspot_signature();
+
 $events = json_decode($requestBody, true);
 
 foreach ($events as $event) {
