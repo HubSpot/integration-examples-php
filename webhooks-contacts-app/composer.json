@@ -8,7 +8,7 @@
     },
     "autoload": {
         "files": [
-            "src/functions.php"
+            "src/Helpers/functions.php"
         ],
         "psr-4": {
             "": "src/"
