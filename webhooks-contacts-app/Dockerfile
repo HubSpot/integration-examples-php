@@ -15,5 +15,5 @@ WORKDIR /app
 RUN /usr/local/bin/composer install
 
 RUN apt-get install -y supervisor
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY docker/supervisor/processes.conf /etc/supervisor/conf.d/apache.conf
 CMD ["/usr/bin/supervisord"]

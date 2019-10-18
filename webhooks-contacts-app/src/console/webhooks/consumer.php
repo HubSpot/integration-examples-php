@@ -1,4 +1,5 @@
 <?php
+sleep(2);
 require_once '/app/vendor/autoload.php';
 use Helpers\KafkaHelper;
 KafkaHelper::getConsumer([$_ENV['EVENT_TOPIC']])
