@@ -15,12 +15,9 @@ class Oauth2Helper
 
     public static function getHubspotOauth2Client() {
         if (!self::$hubSpotOauth2Client) {
-            if (empty($_ENV['HUBSPOT_CLIENT_ID']) || empty($_ENV['HUBSPOT_CLIENT_SECRET'])) {
-                throw new \Exception("Please specify HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET in .env");
-            }
             self::$hubSpotOauth2Client = new HubspotOauth2Client([
-                'clientId' => $_ENV['HUBSPOT_CLIENT_ID'],
-                'clientSecret' => $_ENV['HUBSPOT_CLIENT_SECRET'],
+                'clientId' => getEnvOrException('HUBSPOT_CLIENT_ID'),
+                'clientSecret' => getEnvOrException('HUBSPOT_CLIENT_SECRET'),
                 'redirectUri' => UrlHelper::generateServerUri().self::CALLBACK_PATH,
                 'scope' => self::APP_REQUIRED_SCOPE,
             ]);

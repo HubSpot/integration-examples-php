@@ -9,8 +9,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN apt update && apt install -y git
 
 RUN mkdir -p /app
-ADD composer.lock /app
 ADD composer.json /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
+
+RUN apt-get install -y supervisor
+COPY docker/supervisor/processes.conf /etc/supervisor/conf.d/apache.conf
+CMD ["/usr/bin/supervisord"]
