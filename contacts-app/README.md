@@ -46,7 +46,7 @@ You should now be able to navigate to [http://localhost:8999](http://localhost:8
 
 ### Running tests
 
-First start the application and then run tests with codecept
+Run tests with codecept
 
 ```bash
 docker-compose run codecept run
