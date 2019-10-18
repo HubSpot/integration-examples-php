@@ -15,7 +15,7 @@ RUN docker-php-ext-install zip
 RUN mkdir -p /app
 ADD composer.lock /app
 ADD composer.json /app
-ADD codeception.yml /app
+#ADD ../../codeception.yml /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
