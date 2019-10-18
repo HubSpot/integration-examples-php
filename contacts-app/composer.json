@@ -8,8 +8,5 @@
         "psr-4": {
             "": "src/"
         }
-    },
-    "require-dev": {
-        "codeception/codeception": "^3.1"
     }
 }
