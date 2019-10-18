@@ -40,12 +40,14 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 The best way to run this project (with the least configuration), is using docker compose.  Change to the webroot and start it
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
 
 ### Running tests
 
+First start the application and then run tests with
+
 ```bash
-docker-compose run --rm web vendor/bin/codecept run
+docker-compose exec web vendor/bin/codecept run
 ```
