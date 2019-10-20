@@ -43,3 +43,11 @@ The best way to run this project (with the least configuration), is using docker
 docker-compose up
 ```
 You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
+
+### Running tests
+
+Run tests with codecept
+
+```bash
+docker-compose run codecept run
+```

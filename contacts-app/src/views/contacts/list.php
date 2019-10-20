@@ -1,6 +1,6 @@
 <?php include __DIR__.'/../_partials/header.php' ?>
 
-<table>
+<table class="contacts-list">
   <thead>
   <tr>
     <th>ID</th>
@@ -28,7 +28,7 @@
 
 <div>
   <a href="/contacts/new.php">
-    <input class="button-primary" type="button" value="New Contact">
+    <input class="button-primary contact-new" type="button" value="New Contact">
   </a>
     <a href="/contacts/export.php">
         <input class="button-primary" type="button" value="Export To CSV">
