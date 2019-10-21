@@ -12,10 +12,10 @@ services:
     image: wurstmeister/kafka:2.12-2.3.0
     ports:
       - "9092:9092"
-    logging:
-      driver: none
     depends_on:
       - zookeeper
+    logging:
+      driver: none
     environment:
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_CREATE_TOPICS: "events:1:1"
