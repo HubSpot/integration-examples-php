@@ -63,4 +63,9 @@ create table if not exists events
         $db = DBClientHelper::getClient();
         $db->exec("update events set shown = 1 where shown = 0");
     }
+
+    public static function deleteAll() {
+        $db = DBClientHelper::getClient();
+        $db->exec("delete from  events");
+    }
 }
