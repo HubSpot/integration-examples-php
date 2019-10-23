@@ -4,8 +4,30 @@ services:
   web:
     env_file:
       - .env
-    build: .
+    build:
+      dockerfile: docker/web/Dockerfile
+      context: ./
     ports:
       - 8999:80
     volumes:
       - ./src:/app/src
+      - ./codeception.yml:/app/codeception.yml
+      - ./tests:/app/tests
+
+#  codecept:
+#    build:
+#      dockerfile: docker/codecept/Dockerfile
+#      context: ./
+#    depends_on:
+#      - web
+#      - chrome
+#    links:
+#      - chrome
+#    volumes:
+#      - ./tests:/project/tests
+
+  chrome:
+    image: selenium/standalone-chrome-debug:3.7.1
+    ports:
+      - 4444:4444
+      - 5900:5900
