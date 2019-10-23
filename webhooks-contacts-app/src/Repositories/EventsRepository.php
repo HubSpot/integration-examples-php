@@ -27,13 +27,13 @@ create table if not exists events
 
     public static function saveEvent($event) {
         $db = DBClientHelper::getClient();
-        $query = $db->prepare("insert into events (event_id, event_type, object_id, occurred_at) values (?, ?, ?, ?)")
+        $query = $db->prepare("insert into events (event_id, event_type, object_id, occurred_at) values (?, ?, ?, ?)");
         $query->execute([$event['eventId'], $event['subscriptionType'], $event['objectId'], $event['occurredAt']]);
     }
 
     public static function findLastModifiedObjectsIds() {
         $db = DBClientHelper::getClient();
-        $query = $db->query("SELECT object_id FROM events GROUP BY object_id ORDER BY MAX(id) DESC LIMIT 10;")
+        $query = $db->query("SELECT object_id FROM events GROUP BY object_id ORDER BY MAX(id) DESC LIMIT 10;");
         $objectsIds = [];
         foreach ($query->fetchAll() as $row) {
             $objectsIds[] = $row['object_id'];
