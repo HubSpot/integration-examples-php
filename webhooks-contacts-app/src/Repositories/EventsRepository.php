@@ -37,7 +37,7 @@ create table if not exists events
 
     public static function findLastModifiedObjectsIds() {
         $db = DBClientHelper::getClient();
-        $query = $db->query("select distinct object_id from events order by id desc limit 2000");
+        $query = $db->query("select distinct object_id from events order by id desc limit 100");
         $objectsIds = [];
         while ($row = $query->fetchArray(SQLITE3_ASSOC)) {
             $objectsIds[] = $row['object_id'];
