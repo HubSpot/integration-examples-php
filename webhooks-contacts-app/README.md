@@ -10,7 +10,7 @@ Common webhook processing practice consists of few steps:
 2. Message consumer instance(s) is running in a separate process, typically on multiple nodes in a cloud, such as AWS [consumer.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/console/webhooks/consumer.php)
 3. Consumer stores webhook evenst in the database potentially calling an API to get full record of the object that triggered the event
    - This application uses MySQL, the methods working with the database can be seen in [EventsRepository.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Repositories/EventsRepository.php)
-4. Other services/objects fetch the events data from the database sorted by timestamp of the event  
+4. Other services/objects fetch the events data from the database sorted by timestamp of the event [EventsRepository.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Repositories/EventsRepository.php#L38)
 
 ### Setup App
 
