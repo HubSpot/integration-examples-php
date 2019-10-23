@@ -3,16 +3,17 @@
 
 namespace Helpers;
 
-use SQLite3;
+use PDO;
 
 class DBClientHelper
 {
     private static $dbClient = null;
 
     public static function getClient() {
+
         if (!self::$dbClient) {
-            $db = new SQLite3(__DIR__.'/../../db/webhooks.sqlite', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
-            self::$dbClient = $db;
+            $pdo = new PDO('mysql:host=db;dbname=events', 'events', 'events');
+            self::$dbClient = $pdo;
         }
         return self::$dbClient;
     }
