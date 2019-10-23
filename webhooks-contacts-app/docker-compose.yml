@@ -35,9 +35,24 @@ services:
     build: .
     depends_on:
       - kafka
+      - db
+    ports:
+      - 8999:80
     volumes:
       - ./src:/app/src
       - ./db:/app/db
+  db:
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: events
+      MYSQL_USER: events
+      MYSQL_PASSWORD: events
   ngrok:
     image: gtriggiano/ngrok-tunnel
     ports:
