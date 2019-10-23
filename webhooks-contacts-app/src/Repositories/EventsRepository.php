@@ -37,7 +37,7 @@ create table if not exists events
 
     public static function findLastModifiedObjectsIds() {
         $db = DBClientHelper::getClient();
-        $query = $db->query("select distinct object_id from events order by id desc limit 10");
+        $query = $db->query("select distinct object_id from events order by id desc limit 2000");
         $objectsIds = [];
         while ($row = $query->fetchArray(SQLITE3_ASSOC)) {
             $objectsIds[] = $row['object_id'];
@@ -67,5 +67,10 @@ create table if not exists events
     public static function markAllEventsAsShown() {
         $db = DBClientHelper::getClient();
         $db->exec("update events set shown = 1 where shown = 0");
+    }
+
+    public static function deleteAll() {
+        $db = DBClientHelper::getClient();
+        $db->exec("delete from  events");
     }
 }
