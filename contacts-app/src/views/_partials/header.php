@@ -17,7 +17,7 @@
       </a>
       <ul class="navigation-list float-right">
         <li class="navigation-item">
-          <a class="navigation-link" href="/contacts/list.php">Contacts</a>
+          <a id="contactsList" class="navigation-link" href="/contacts/list.php">Contacts</a>
         </li>
         <li class="navigation-item">
           <a class="navigation-link" href="/properties/list.php">Properties</a>

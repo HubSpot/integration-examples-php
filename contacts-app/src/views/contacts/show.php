@@ -4,7 +4,7 @@
       if (isset($errorResponse)) {
            include __DIR__ . '/../_partials/error_response.php';
       } else if (!$_GET['notUpdated'] && !$notUpdated) {
-           print ("<h3 style='text-align:center;'>Successfully updated Contact properties</h3>");
+           print ("<h3 class='success'>Successfully updated Contact properties</h3>");
       }
 ?>
 

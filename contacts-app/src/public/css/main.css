@@ -57,3 +57,7 @@ input[type=datetime-local] {
     height: 3.8rem;
     padding: .6rem 1.0rem;
 }
+
+.success {
+    text-align: center;
+}

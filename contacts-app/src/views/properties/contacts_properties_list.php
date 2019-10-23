@@ -25,7 +25,7 @@
                 <?php } ?>
             <?php } ?>
 
-            <input class="button-primary" type="submit" value="Save">
+            <input id='save' class="button-primary" type="submit" value="Save">
         </fieldset>
     </form>
 
