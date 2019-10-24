@@ -9,7 +9,8 @@ session_start();
 $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
 
 try {
-    EventsRepository::createTableIfNotExists();
+    \Helpers\DBClientHelper::runMigrations();
+
     switch ($uri) {
         // allowed for anonymous
         case '/oauth/login.php':

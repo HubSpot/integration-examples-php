@@ -32,6 +32,10 @@ services:
       KAFKA_PRODUCE_INTERVAL: 500
       KAFKA_GROUP_ID: events
       EVENT_TOPIC: events
+      DB_HOST: db
+      DB_NAME: events
+      DB_USERNAME: events
+      DB_PASSWORD: events
     build: .
     depends_on:
       - kafka
@@ -41,6 +45,7 @@ services:
     volumes:
       - ./src:/app/src
       - ./db:/app/db
+      - ./sql:/app/sql
   db:
     image: mysql:8.0
     command: mysqld --default-authentication-plugin=mysql_native_password
