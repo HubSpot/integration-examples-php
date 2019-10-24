@@ -10,7 +10,7 @@ class EventsRepository
     public static function saveEvent($event) {
         $db = DBClientHelper::getClient();
         $query = $db->prepare("insert into events (event_id, event_type, object_id, occurred_at) values (?, ?, ?, ?)");
-        var_dump($query->execute([$event['eventId'], $event['subscriptionType'], $event['objectId'], $event['occurredAt']]));
+        $query->execute([$event['eventId'], $event['subscriptionType'], $event['objectId'], $event['occurredAt']]);
     }
 
     public static function findLastModifiedObjectsIds() {

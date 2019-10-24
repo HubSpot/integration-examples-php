@@ -32,6 +32,10 @@ services:
       KAFKA_PRODUCE_INTERVAL: 500
       KAFKA_GROUP_ID: events
       EVENT_TOPIC: events
+      DB_HOST: db
+      DB_NAME: events
+      DB_USERNAME: events
+      DB_PASSWORD: events
     build: .
     depends_on:
       - kafka
@@ -49,8 +53,6 @@ services:
       - ./db/mysql:/var/lib/mysql
     ports:
       - 3306:3306
-    logging:
-      driver: none
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: events

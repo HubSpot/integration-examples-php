@@ -11,14 +11,15 @@ class DBClientHelper
 
     public static function getClient() {
         if (!self::$dbClient) {
-            $pdo = new PDO('mysql:host=db;dbname=events', 'events', 'events');
+            $pdo = new PDO('mysql:host='.$_ENV['DB_HOST'].';dbname='.$_ENV['DB_NAME'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
             self::$dbClient = $pdo;
         }
         return self::$dbClient;
     }
 
     public static function runMigrations() {
-        $connectionUri = new \ByJG\Util\Uri('mysql://events:events@db/events');
+        $uri = 'mysql://'.$_ENV['DB_USERNAME'].':'.$_ENV['DB_PASSWORD'].'@'.$_ENV['DB_HOST'].'/'.$_ENV['DB_NAME'];
+        $connectionUri = new \ByJG\Util\Uri($uri);
         $migration = new \ByJG\DbMigration\Migration($connectionUri, __DIR__.'/../../sql');
         $migration->registerDatabase('mysql', \ByJG\DbMigration\Database\MySqlDatabase::class);
         try {
