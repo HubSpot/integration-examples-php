@@ -35,14 +35,25 @@ create table if not exists events
         $query->execute();
     }
 
-    public static function findLastModifiedObjectsIds() {
+    public static function findLastModifiedObjectsIds(int $from = 0, int $perPage = 0) {
         $db = DBClientHelper::getClient();
-        $query = $db->query("select distinct object_id from events order by id desc limit 10");
+        $limit = 'limit 10';
+        if ($perPage) {
+            $limit = "limit $from, $perPage";
+        }
+        $query = $db->query("select distinct object_id from events order by id desc $limit");
         $objectsIds = [];
         while ($row = $query->fetchArray(SQLITE3_ASSOC)) {
             $objectsIds[] = $row['object_id'];
         }
         return $objectsIds;
+    }
+
+
+    public static function getEventsCount() {
+        $db = DBClientHelper::getClient();
+        $query = $db->query("select COUNT(distinct object_id) as count  from events ");
+        return $query->fetchArray()['count'];
     }
 
     public static function findEventTypesByObjectId($objectId) {

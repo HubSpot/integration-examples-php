@@ -25,4 +25,7 @@
     </tbody>
 </table>
 
-<?php include __DIR__ . '/../_partials/footer.php' ?>
+<?php
+include __DIR__ . '/../_partials/pagination.php';
+include __DIR__ . '/../_partials/footer.php';
+?>
