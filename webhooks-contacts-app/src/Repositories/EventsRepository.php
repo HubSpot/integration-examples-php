@@ -7,28 +7,10 @@ use Helpers\DBClientHelper;
 
 class EventsRepository
 {
-    public static function createTableIfNotExists() {
-        $db = DBClientHelper::getClient();
-        $db->exec(
-            "
-create table if not exists events
-(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    event_type  VARCHAR(255),
-    object_id   int      default null,
-    event_id    int      default null,
-    occurred_at bigint   default null,
-    shown       tinyint(1) default 0,
-    created_at  datetime default CURRENT_TIMESTAMP
-);
-"
-        );
-    }
-
     public static function saveEvent($event) {
         $db = DBClientHelper::getClient();
         $query = $db->prepare("insert into events (event_id, event_type, object_id, occurred_at) values (?, ?, ?, ?)");
-        $query->execute([$event['eventId'], $event['subscriptionType'], $event['objectId'], $event['occurredAt']]);
+        var_dump($query->execute([$event['eventId'], $event['subscriptionType'], $event['objectId'], $event['occurredAt']]));
     }
 
     public static function findLastModifiedObjectsIds() {

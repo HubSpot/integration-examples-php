@@ -41,6 +41,7 @@ services:
     volumes:
       - ./src:/app/src
       - ./db:/app/db
+      - ./sql:/app/sql
   db:
     image: mysql:8.0
     command: mysqld --default-authentication-plugin=mysql_native_password
@@ -48,6 +49,8 @@ services:
       - ./db/mysql:/var/lib/mysql
     ports:
       - 3306:3306
+    logging:
+      driver: none
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: events

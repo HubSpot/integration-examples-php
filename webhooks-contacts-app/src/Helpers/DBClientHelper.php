@@ -16,4 +16,16 @@ class DBClientHelper
         }
         return self::$dbClient;
     }
+
+    public static function runMigrations() {
+        $connectionUri = new \ByJG\Util\Uri('mysql://events:events@db/events');
+        $migration = new \ByJG\DbMigration\Migration($connectionUri, __DIR__.'/../../sql');
+        $migration->registerDatabase('mysql', \ByJG\DbMigration\Database\MySqlDatabase::class);
+        try {
+            $migration->getCurrentVersion();
+        } catch (\Throwable $t) {
+            $migration->reset();
+        }
+        $migration->update($version = null);
+    }
 }

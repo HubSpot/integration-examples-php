@@ -5,7 +5,8 @@
         "ext-json": "*",
         "ext-sqlite3": "*",
         "nmred/kafka-php": "0.2.*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "byjg/migration": "4.0.*"
     },
     "autoload": {
         "files": [
