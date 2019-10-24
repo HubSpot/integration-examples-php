@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/../_partials/header.php' ?>
 
-<h3 class="alert-not-shown-events">New webhooks are received. <a href="#">Reload</a> the page to see updates</h3>
+<h3 id='alert-shown-events' class="alert-not-shown-events" datetime-mark="<?=time()?>">New webhooks are received. <a href="#">Reload</a> the page to see updates</h3>
 <?php if ($paginator->getCount() > 0) { ?>
 <table>
     <thead>
