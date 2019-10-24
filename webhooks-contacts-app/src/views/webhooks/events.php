@@ -1,6 +1,7 @@
 <?php include __DIR__ . '/../_partials/header.php' ?>
 
 <h3 class="alert-not-shown-events">New webhooks are received. <a href="#">Reload</a> the page to see updates</h3>
+<?php if ($paginator->getCount() > 0) { ?>
 <table>
     <thead>
     <tr>
@@ -24,7 +25,9 @@
     <?php } ?>
     </tbody>
 </table>
-
+<?php } else { ?>
+<h3 id="empty-message">Webhooks haven't been received yet.</h3>
+<?php } ?>
 <?php
 include __DIR__ . '/../_partials/pagination.php';
 include __DIR__ . '/../_partials/footer.php';

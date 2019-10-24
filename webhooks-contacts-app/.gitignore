@@ -1,4 +1,4 @@
 .env
 .idea
 vendor
-*.sqlite
+db/*

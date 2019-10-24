@@ -33,6 +33,7 @@ try {
             header('Location: /webhooks/events.php');
             exit();
         case '/webhooks/events.php':
+        case '/webhooks/delete.php':
             $path = __DIR__ . '/../actions' . $uri;
             require $path;
             exit();

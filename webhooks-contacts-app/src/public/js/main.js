@@ -14,6 +14,7 @@ function requestNotShownEventsCount() {
 async function displayNotShownEventsAlertIfNeed() {
     const notShownEventsCount = await requestNotShownEventsCount();
     if (notShownEventsCount > 0) {
+        $('#empty-message').hide();
         $('.alert-not-shown-events').show();
     }
 }

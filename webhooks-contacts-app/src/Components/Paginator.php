@@ -126,14 +126,16 @@ class Paginator
 
     public function getFrom(): int
     {
-        if($this->page == 1) {
-            return 1;
-        }
         return ($this->page - 1) * $this->perPage;
     }
 
     public function getPerPage(): int
     {
         return $this->perPage;
+    }
+
+    public function getCount(): int
+    {
+        return $this->count;
     }
 }
