@@ -58,6 +58,6 @@ input[type=datetime-local] {
     padding: .6rem 1.0rem;
 }
 
-.success {
+h3.alert-success {
     text-align: center;
 }

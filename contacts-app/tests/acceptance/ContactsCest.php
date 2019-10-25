@@ -22,6 +22,6 @@ class ContactsCest
     public function creatingContactValidData(AcceptanceTester $I)
     {
         $I->createContact('mike@mailforspam.com');
-        $I->seeElement('.success');
+        $I->seeElement('.alert-success');
     }
 }

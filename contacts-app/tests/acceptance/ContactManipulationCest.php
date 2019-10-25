@@ -25,7 +25,7 @@ class ContactManipulationCest
         $I->fillField(['name' => 'state'], 'CA');
         $I->fillField(['name' => 'country'], 'USA');
         $I->click('#save');
-        $I->seeElement('.success');
+        $I->seeElement('.alert-success');
     }
 
     public function addingEngagements(AcceptanceTester $I)
