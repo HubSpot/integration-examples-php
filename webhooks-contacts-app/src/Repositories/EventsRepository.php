@@ -33,10 +33,13 @@ create table if not exists events
     public static function findLastModifiedObjectsIds(int $from = 0, int $perPage = 0) {
         $db = DBClientHelper::getClient();
         $limit = 'LIMIT 10';
+        $options = [];
         if ($perPage) {
-            $limit = "LIMIT $from, $perPage";
+            $limit = "LIMIT ? , ?";
+            $options = [$from, $perPage];
         }
-        $query = $db->query("SELECT object_id FROM events GROUP BY object_id ORDER BY MAX(id) DESC $limit;");
+        $query = $db->prepare("SELECT object_id FROM events GROUP BY object_id ORDER BY MAX(id) DESC $limit;");
+        $query->execute($options);
         $objectsIds = [];
         foreach ($query->fetchAll() as $row) {
             $objectsIds[] = $row['object_id'];
