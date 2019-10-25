@@ -13,14 +13,28 @@ class EventsRepository
         $query->execute([$event['eventId'], $event['subscriptionType'], $event['objectId'], $event['occurredAt']]);
     }
 
-    public static function findLastModifiedObjectsIds() {
+    public static function findLastModifiedObjectsIds(int $from = 0, int $perPage = 0) {
         $db = DBClientHelper::getClient();
-        $query = $db->query("SELECT object_id FROM events GROUP BY object_id ORDER BY MAX(id) DESC LIMIT 10;");
+        $limit = 'LIMIT 10';
+        $options = [];
+        if ($perPage) {
+            $limit = "LIMIT ? , ?";
+            $options = [$from, $perPage];
+        }
+        $query = $db->prepare("SELECT object_id FROM events GROUP BY object_id ORDER BY MAX(id) DESC $limit;");
+        $query->execute($options);
         $objectsIds = [];
         foreach ($query->fetchAll() as $row) {
             $objectsIds[] = $row['object_id'];
         }
         return $objectsIds;
+    }
+
+
+    public static function getEventsCount() {
+        $db = DBClientHelper::getClient();
+        $query = $db->query("select COUNT(distinct object_id) as count  from events ");
+        return $query->fetchColumn(0);
     }
 
     public static function findEventTypesByObjectId($objectId) {
@@ -34,16 +48,12 @@ class EventsRepository
         return $events;
     }
 
-    public static function getNotShownEventsCount() {
+    public static function getNotShownEventsCount(int $timestamp): int
+    {
         $db = DBClientHelper::getClient();
-        $query = $db->query("select count(*) from events where shown = 0");
-        $result = $query->fetchColumn(0);
-        return $result;
-    }
-
-    public static function markAllEventsAsShown() {
-        $db = DBClientHelper::getClient();
-        $db->exec("update events set shown = 1 where shown = 0");
+        $query = $db->prepare("select count(*) from events where UNIX_TIMESTAMP(created_at) > ?;");
+        $query->execute([$timestamp]);
+        return $query->fetchColumn(0);
     }
 
     public static function deleteAll() {
