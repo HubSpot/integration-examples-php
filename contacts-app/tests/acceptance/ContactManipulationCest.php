@@ -7,14 +7,14 @@ class ContactManipulationCest
         $I->createContact( 'mike@mailforspam.com');
     }
 
-    public function UpdatePropertiesInvalidData(AcceptanceTester $I)
+    public function updatePropertiesInvalidData(AcceptanceTester $I)
     {
         $I->fillField(['name' => 'associatedcompanyid'], rand(10000000, getrandmax()) . rand(10000000, getrandmax()));
         $I->click('#save');
         $I->seeElement('.error-wrapper');
     }
 
-    public function UpdatePropertiesValidData(AcceptanceTester $I)
+    public function updatePropertiesValidData(AcceptanceTester $I)
     {
         $I->fillField(['name' => 'company_size'], 71);
         $I->fillField(['name' => 'date_of_birth'], '10.10.2010');
@@ -28,13 +28,13 @@ class ContactManipulationCest
         $I->seeElement('.success');
     }
 
-    public function AddingEngagements(AcceptanceTester $I)
+    public function addingEngagements(AcceptanceTester $I)
     {
         $datetime = (new DateTime())
             ->add(new DateInterval('P1D'));
         $format = 'Y-m-d H:i:s';
 
-        $I->click('#engagementNew');
+        $I->click('#engagement-new');
         $title = 'Hubspot team meeting';
 
         $I->selectOption(['name' => 'engagement[type]'], 'MEETING');
@@ -48,10 +48,10 @@ class ContactManipulationCest
         $I->see($title);
     }
 
-    public function Search(AcceptanceTester $I)
+    public function search(AcceptanceTester $I)
     {
-        $I->click('#contactsList');
-        $I->submitForm('#SearchForm', ['search'=>'mike@mailforspam.com']);
+        $I->click('#contacts-list');
+        $I->submitForm('#search-form', ['search'=>'mike@mailforspam.com']);
         $I->see('Mike');
     }
 }

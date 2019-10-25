@@ -23,7 +23,7 @@ class AcceptanceTester extends \Codeception\Actor
     public function createContact( string $email)
     {
         $this->amOnPage('/');
-        $this->click('#contactNew');
+        $this->click('#contact-new');
         $this->fillField(['name' => 'email'], $email);
         $this->click('#save');
     }

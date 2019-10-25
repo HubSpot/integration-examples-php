@@ -10,8 +10,7 @@ if (isset($_POST['name'])) {
     $response = $hubSpot->contactProperties()->create($propertyFields);
 
     if (HubspotClientHelper::isResponseSuccessful($response)) {
-        $name = $response->data->name;
-        header('Location: /properties/show.php?name='.$name);
+        header('Location: /properties/list.php');
         exit();
     }
 

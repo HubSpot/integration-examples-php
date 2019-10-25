@@ -2,16 +2,14 @@
 
 use Helpers\HubspotClientHelper;
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
-
+$hubSpot = HubspotClientHelper::createFactory();
 if (isset($_POST['name'])) {
     $propertyFields = $_POST;
     // https://developers.hubspot.com/docs/methods/contacts/v2/update_contact_property
     $response = $hubSpot->contactProperties()->update($propertyFields['name'], $propertyFields);
-
     if (HubspotClientHelper::isResponseSuccessful($response)) {
         $name = $response->data->name;
-        header('Location: /properties/show.php?name='.$name);
+        header('Location: /properties/list.php');
         exit();
     }
 

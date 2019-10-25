@@ -3,10 +3,11 @@
 <table>
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Label</th>
-    <th>Description</th>
-    <th>Type</th>
+        <th>Name</th>
+        <th>Label</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -16,6 +17,10 @@
       <td><?= htmlentities($property->label) ?></td>
       <td><?= htmlentities($property->description) ?></td>
       <td><?= htmlentities($property->type) ?></td>
+        <td><?php if (!$property->mutableDefinitionNotDeletable && !$property->readOnlyDefinition) { ?>
+                <a href="/properties/delete.php?name=<?=$property->name?>">
+                    <input type="button" value="Delete" title="Delete" class="button-primary"/>
+                </a> <?php } ?></td>
     </tr>
   <?php }?>
   </tbody>

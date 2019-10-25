@@ -10,7 +10,7 @@
   </thead>
   <tbody>
 
-  <form id="SearchForm" action="/contacts/search.php">
+  <form id="search-form" action="/contacts/search.php">
       <fieldset>
           <input type="text" name="search" placeholder="Search.." id="search" value="<?= $search ?>">
       </fieldset>
@@ -27,7 +27,7 @@
 </table>
 
 <div>
-  <a id='contactNew' href="/contacts/new.php">
+  <a id='contact-new' href="/contacts/new.php">
     <input class="button-primary"  type="button" value="New Contact">
   </a>
     <a id='contactsExport' href="/contacts/export.php">
