@@ -25,7 +25,7 @@ if ($property->readOnlyDefinition) {
         <label for="type">Type</label>
         <input readonly type="text" name="type" id="type" value="<?= htmlentities($property->type) ?>"<?=$readOnly?> />
         <?php if (empty($readOnly)) { ?>
-        <input class="button-primary" type="submit" value="Save">
+        <input id="save" class="button-primary" type="submit" value="Save">
         <?php } ?>
     </fieldset>
 </form>
