@@ -12,6 +12,23 @@ Common webhook processing practice consists of few steps:
    - This application uses MySQL, the methods working with the database can be seen in [EventsRepository.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Repositories/EventsRepository.php)
 4. Other services/objects fetch the events data from the database sorted by timestamp of the event [EventsRepository.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Repositories/EventsRepository.php#L38)
 
+
+### Note on the Data Base
+This application uses MySQL database to stoe the events coming from Webhooks. There is a single events table:
+```
+create table if not exists events
+(
+    id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    event_type  VARCHAR(255),
+    object_id   int        default null,
+    event_id    int        default null,
+    occurred_at bigint     default null,
+    shown       tinyint(1) default 0,
+    created_at  datetime   default CURRENT_TIMESTAMP
+);
+```
+Please note that event_id sent by HubSpot needs to be stored as int
+
 ### Setup App
 
 Make sure you have [Docker Compose](https://docs.docker.com/compose/) and [Ngrok](https://ngrok.com/) installed.
