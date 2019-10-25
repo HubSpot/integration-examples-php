@@ -21,7 +21,7 @@
                 <label for="endTime">End time</label>
                 <input type="datetime-local" id="endTime" name="metadata[endTime]" />
                 <input type="hidden" name="associations[contactIds][]" value="<?= htmlentities($contactId) ?>" />
-                <input class="button-primary" type="submit" value="Save">
+                <input id="save" class="button-primary" type="submit" value="Save">
             </fieldset>
         </form>
     </div>
