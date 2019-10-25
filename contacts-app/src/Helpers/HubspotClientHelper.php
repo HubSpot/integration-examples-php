@@ -9,6 +9,7 @@ use SevenShores\Hubspot\Http\Response;
 class HubspotClientHelper
 {
     const HTTP_OK = 200;
+    const HTTP_OK_EMPTY = 204;
 
     public static function createFactory() {
         $useOauth = isset($_SESSION['tokens']);
@@ -32,5 +33,9 @@ class HubspotClientHelper
 
     public static function isResponseSuccessful(Response $response) {
         return $response->getStatusCode() === self::HTTP_OK;
+    }
+
+    public static function isResponseSuccessfulButEmpty(Response $response) {
+        return $response->getStatusCode() === self::HTTP_OK_EMPTY;
     }
 }

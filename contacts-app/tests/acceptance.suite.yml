@@ -10,4 +10,4 @@ modules:
         - PhpBrowser:
             url: http://web
         - \Helper\Acceptance
-    step_decorators: ~        
+    step_decorators: ~

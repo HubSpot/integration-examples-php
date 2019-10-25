@@ -17,6 +17,7 @@ try {
         case '/properties/list.php':
         case '/properties/new.php':
         case '/properties/show.php':
+        case '/properties/delete.php':
         case '/engagements/new.php':
         case '/engagements/show.php':
         case '/oauth/authorize.php':

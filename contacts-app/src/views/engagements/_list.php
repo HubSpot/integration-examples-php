@@ -19,7 +19,7 @@
         </tbody>
     </table>
     <div>
-        <a href="/engagements/new.php?contactId=<?= htmlentities($contactId) ?>">
+        <a id="engagement-new" href="/engagements/new.php?contactId=<?= htmlentities($contactId) ?>">
             <input class="button-primary" type="button" value="Add Engagement">
         </a>
     </div>
