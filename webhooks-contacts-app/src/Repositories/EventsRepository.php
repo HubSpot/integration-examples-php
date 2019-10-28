@@ -9,8 +9,18 @@ class EventsRepository
 {
     public static function saveEvent($event) {
         $db = DBClientHelper::getClient();
-        $query = $db->prepare("insert into events (event_id, event_type, object_id, occurred_at) values (?, ?, ?, ?)");
-        $query->execute([$event['eventId'], $event['subscriptionType'], $event['objectId'], $event['occurredAt']]);
+        $params = [$event['eventId'], $event['subscriptionType'], $event['objectId'], $event['occurredAt']];
+        $values = '';
+        $places = '';
+        foreach (['propertyName', 'propertyValue'] as $field) {
+            if (array_key_exists($field, $event)) {
+                $values .= ', '.$field;
+                $places .= ', ?';
+                $params[] = $event[$field];
+            }
+        }
+        $query = $db->prepare("insert into events (event_id, event_type, object_id, occurred_at$values) values (?, ?, ?, ?$places)");
+        $query->execute($params);
     }
 
     public static function findLastModifiedObjectsIds(int $from = 0, int $perPage = 0) {
@@ -39,11 +49,11 @@ class EventsRepository
 
     public static function findEventTypesByObjectId($objectId) {
         $db = DBClientHelper::getClient();
-        $query = $db->prepare("select event_type from events where object_id = ? order by occurred_at asc");
+        $query = $db->prepare("select event_type, propertyName, propertyValue from events where object_id = ? order by occurred_at asc");
         $query->execute([$objectId]);
         $events = [];
         foreach ($query->fetchAll() as $row) {
-            $events[] = $row['event_type'];
+            $events[] = $row;
         }
         return $events;
     }

@@ -18,7 +18,9 @@
             <td><?= htmlentities($contact['properties']->firstname->value).' '.htmlentities($contact['properties']->lastname->value) ?></td>
             <td>
                 <?php foreach ($contact['events'] as $event) { ?>
-                    <span class="event <?= htmlentities($event) ?>"><?= htmlentities($event) ?></span>
+                    <span class="event <?= htmlentities($event['event_type']) ?>"><?= htmlentities($event['event_type']) ?><?php
+                        if (!empty($event['propertyName'])) { ?>:<span><?php echo htmlentities($event['propertyName']); } ?></span><?php
+                        if (!empty($event['propertyValue'])) { ?>:<span><?php echo htmlentities($event['propertyValue']); } ?></span></span>
                 <?php } ?>
             </td>
         </tr>
