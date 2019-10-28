@@ -10,10 +10,10 @@ $paginator = new Paginator(EventsRepository::getEventsCount(), '/webhooks/events
 
 $contactsIds = EventsRepository::findLastModifiedObjectsIds($paginator->getFrom(), $paginator->getPerPage());
 
-function format_event($eventName) {
+function format_event($event) {
     // "contact.creation" => "creation"
-    $parts = explode('.', $eventName);
-    return $parts[1];
+    $event['event_type'] = explode('.', $event['event_type'])[1];
+    return $event;
 }
 
 $contacts = [];
