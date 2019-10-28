@@ -48,6 +48,10 @@ docker-compose up --build
 
 Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.
 
+NOTE about ngrok Too Many Connections error
+If you are using free Ngrok plan and testing the application with large amount of import/deletions of Contacts you are likely to see Ngrok "Too Many Connections" error
+This is caused by a large amount of weebhooks events being sent to Ngrok tunnel. To avoid it you can deploy sample applications on your server w/o Ngrok or upgrade to Ngrok Enterprise version
+
 ### Configure webhooks
 
 Required webhooks url should look like https://***.ngrok.io/webhooks/handle.php
