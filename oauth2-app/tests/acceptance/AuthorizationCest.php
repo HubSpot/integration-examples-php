@@ -23,7 +23,6 @@ class AuthorizationCest
 
         $I->waitForText('smart-it');
         $I->click('td>a[href*="'.$_ENV['HUBSPOT_PORTAL_ID'].'"]');
-        //'a', Locator::lastElement('//table/tr'));//Locator::find('table', 'smart-it'));
 
         $I->waitForElement('#contacts-list');
     }
