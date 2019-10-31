@@ -9,7 +9,13 @@ modules:
     enabled:
         - WebDriver:
               url: http://localhost/
-              host: chrome
+              port: 4444
+              host: web
               browser: chrome
+              capabilities:
+                acceptInsecureCerts: true
+                enableVerboseLogging: true
+                chromeOptions:
+                  args: ["disable-dev-shm-usage", "no-sandbox", "disable-infobars", "headless", "disable-gpu"]
         - \Helper\Acceptance
     step_decorators: ~        

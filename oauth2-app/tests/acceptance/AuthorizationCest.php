@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use \Codeception\Util\Locator;
 
 class AuthorizationCest
 {
@@ -15,14 +17,15 @@ class AuthorizationCest
 
         $I->waitForElement('#loginBtn');
 
-        $I->fillField('#username','tanas@smart-it.io');
-        $I->fillField('#password','Tanas123');
+        $I->fillField('#username', $_ENV['HUBSPOT_LOGIN']);
+        $I->fillField('#password', $_ENV['HUBSPOT_PASSWORD']);
         $I->click('#loginBtn');
 
-        $I->waitForText('Tanas-dev');
-        $I->click('Tanas-dev');
+        $I->waitForText('smart-it');
+        $I->click('td>a[href*="'.$_ENV['HUBSPOT_PORTAL_ID'].'"]');
+        //'a', Locator::lastElement('//table/tr'));//Locator::find('table', 'smart-it'));
 
-        $I->waitForText('Cool Robot');
+        $I->waitForElement('#contacts-list');
     }
 }
 
