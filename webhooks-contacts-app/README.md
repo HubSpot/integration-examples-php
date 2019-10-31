@@ -8,13 +8,13 @@ The application demonstrates the use of Queues (Kafka in case of this applicatio
 Common webhook processing practice consists of few steps:
 1. Handle methods receive the request sent by the webook and immediately place payload on the queue [handle.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/actions/webhooks/handle.php)
 2. Message consumer instance(s) is running in a separate process, typically on multiple nodes in a cloud, such as AWS [consumer.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/console/webhooks/consumer.php)
-3. Consumer stores webhook evenst in the database potentially calling an API to get full record of the object that triggered the event
+3. Consumer stores webhook events in the database potentially calling an API to get full record of the object that triggered the event
    - This application uses MySQL, the methods working with the database can be seen in [EventsRepository.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Repositories/EventsRepository.php)
 4. Other services/objects fetch the events data from the database sorted by timestamp of the event [EventsRepository.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Repositories/EventsRepository.php#L38)
 
 
 ### Note on the Data Base
-This application uses MySQL database to stoe the events coming from Webhooks. There is a single events table:
+This application uses MySQL database to store the events coming from Webhooks. There is a single events table:
 ```
 create table if not exists events
 (
