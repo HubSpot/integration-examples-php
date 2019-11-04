@@ -1,6 +1,6 @@
 <?php include __DIR__.'/../_partials/header.php' ?>
 
-<table>
+<table id="contacts-list">
   <thead>
   <tr>
     <th>ID</th>
