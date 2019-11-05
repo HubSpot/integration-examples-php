@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var array $type timeline event type
+ */
+include __DIR__.'/../_partials/header.php';
+$objectTypes = [
+    'CONTACT' => 'Contact',
+    'COMPANY' => 'Company',
+    'DEAL' => 'Deal'
+];
+?>
+
+<form method="post">
+<fieldset>
+    <label for="name">Name</label>
+    <input type="text" placeholder="Name" id="name" name="name" value="<?=$type['name'];?>">
+    <label for="headerTemplate">Header Template</label>
+    <input type="text" placeholder="Header Template" id="headerTemplate" name="headerTemplate" value="<?=$type['headerTemplate'];?>">
+    <label for="detailTemplate">Detail Template</label>
+    <input type="text" placeholder="Detail Template" id="detailTemplate" name="detailTemplate" value="<?=$type['detailTemplate'];?>">
+    <label for="objectType">Object Type</label>
+    <select id="objectType" name="objectType">
+        <?php foreach ($objectTypes as $key=>$value) { ?>
+        <option <?php if ($type['objectType'] == $key) {?>selected <?php } ?>value="<?=$key;?>"><?=$value;?></option>
+        <?php } ?>
+    </select>
+    <input id="save" class="button-primary" type="submit" value="Save">
+</fieldset>
+</form>
+
+<?php include __DIR__.'/../_partials/footer.php' ?>
