@@ -1,9 +1,14 @@
 <?php
 
-use Helpers\Oauth2Helper;
+use Helpers\OAuth2Helper;
 
-$oauth2Client = Oauth2Helper::getHubspotOauth2Client();
-$tokens = $oauth2Client->getTokens($_GET['code']);
-Oauth2Helper::saveTokens($tokens);
+$tokens = \Helpers\HubspotClientHelper::createFactory(false)->oAuth2()->getTokensByCode(
+    OAuth2Helper::getClientId(),
+    OAuth2Helper::getClientSecret(),
+    OAuth2Helper::getRedirectUri(),
+    $_GET['code']
+)->toArray();
+
+OAuth2Helper::saveTokens($tokens);
 
 header('Location: /');
