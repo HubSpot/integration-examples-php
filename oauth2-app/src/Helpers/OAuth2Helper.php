@@ -47,7 +47,7 @@ class OAuth2Helper
         $tokens = $_SESSION['tokens'];
 
         if (time() > $tokens['expires_at']) {
-            $tokens = HubspotClientHelper::createFactory(false)->oAuth2()->getTokensByRefresh(
+            $tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByRefresh(
                 self::getClientId(),
                 self::getClientSecret(),
                 $tokens['refresh_token']

@@ -1,8 +1,9 @@
 <?php
 
 use Helpers\OAuth2Helper;
+use \Helpers\HubspotClientHelper;
 
-$tokens = \Helpers\HubspotClientHelper::createFactory(false)->oAuth2()->getTokensByCode(
+$tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByCode(
     OAuth2Helper::getClientId(),
     OAuth2Helper::getClientSecret(),
     OAuth2Helper::getRedirectUri(),
