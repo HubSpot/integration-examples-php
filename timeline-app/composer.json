@@ -1,6 +1,6 @@
 {
     "require": {
-        "hubspot/hubspot-php": "~1.2.1",
+        "hubspot/hubspot-php": "~1.2.3",
         "ext-curl": "*",
         "ext-json": "*"
     },
