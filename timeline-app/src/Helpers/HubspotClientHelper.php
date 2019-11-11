@@ -5,6 +5,7 @@ namespace Helpers;
 
 use SevenShores\Hubspot\Http\Response;
 use SevenShores\Hubspot\Factory;
+use SevenShores\Hubspot\Resources\OAuth2;
 
 class HubspotClientHelper
 {
@@ -12,43 +13,47 @@ class HubspotClientHelper
 
     const HTTP_EMPTY = 204;
 
-    public static function createFactory() {
-        $accessToken = Oauth2Helper::refreshAndGetAccessToken();
+    public static function createFactory() : Factory
+    {
+        $accessToken = OAuth2Helper::refreshAndGetAccessToken();
+        return self::create([
+            'key' => $accessToken,
+            'oauth2' => true,
+        ]);
+    }
 
-        $client = new Factory(
-            [
-                'key' => $accessToken,
-                'oauth2' => true,
-            ],
+    public static function getOAuth2Resource() : OAuth2
+    {
+        return self::create()->oAuth2();
+    }
+
+    public static function createFactoryWithAPIKey() : Factory
+    {
+        return static::create([
+            'key' => getEnvOrException('HUBSPOT_API_KEY'),
+            'oauth2' => false,
+        ]);
+    }
+
+    protected static function create(array $factoryConfig = []) : Factory
+    {
+        return new Factory(
+            $factoryConfig,
             null,
             [
-                'http_errors' => true // pass any Guzzle related option to any request, e.g. throw no exceptions
+                'http_errors' => false // pass any Guzzle related option to any request, e.g. throw no exceptions
             ],
             true
         );
-        return $client;
     }
 
-    public static function createFactoryForOauth() {
-        $client = new Factory(
-            [
-                'key' => null,
-                'oauth2' => false,
-            ],
-            null,
-            [
-                'http_errors' => true // pass any Guzzle related option to any request, e.g. throw no exceptions
-            ],
-            true
-        );
-        return $client;
-    }
-
-    public static function isResponseSuccessful(Response $response) {
+    public static function isResponseSuccessful(Response $response) : bool
+    {
         return $response->getStatusCode() === static::HTTP_OK;
     }
 
-    public static function isEmptyResponseSuccessful(Response $response) {
+    public static function isEmptyResponseSuccessful(Response $response) : bool
+    {
         return $response->getStatusCode() === static::HTTP_EMPTY;
     }
 }

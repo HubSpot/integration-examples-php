@@ -2,7 +2,10 @@
     "require": {
         "hubspot/hubspot-php": "~1.2.3",
         "ext-curl": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "longman/telegram-bot": "^0.61.0",
+        "ext-pdo": "*",
+        "byjg/migration": "4.0.*"
     },
     "autoload": {
         "files": [

@@ -1,28 +1,15 @@
-function reloadPage() {
-    document.location.reload();
-}
+function copyFrom(id) {
+    let range = document.createRange(), selection = window.getSelection()
 
-function requestNotShownEventsCount() {
-    return new Promise((resolve) => {
-        $.getJSON("/ajax/types.php?mark=" + $('#alert-not-shown-types').attr('datetime-mark') , data => {
-            const { notShownEventsCount } = data;
-            resolve(notShownEventsCount);
-        });
-    });
-}
+    range.selectNode(document.getElementById(id))
+    selection.removeAllRanges()
+    selection.addRange(range)
 
-async function displayNotShownEventsAlertIfNeed() {
-    const notShownEventsCount = await requestNotShownEventsCount();
-    if (notShownEventsCount > 0) {
-        $('#empty-message').hide();
-        $('#alert-not-shown-types').show();
-    }
-}
+    document.execCommand("copy")
+    selection.empty()
 
-$(document).ready(async () => {
-    setInterval(displayNotShownEventsAlertIfNeed, 10000);
-    $('#alert-not-shown-types').click(() => {
-       reloadPage();
-       return false;
-    });
-});
+    document.getElementById('success').classList.remove('hidden')
+    setInterval(() => {
+        document.getElementById('success').classList.add('hidden')
+    }, 3000)
+}

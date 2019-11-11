@@ -12,7 +12,7 @@ class UrlHelper
         } else {
             $port = '';
         }
-        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO']) {
+        if (!empty($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) == 'on' || $_SERVER['HTTPS'] == '1')) {
             $scheme = 'https';
         } else {
             $scheme = 'http';

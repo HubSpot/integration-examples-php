@@ -9,14 +9,13 @@ session_start();
 $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
 
 try {
-    //\Helpers\DBClientHelper::runMigrations();
 
     switch ($uri) {
         // allowed for anonymous
         case '/oauth/login.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
-        case '/ajax/types.php':
+        case '/telegram/registration.php':
             $path = __DIR__ . '/../actions' . $uri;
             require $path;
             exit();

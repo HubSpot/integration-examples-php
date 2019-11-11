@@ -1,7 +1,12 @@
 <?php
 
-use Helpers\Oauth2Helper;
+use Helpers\OAuth2Helper;
+use SevenShores\Hubspot\Utils\OAuth2;
 
-$oauth2Client = Oauth2Helper::getHubspotOauth2Client();
+$authUrl = OAuth2::getAuthUrl(
+    OAuth2Helper::getClientId(),
+    OAuth2Helper::getRedirectUri(),
+    OAuth2Helper::getScope()
+);
 
-header('Location: '.$oauth2Client->getAuthorizationUrl());
+header('Location: '.$authUrl);
