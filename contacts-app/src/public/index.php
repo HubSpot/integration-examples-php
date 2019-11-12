@@ -31,6 +31,6 @@ try {
     }
 } catch (Throwable $t) {
     $message = $t->getMessage();
-    include __DIR__.'/../views/error.php';
+    include __DIR__ . '/../views/error.php';
     exit();
 }
