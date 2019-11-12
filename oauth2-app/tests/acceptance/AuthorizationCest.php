@@ -4,11 +4,7 @@ use \Codeception\Util\Locator;
 
 class AuthorizationCest
 {
-    public function _before(AcceptanceTester $I)
-    {
-    }
 
-    // tests
     public function authorizeAlertIsDisplayed(AcceptanceTester $I)
     {
         $I->amOnPage('/');
@@ -21,8 +17,9 @@ class AuthorizationCest
         $I->fillField('#password', $_ENV['HUBSPOT_PASSWORD']);
         $I->click('#loginBtn');
 
-        $I->waitForText('smart-it');
-        $I->click('td>a[href*="'.$_ENV['HUBSPOT_PORTAL_ID'].'"]');
+        $element = 'td>a[href*="'.$_ENV['HUBSPOT_PORTAL_ID'].'"]';
+        $I->waitForElement($element);
+        $I->click($element);
 
         $I->waitForElement('#contacts-list');
     }
