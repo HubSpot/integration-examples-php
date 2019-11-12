@@ -11,7 +11,8 @@ class KafkaHelper
     protected static $producer = null;
     protected static $consumer = null;
 
-    public static function getProducer() {
+    public static function getProducer()
+    {
         if (!static::$producer) {
             $config = ProducerConfig::getInstance();
             $config->setMetadataRefreshIntervalMs($_ENV['KAFKA_REFRESH_INTERVAL_MS']);
@@ -25,7 +26,8 @@ class KafkaHelper
         return static::$producer;
     }
 
-    public static function getConsumer(array $topics) {
+    public static function getConsumer(array $topics)
+    {
 
         $config = ConsumerConfig::getInstance();
         $config->setTopics($topics);
