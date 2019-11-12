@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Helpers;
 
 class UrlHelper
