@@ -19,8 +19,7 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && (!empty($user['email']))) {
     if (!empty($updateProperties)) {
         $hubspot->contacts()->update($id, $updateProperties);
     }
-    $botLink = TelegramBotHelper::generateBotLink($user['email'], $user['firstname'], $user['lastname']);
-    include __DIR__ . '/../../views/telegram/url.php';
+    header('Location: ' . TelegramBotHelper::generateBotLink($user['email']));
 } else {
     include __DIR__ . '/../../views/telegram/registration.php';
 }
