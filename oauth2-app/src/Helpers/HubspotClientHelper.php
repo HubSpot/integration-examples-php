@@ -4,10 +4,12 @@
 namespace Helpers;
 
 use SevenShores\Hubspot\Factory;
+use SevenShores\Hubspot\Resources\OAuth2;
 
 class HubspotClientHelper
 {
-    public static function createFactory() {
+    public static function createFactory(): Factory
+    {
         $accessToken = OAuth2Helper::refreshAndGetAccessToken();
         return self::create([
             'key' => $accessToken,
@@ -15,11 +17,13 @@ class HubspotClientHelper
         ]);
     }
 
-    public static function getOAuth2Resource() {
+    public static function getOAuth2Resource(): OAuth2
+    {
         return self::create()->oAuth2();
     }
 
-    protected static function create($factoryConfig = []) {
+    protected static function create($factoryConfig = []): Factory
+    {
         return new Factory(
             $factoryConfig,
             null,
