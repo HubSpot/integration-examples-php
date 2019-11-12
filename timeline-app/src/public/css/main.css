@@ -47,25 +47,6 @@
     justify-content: center;
 }
 
-.event.deletion {
-    color: white;
-    background-color: red;
-}
-
-.event.creation {
-    color: #3c763d;
-    background-color: #dff0d8;
-}
-
-.event.propertyChange {
-    background-color: #d8aa65;
-    color: #ffffff;
-}
-
-.event.propertyChange span:first-child {
-    background-color: #08080885;
-}
-
 .hidden {
     display: none;
 }
