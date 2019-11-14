@@ -553,25 +553,25 @@
         },
         {
             "name": "hubspot/hubspot-php",
-            "version": "v1.2.3",
+            "version": "v1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/HubSpot/hubspot-php.git",
-                "reference": "436ddc18cc0400aedade4631332bbb2d670e85b3"
+                "reference": "d9a1cee2da562d93e4ed769ebc8fd053924c95c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/436ddc18cc0400aedade4631332bbb2d670e85b3",
-                "reference": "436ddc18cc0400aedade4631332bbb2d670e85b3",
+                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/d9a1cee2da562d93e4ed769ebc8fd053924c95c3",
+                "reference": "d9a1cee2da562d93e4ed769ebc8fd053924c95c3",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "guzzlehttp/guzzle": "~6.0",
-                "php": ">=5.5.0"
+                "php": ">=5.6.0"
             },
             "require-dev": {
-                "codeclimate/php-test-reporter": " dev-master@dev",
-                "phpspec/phpspec": "~2.0",
+                "phpspec/phpspec": "^3.4",
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
@@ -599,7 +599,7 @@
                 "api",
                 "hubspot"
             ],
-            "time": "2019-11-06T08:00:24+00:00"
+            "time": "2019-11-14T08:49:41+00:00"
         },
         {
             "name": "nmred/kafka-php",
