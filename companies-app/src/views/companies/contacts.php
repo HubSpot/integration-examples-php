@@ -1,4 +1,11 @@
-<?php include __DIR__.'/../_partials/header.php' ?>
+<?php
+/**
+ *
+ * @var array $associatedContacts Already associated Contacts
+ * @var array $contacts Contacts
+ */
+
+include __DIR__.'/../_partials/header.php' ?>
 
 <pre>
 // src/actions/companies/contacts.php
@@ -17,15 +24,17 @@ $hubSpot->contacts()->search($search)
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Status</th>
         <th>Selected</th>
       </tr>
       </thead>
       <tbody>
       <?php foreach ($contacts as $contact) { ?>
         <tr>
-          <td><?= htmlentities($contact->vid) ?></td>
-          <td><?= htmlentities($contact->properties->firstname->value.' '.$contact->properties->firstname->value) ?></td>
-          <td><input type="checkbox" name="contactsIds[<?= htmlentities($contact->vid) ?>]" /></td>
+            <td><?= htmlentities($contact->vid) ?></td>
+            <td><?= htmlentities($contact->properties->firstname->value.' '.$contact->properties->firstname->value) ?></td>
+            <td><?php if (in_array($contact->vid, $associatedContacts)) {?>Associated<?php } else { ?>-<?php } ?></td>
+            <td><input type="checkbox" name="contactsIds[<?= htmlentities($contact->vid) ?>]" /></td>
         </tr>
       <?php }?>
       </tbody>

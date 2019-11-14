@@ -70,7 +70,10 @@ $hubSpot->companies()->create($companyProperties);
             <?php } ?>
 <pre>
 // src/actions/companies/show.php
-$hubSpot->companies()->getAssociatedContacts($companyId)
+$hubSpot->crmAssociations()->get(
+        $id,
+        $hubSpot->crmAssociations()::COMPANY_TO_CONTACT
+    )->getData();
 </pre>
             <table>
                 <thead>
@@ -84,7 +87,7 @@ $hubSpot->companies()->getAssociatedContacts($companyId)
                 <?php foreach ($contacts as $contact) { ?>
                     <tr>
                         <td><?= htmlentities($contact['id']) ?></td>
-                        <td><?= htmlentities($contact['firstname'].' '.$contact['lastname']) ?></td>
+                        <td><?= htmlentities($contact['name']) ?></td>
                     </tr>
                 <?php }?>
                 </tbody>
