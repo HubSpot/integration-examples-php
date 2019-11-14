@@ -30,7 +30,7 @@ class HubspotClientHelper
             $factoryConfig,
             null,
             [
-                'http_errors' => true // pass any Guzzle related option to any request, e.g. throw no exceptions
+                'http_errors' => false // pass any Guzzle related option to any request, e.g. throw no exceptions
             ],
             true
         );
