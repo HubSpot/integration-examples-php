@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  web:
+    env_file:
+      - .env
+    build:
+      dockerfile: docker/web/Dockerfile
+      context: ./
+    ports:
+      - 8999:80
+    volumes:
+      - ./src:/app/src
+      - ./vendor:/app/vendor
+  ngrok:
+    image: gtriggiano/ngrok-tunnel
+    ports:
+      - 4040:4040
+    environment:
+      TARGET_HOST: web
+      TARGET_PORT: 80
+    depends_on:
+      - web
