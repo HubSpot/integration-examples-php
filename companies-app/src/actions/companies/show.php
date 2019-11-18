@@ -52,15 +52,19 @@ if (isset($_GET['id'])) {
         $companyProperties[$key] = $property->value;
     }
 
-    $contactsObj = $hubSpot->companies()->getAssociatedContacts($id)->getData()->contacts;
+    $contactsIds = $hubSpot->crmAssociations()->get(
+        $id,
+        $hubSpot->crmAssociations()::COMPANY_TO_CONTACT,
+        ['limit' => 20]
+    )->getData();
     $contacts = [];
-    foreach ($contactsObj as $contactObj) {
-        $contact = ['id' => $contactObj->vid];
-        foreach ($contactObj->properties as $property) {
-            $contact[$property->name] = $property->value;
-        }
-        $contacts[] = $contact;
-    }
+    $contactsObj = $hubSpot->contacts()->getBatchByIds($contactsIds->results, ['property' => ['firstname', 'lastname']])->getData();
+    $contacts = array_map(function ($contact) {
+        return [
+            'id' => $contact->vid,
+            'name' => $contact->properties->firstname->value . ' ' . $contact->properties->lastname->value
+        ];
+    }, (array) $contactsObj);
 }
 
 // https://developers.hubspot.com/docs/methods/companies/get_company_properties
