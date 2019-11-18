@@ -8,6 +8,6 @@ if (array_key_exists('mark', $_GET) && intval($_GET['mark'])) {
     $notShownEventsCount = EventsRepository::getNotShownEventsCount(intval($_GET['mark']));
 }
 
-print json_encode([
+echo json_encode([
     'notShownEventsCount' => $notShownEventsCount,
 ]);

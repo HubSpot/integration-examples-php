@@ -5,7 +5,8 @@ use Helpers\HubspotClientHelper;
 $hubSpot = HubspotClientHelper::createFactory();
 const CONTACT_TO_COMPANY_DEFINITION_ID = 1;
 
-function create_or_delete_contacts_associations($companyId, $contactsIds) {
+function create_or_delete_contacts_associations($companyId, $contactsIds)
+{
     $hubSpot = HubspotClientHelper::createFactory();
     $redirectParams = [
         'id' => $companyId,
@@ -21,13 +22,14 @@ function create_or_delete_contacts_associations($companyId, $contactsIds) {
             // https://developers.hubspot.com/docs/methods/crm-associations/associate-objects
             $hubSpot->crmAssociations()->create($data);
             $redirectParams['contactsAdded'] = true;
-        } else if (isset($_POST['deleteFromCompany'])) {
+        } elseif (isset($_POST['deleteFromCompany'])) {
             // https://developers.hubspot.com/docs/methods/crm-associations/delete-association
             $hubSpot->crmAssociations()->delete($data);
             $redirectParams['contactsDeleted'] = true;
         }
     }
     $redirectUrl = '/companies/show.php?'.http_build_query($redirectParams);
+
     return $redirectUrl;
 }
 
@@ -50,4 +52,3 @@ if (!empty($search)) {
 }
 
 include __DIR__.'/../../views/companies/contacts.php';
-

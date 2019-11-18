@@ -1,7 +1,7 @@
 <?php
 
+use Helpers\HubspotClientHelper;
 use Helpers\OAuth2Helper;
-use \Helpers\HubspotClientHelper;
 
 $tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByCode(
     OAuth2Helper::getClientId(),

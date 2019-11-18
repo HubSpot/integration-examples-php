@@ -1,11 +1,12 @@
 <?php
 
-use Helpers\HubspotClientHelper;
 use Helpers\CompanyPropertiesHelper;
+use Helpers\HubspotClientHelper;
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
-function format_properties_for_request($keyValueProperties) {
+function format_properties_for_request($keyValueProperties)
+{
     $properties = [];
     foreach ($keyValueProperties as $key => $value) {
         $properties[] = [
@@ -13,6 +14,7 @@ function format_properties_for_request($keyValueProperties) {
             'value' => $value,
         ];
     }
+
     return $properties;
 }
 

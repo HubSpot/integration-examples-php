@@ -2,7 +2,8 @@
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
-function get_contacts_for_export($maxPages = 10) {
+function get_contacts_for_export($maxPages = 10)
+{
     global $hubSpot;
     $contacts = [];
     $vidOffset = null;
@@ -21,10 +22,12 @@ function get_contacts_for_export($maxPages = 10) {
             break;
         }
     }
+
     return $contacts;
 }
 
-function generate_csv_rows($contacts, $properties) {
+function generate_csv_rows($contacts, $properties)
+{
     $rows = [];
     $headerRow = [];
     foreach ($properties as $property) {
@@ -35,10 +38,11 @@ function generate_csv_rows($contacts, $properties) {
         $row = [];
         foreach ($properties as $property) {
             $propertyName = $property->name;
-            $row[] = $contact->properties->$propertyName->value;
+            $row[] = $contact->properties->{$propertyName}->value;
         }
         $rows[] = $row;
     }
+
     return $rows;
 }
 
@@ -49,8 +53,8 @@ $properties = $hubSpot->contactProperties()->all()->getData();
 
 $csvRows = generate_csv_rows($contacts, $properties);
 
-header("Content-type: application/csv");
-header("Content-Disposition: attachment; filename=contacts.csv");
+header('Content-type: application/csv');
+header('Content-Disposition: attachment; filename=contacts.csv');
 $fp = fopen('php://output', 'w');
 foreach ($csvRows as $row) {
     fputcsv($fp, $row);

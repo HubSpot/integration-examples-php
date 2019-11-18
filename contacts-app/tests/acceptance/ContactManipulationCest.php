@@ -4,12 +4,12 @@ class ContactManipulationCest
 {
     public function _before(AcceptanceTester $I)
     {
-        $I->createContact( 'mike@mailforspam.com');
+        $I->createContact('mike@mailforspam.com');
     }
 
     public function updatePropertiesInvalidData(AcceptanceTester $I)
     {
-        $I->fillField(['name' => 'associatedcompanyid'], rand(10000000, getrandmax()) . rand(10000000, getrandmax()));
+        $I->fillField(['name' => 'associatedcompanyid'], rand(10000000, getrandmax()).rand(10000000, getrandmax()));
         $I->click('#save');
         $I->seeElement('.error-wrapper');
     }
@@ -31,7 +31,8 @@ class ContactManipulationCest
     public function addingEngagements(AcceptanceTester $I)
     {
         $datetime = (new DateTime())
-            ->add(new DateInterval('P1D'));
+            ->add(new DateInterval('P1D'))
+        ;
         $format = 'Y-m-d H:i:s';
 
         $I->click('#engagement-new');
@@ -51,7 +52,7 @@ class ContactManipulationCest
     public function search(AcceptanceTester $I)
     {
         $I->click('#contacts-list');
-        $I->submitForm('#search-form', ['search'=>'mike@mailforspam.com']);
+        $I->submitForm('#search-form', ['search' => 'mike@mailforspam.com']);
         $I->see('Mike');
     }
 }
