@@ -62,7 +62,7 @@ if (isset($_GET['id'])) {
     $contacts = array_map(function ($contact) {
         return [
             'id' => $contact->vid,
-            'name' => $contact->properties->firstname->value . ' ' . $contact->properties->lastname->value
+            'name' => $contact->properties->firstname->value.' '.$contact->properties->lastname->value,
         ];
     }, (array) $contactsObj);
 }
