@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Helpers;
 
 class OAuth2Helper
@@ -13,7 +12,7 @@ class OAuth2Helper
     {
         $clientId = $_ENV['HUBSPOT_CLIENT_ID'];
         if (empty($clientId)) {
-            throw new \Exception("Please specify HUBSPOT_CLIENT_ID in .env");
+            throw new \Exception('Please specify HUBSPOT_CLIENT_ID in .env');
         }
 
         return $clientId;
@@ -23,7 +22,7 @@ class OAuth2Helper
     {
         $clientSecret = $_ENV['HUBSPOT_CLIENT_SECRET'];
         if (empty($clientSecret)) {
-            throw new \Exception("Please specify HUBSPOT_CLIENT_SECRET in .env");
+            throw new \Exception('Please specify HUBSPOT_CLIENT_SECRET in .env');
         }
 
         return $clientSecret;
@@ -39,13 +38,13 @@ class OAuth2Helper
         return static::APP_REQUIRED_SCOPES;
     }
 
-    public static function saveTokens( array $tokens): void
+    public static function saveTokens(array $tokens): void
     {
         $tokens['expires_at'] = time() + $tokens['expires_in'] * 0.95;
         $_SESSION[static::SESSION_TOKENS_KEY] = $tokens;
     }
 
-    public static function isAuthenticated() : bool
+    public static function isAuthenticated(): bool
     {
         return isset($_SESSION[static::SESSION_TOKENS_KEY]);
     }
@@ -53,7 +52,7 @@ class OAuth2Helper
     public static function refreshAndGetAccessToken(): string
     {
         if (empty($_SESSION[static::SESSION_TOKENS_KEY])) {
-            throw new \Exception("Please authorize via OAuth2");
+            throw new \Exception('Please authorize via OAuth2');
         }
 
         $tokens = $_SESSION[static::SESSION_TOKENS_KEY];

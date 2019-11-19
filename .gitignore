@@ -1,2 +1,3 @@
-/form-submission-file-download-app/nbproject/private/
-/webhooks-contacts-app/nbproject/private/
+vendor
+.php_cs
+.php_cs.cache

@@ -27,4 +27,4 @@ Do your changes include any neccessary yaml entries for any jobs, workers, etc?
 -->
 
 #### Default Reviewers
-cc @abieber @cbaldauf @HubSpot/devex-sample-apps-developers
+cc @cbaldauf @HubSpot/devex-sample-apps-developers

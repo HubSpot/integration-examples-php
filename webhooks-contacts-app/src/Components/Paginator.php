@@ -1,49 +1,47 @@
 <?php
 
-
 namespace Components;
 
-
-use \Exception;
+use Exception;
 
 class Paginator
 {
     /**
-     * @var string $url
+     * @var string
      */
     protected $url;
     /**
-     * @var int $count
+     * @var int
      */
     protected $count;
 
     /**
-     * @var int $page
+     * @var int
      */
     protected $page = 1;
 
     /**
-     * @var int $perPage
+     * @var int
      */
     protected $perPage = 10;
 
     /**
-     * @var int $countPages
+     * @var int
      */
     protected $countPages;
 
     /**
-     * @var int $startPage
+     * @var int
      */
     protected $startPage = 1;
 
     /**
-     * @var int $startPage
+     * @var int
      */
     protected $endPage;
 
     /**
-     * @var int $outOnPage
+     * @var int
      */
     protected $outOnPage = 10;
 
@@ -72,10 +70,11 @@ class Paginator
             if ($endPage > $this->countPages) {
                 $this->endPage = $this->countPages;
                 $this->startPage = $this->endPage - $count;
-            } else if ($startPage > 0) {
+            } elseif ($startPage > 0) {
                 $this->startPage = $startPage;
                 $this->endPage = $endPage;
             }
+
             return;
         }
         if ($this->endPage > $this->countPages) {
@@ -103,6 +102,7 @@ class Paginator
         if ($this->page > 1) {
             return $this->page - 1;
         }
+
         return $this->countPages;
     }
 
@@ -111,12 +111,13 @@ class Paginator
         if ($this->page != $this->countPages) {
             return $this->page + 1;
         }
+
         return 1;
     }
 
     public function getUrl(int $page): string
     {
-        return $this->url . '?page=' . $page;
+        return $this->url.'?page='.$page;
     }
 
     public function getPage(): int

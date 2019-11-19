@@ -1,11 +1,12 @@
 <?php
 
-use Helpers\HubspotClientHelper;
 use Helpers\CompanyPropertiesHelper;
+use Helpers\HubspotClientHelper;
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
-function format_properties_for_request($keyValueProperties) {
+function format_properties_for_request($keyValueProperties)
+{
     $properties = [];
     foreach ($keyValueProperties as $key => $value) {
         $properties[] = [
@@ -13,6 +14,7 @@ function format_properties_for_request($keyValueProperties) {
             'value' => $value,
         ];
     }
+
     return $properties;
 }
 
@@ -60,7 +62,7 @@ if (isset($_GET['id'])) {
     $contacts = array_map(function ($contact) {
         return [
             'id' => $contact->vid,
-            'name' => $contact->properties->firstname->value . ' ' . $contact->properties->lastname->value
+            'name' => $contact->properties->firstname->value.' '.$contact->properties->lastname->value,
         ];
     }, (array) $contactsObj);
 }

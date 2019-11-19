@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Helpers;
-
 
 class ContactPropertiesHelper
 {
@@ -11,6 +9,7 @@ class ContactPropertiesHelper
         if ($property->readOnlyValue || $property->calculated) {
             return false;
         }
+
         return true;
     }
 }

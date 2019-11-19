@@ -1,8 +1,8 @@
 <?php
 
 use Components\Paginator;
-use Repositories\EventsRepository;
 use Helpers\HubspotClientHelper;
+use Repositories\EventsRepository;
 
 $hubSpot = HubspotClientHelper::createFactory();
 
@@ -10,9 +10,11 @@ $paginator = new Paginator(EventsRepository::getEventsCount(), '/webhooks/events
 
 $contactsIds = EventsRepository::findLastModifiedObjectsIds($paginator->getFrom(), $paginator->getPerPage());
 
-function format_event($event) {
+function format_event($event)
+{
     // "contact.creation" => "creation"
     $event['event_type'] = explode('.', $event['event_type'])[1];
+
     return $event;
 }
 

@@ -9,7 +9,7 @@ class UrlHelper
         $serverName = $_SERVER['SERVER_NAME'];
 
         if (!in_array($_SERVER['SERVER_PORT'], [80, 443])) {
-            $port = ":$_SERVER[SERVER_PORT]";
+            $port = ":{$_SERVER['SERVER_PORT']}";
         } else {
             $port = '';
         }
@@ -20,6 +20,6 @@ class UrlHelper
             $scheme = 'http';
         }
 
-        return $scheme . '://' . $serverName . $port;
+        return $scheme.'://'.$serverName.$port;
     }
 }

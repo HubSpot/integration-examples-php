@@ -9,6 +9,7 @@ class CompanyPropertiesHelper
         if ($property->readOnlyValue || $property->calculated) {
             return false;
         }
+
         return true;
     }
 }

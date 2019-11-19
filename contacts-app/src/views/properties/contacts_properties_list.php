@@ -9,19 +9,19 @@
                 $labelSanitized = htmlentities($field['label']);
                 $valueSanitized = htmlentities($field['value']);
                 ?>
-                <label for="<?= $nameSanitized ?>"><?= $labelSanitized ?></label>
-                <?php if ($nameSanitized === 'hubspot_owner_id') { ?>
-                    <select name="<?= $nameSanitized ?>" id="<?= $nameSanitized ?>">
+                <label for="<?php echo $nameSanitized; ?>"><?php echo $labelSanitized; ?></label>
+                <?php if ('hubspot_owner_id' === $nameSanitized) { ?>
+                    <select name="<?php echo $nameSanitized; ?>" id="<?php echo $nameSanitized; ?>">
                         <option value="">Not assigned</option>
                         <?php foreach ($owners as $owner) { ?>
                             <option
-                                    value="<?= $owner->ownerId ?>"
+                                    value="<?php echo $owner->ownerId; ?>"
                                     <?php if ($valueSanitized == $owner->ownerId) { ?>selected<?php } ?>
-                            ><?= $owner->firstName.' '.$owner->lastName ?></option>
+                            ><?php echo $owner->firstName.' '.$owner->lastName; ?></option>
                         <?php } ?>
                     </select>
                 <?php } else { ?>
-                    <input type="text" name="<?= $nameSanitized ?>" id="<?= $nameSanitized ?>" value="<?= $valueSanitized ?>">
+                    <input type="text" name="<?php echo $nameSanitized; ?>" id="<?php echo $nameSanitized; ?>" value="<?php echo $valueSanitized; ?>">
                 <?php } ?>
             <?php } ?>
 

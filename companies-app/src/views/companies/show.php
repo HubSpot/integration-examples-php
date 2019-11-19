@@ -1,9 +1,9 @@
-<?php include __DIR__.'/../_partials/header.php' ?>
+<?php include __DIR__.'/../_partials/header.php'; ?>
 
-<?php 
+<?php
       if (isset($errorResponse)) {
-           include __DIR__ . '/../_partials/error_response.php';
-           exit();
+          include __DIR__.'/../_partials/error_response.php';
+          exit();
       }
 ?>
 
@@ -13,7 +13,7 @@
 
         <?php if ($_GET['updated']) { ?>
             <h3 class="alert-success">Successfully updated Company properties</h3>
-        <?php } else if ($_GET['created']) { ?>
+        <?php } elseif ($_GET['created']) { ?>
             <h3 class="alert-success" '>Successfully created Company</h3>
         <?php } ?>
 
@@ -27,7 +27,7 @@ $hubSpot->companies()->getById($companyId)->getData();
         <form method="post" action="/companies/show.php">
             <fieldset>
                 <?php if (isset($id)) { ?>
-                    <input type="hidden" name="id" value="<?= htmlentities($id) ?>" />
+                    <input type="hidden" name="id" value="<?php echo htmlentities($id); ?>" />
                 <?php } ?>
                 <?php
                 foreach ($formFields as $field) { ?>
@@ -36,8 +36,8 @@ $hubSpot->companies()->getById($companyId)->getData();
                     $labelSanitized = htmlentities($field['label']);
                     $valueSanitized = htmlentities($field['value']);
                     ?>
-                    <label for="<?= $nameSanitized ?>"><?= $labelSanitized ?></label>
-                    <input type="text" name="<?= $nameSanitized ?>" id="<?= $nameSanitized ?>" value="<?= $valueSanitized ?>">
+                    <label for="<?php echo $nameSanitized; ?>"><?php echo $labelSanitized; ?></label>
+                    <input type="text" name="<?php echo $nameSanitized; ?>" id="<?php echo $nameSanitized; ?>" value="<?php echo $valueSanitized; ?>">
                 <?php } ?>
 
                 <?php if (isset($company)) { ?>
@@ -45,7 +45,7 @@ $hubSpot->companies()->getById($companyId)->getData();
 // src/actions/companies/show.php
 $hubSpot->companies()->update($companyId, $companyProperties);
 </pre>
-                <? } else { ?>
+                <?php } else { ?>
 <pre>
 // src/actions/companies/show.php
 $hubSpot->companies()->create($companyProperties);
@@ -86,18 +86,18 @@ $hubSpot->crmAssociations()->get(
 
                 <?php foreach ($contacts as $contact) { ?>
                     <tr>
-                        <td><?= htmlentities($contact['id']) ?></td>
-                        <td><?= htmlentities($contact['name']) ?></td>
+                        <td><?php echo htmlentities($contact['id']); ?></td>
+                        <td><?php echo htmlentities($contact['name']); ?></td>
                     </tr>
                 <?php }?>
                 </tbody>
             </table>
 
-            <a href="/companies/contacts.php?companyId=<?= htmlentities($id) ?>">
+            <a href="/companies/contacts.php?companyId=<?php echo htmlentities($id); ?>">
                 <input class="button-primary" type="button" value="Manage Contacts">
             </a>
         <?php } ?>
     </div>
 </div>
 
-<?php include __DIR__.'/../_partials/footer.php' ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>

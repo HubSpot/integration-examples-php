@@ -1,10 +1,7 @@
 <?php
 
-use \Codeception\Util\Locator;
-
 class AuthorizationCest
 {
-
     public function authorizeAlertIsDisplayed(AcceptanceTester $I)
     {
         $I->amOnPage('/');
@@ -24,4 +21,3 @@ class AuthorizationCest
         $I->waitForElement('#contacts-list');
     }
 }
-

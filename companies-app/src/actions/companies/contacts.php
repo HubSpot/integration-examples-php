@@ -4,7 +4,8 @@ use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactory();
 
-function create_or_delete_contacts_associations($companyId, $contactsIds) {
+function create_or_delete_contacts_associations($companyId, $contactsIds)
+{
     $crmAssociations = HubspotClientHelper::createFactory()->crmAssociations();
     $redirectParams = [
         'id' => $companyId,
@@ -22,12 +23,12 @@ function create_or_delete_contacts_associations($companyId, $contactsIds) {
     if (isset($_POST['addToCompany'])) {
         $crmAssociations->createBatch($data);
         $redirectParams['contactsAdded'] = true;
-    } else if (isset($_POST['deleteFromCompany'])) {
+    } elseif (isset($_POST['deleteFromCompany'])) {
         $crmAssociations->deleteBatch($data);
         $redirectParams['contactsDeleted'] = true;
     }
 
-    return '/companies/show.php?' . http_build_query($redirectParams);
+    return '/companies/show.php?'.http_build_query($redirectParams);
 }
 
 $companyId = $_GET['companyId'] ?: null;
@@ -35,7 +36,7 @@ $companyId = $_GET['companyId'] ?: null;
 if (isset($_POST['contactsIds'])) {
     $contactsIds = array_keys($_POST['contactsIds']);
     $redirectUrl = create_or_delete_contacts_associations($companyId, $contactsIds);
-    header('Location: ' . $redirectUrl);
+    header('Location: '.$redirectUrl);
     exit();
 }
 
@@ -57,4 +58,3 @@ if (count($contacts) > 0) {
     )->getData()->results;
 }
 include __DIR__.'/../../views/companies/contacts.php';
-

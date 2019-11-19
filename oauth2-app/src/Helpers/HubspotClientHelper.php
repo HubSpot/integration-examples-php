@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Helpers;
 
 use SevenShores\Hubspot\Factory;
@@ -11,6 +10,7 @@ class HubspotClientHelper
     public static function createFactory(): Factory
     {
         $accessToken = OAuth2Helper::refreshAndGetAccessToken();
+
         return self::create([
             'key' => $accessToken,
             'oauth2' => true,
@@ -28,7 +28,7 @@ class HubspotClientHelper
             $factoryConfig,
             null,
             [
-                'http_errors' => false // pass any Guzzle related option to any request, e.g. throw no exceptions
+                'http_errors' => false, // pass any Guzzle related option to any request, e.g. throw no exceptions
             ],
             true
         );
