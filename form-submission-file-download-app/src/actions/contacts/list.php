@@ -11,16 +11,16 @@ if (isset($_POST['search'])) {
         'property' => [
             'email',
             $protected,
-            $public
-        ]
+            $public,
+        ],
     ])->getData()->contacts;
 } else {
     $contacts = $hubSpot->contacts()->recent([
         'property' => [
             'email',
             $protected,
-            $public
-        ]
+            $public,
+        ],
     ])->getData()->contacts;
 }
 
