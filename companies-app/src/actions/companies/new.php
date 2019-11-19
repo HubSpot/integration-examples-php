@@ -1,6 +1,6 @@
 <?php
 
-$formFields = array(
+$formFields = [
     [
         'name' => 'name',
         'label' => 'name',
@@ -11,7 +11,7 @@ $formFields = array(
         'label' => 'domain',
         'value' => '',
     ],
-);
+];
 
 $notUpdated = true;
 

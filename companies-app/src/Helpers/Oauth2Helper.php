@@ -12,7 +12,7 @@ class OAuth2Helper
     {
         $clientId = $_ENV['HUBSPOT_CLIENT_ID'];
         if (empty($clientId)) {
-            throw new \Exception("Please specify HUBSPOT_CLIENT_ID in .env");
+            throw new \Exception('Please specify HUBSPOT_CLIENT_ID in .env');
         }
 
         return $clientId;
@@ -22,7 +22,7 @@ class OAuth2Helper
     {
         $clientSecret = $_ENV['HUBSPOT_CLIENT_SECRET'];
         if (empty($clientSecret)) {
-            throw new \Exception("Please specify HUBSPOT_CLIENT_SECRET in .env");
+            throw new \Exception('Please specify HUBSPOT_CLIENT_SECRET in .env');
         }
 
         return $clientSecret;
@@ -30,7 +30,7 @@ class OAuth2Helper
 
     public static function getRedirectUri(): string
     {
-        return UrlHelper::generateServerUri() . self::CALLBACK_PATH;
+        return UrlHelper::generateServerUri().self::CALLBACK_PATH;
     }
 
     public static function getScope(): array
@@ -52,7 +52,7 @@ class OAuth2Helper
     public static function refreshAndGetAccessToken(): string
     {
         if (empty($_SESSION[static::SESSION_TOKENS_KEY])) {
-            throw new \Exception("Please authorize via OAuth2");
+            throw new \Exception('Please authorize via OAuth2');
         }
 
         $tokens = $_SESSION[static::SESSION_TOKENS_KEY];

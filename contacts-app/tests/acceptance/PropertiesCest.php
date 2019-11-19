@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class PropertiesCest
 {
@@ -42,14 +42,16 @@ class PropertiesCest
         $I->see($this->validName);
     }
 
-    public function updatingPropertyInvalidData(AcceptanceTester $I) {
+    public function updatingPropertyInvalidData(AcceptanceTester $I)
+    {
         $I->click($this->validName);
         $I->fillField(['name' => 'groupName'], 'INVALIDGROUPNAME');
         $I->click('save');
         $I->seeElement('.error-wrapper');
     }
 
-    public function updatingPropertyValidData(AcceptanceTester $I) {
+    public function updatingPropertyValidData(AcceptanceTester $I)
+    {
         $I->click($this->validName);
         $I->fillField(['name' => 'label'], 'valid label changed');
         $I->fillField(['name' => 'description'], 'valid description changed');
@@ -58,8 +60,9 @@ class PropertiesCest
         $I->see($this->validName);
     }
 
-    public function removeProperty (AcceptanceTester $I) {
-        $I->click('#remove-' . $this->validName);
+    public function removeProperty(AcceptanceTester $I)
+    {
+        $I->click('#remove-'.$this->validName);
         $I->seeElement('table.properties-list');
         $I->dontSee($this->validName);
     }

@@ -1,4 +1,4 @@
-<?php if (isset($engagements) && isset($contactId)) { ?>
+<?php if (isset($engagements, $contactId)) { ?>
     <h3>Engagements</h3>
     <table>
         <thead>
@@ -11,15 +11,15 @@
         <tbody>
         <?php foreach ($engagements as $engagement) { ?>
             <tr>
-                <td><?= htmlentities($engagement->engagement->id) ?></td>
-                <td><?= htmlentities($engagement->engagement->type) ?></td>
-                <td><?= htmlentities($engagement->metadata->title) ?></td>
+                <td><?php echo htmlentities($engagement->engagement->id); ?></td>
+                <td><?php echo htmlentities($engagement->engagement->type); ?></td>
+                <td><?php echo htmlentities($engagement->metadata->title); ?></td>
             </tr>
         <?php }?>
         </tbody>
     </table>
     <div>
-        <a id="engagement-new" href="/engagements/new.php?contactId=<?= htmlentities($contactId) ?>">
+        <a id="engagement-new" href="/engagements/new.php?contactId=<?php echo htmlentities($contactId); ?>">
             <input class="button-primary" type="button" value="Add Engagement">
         </a>
     </div>
