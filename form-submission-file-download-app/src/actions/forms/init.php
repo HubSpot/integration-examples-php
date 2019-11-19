@@ -4,7 +4,7 @@ use Helpers\HubspotClientHelper;
 use Helpers\UrlHelper;
 
 if (!isset($_POST['formName'])) {
-    $formName = 'HubSpot PHP Sample Form Submission and File Download App ' . uniqid();
+    $formName = 'HubSpot PHP Sample Form Submission and File Download App '.uniqid();
     include __DIR__.'/../../views/forms/init.php';
     exit();
 }
@@ -13,10 +13,10 @@ $hubSpot = HubspotClientHelper::createFactory();
 
 foreach ([
     getEnvOrException('PROTECTED_PROPERTY'),
-    getEnvOrException('PUBLIC_PROPERTY')
+    getEnvOrException('PUBLIC_PROPERTY'),
 ] as $propetry) {
     $response = $hubSpot->contactProperties()->get($propetry);
-    
+
     if (HubspotClientHelper::isResponseNotFound($response)) {
         $propertyResponse = $hubSpot->contactProperties()->create([
             'name' => $propetry,
@@ -25,15 +25,15 @@ foreach ([
             'groupName' => 'contactinformation',
             'type' => 'string',
             'formField' => true,
-            'fieldType' => 'file'
+            'fieldType' => 'file',
         ]);
         $hubSpotProperty = $propertyResponse->getData();
     } else {
         $hubSpotProperty = $response->getData();
     }
-    
-    if ($hubSpotProperty->fieldType !== 'file') {
-        throw  new Exception('Property ' . $property . ' already exists and it is not file');
+
+    if ('file' !== $hubSpotProperty->fieldType) {
+        throw  new Exception('Property '.$property.' already exists and it is not file');
     }
 }
 
@@ -43,7 +43,7 @@ $propertyName = getEnvOrException('PROTECTED_PROPERTY');
 $formResponse = $hubSpot->forms()->create([
     'name' => $formName,
     'submitText' => 'Save',
-    'redirect' => UrlHelper::generateServerUri() . '/contacts/list.php',
+    'redirect' => UrlHelper::generateServerUri().'/contacts/list.php',
     'formFieldGroups' => [
         [
             'fields' => [
@@ -54,12 +54,12 @@ $formResponse = $hubSpot->forms()->create([
                         'type' => 'string',
                         'fieldType' => 'text',
                         'required' => true,
-                        'placeholder' => 'Email'
-                    ]
-                ]
+                        'placeholder' => 'Email',
+                    ],
+                ],
             ],
             'default' => true,
-            'isSmartGroup' => false
+            'isSmartGroup' => false,
         ],
         [
             'fields' => [
@@ -69,21 +69,20 @@ $formResponse = $hubSpot->forms()->create([
                         'label' => $propertyName,
                         'type' => 'string',
                         'fieldType' => 'file',
-                        'placeholder' => $propertyName
-                    ]
-                ]
+                        'placeholder' => $propertyName,
+                    ],
+                ],
             ],
             'default' => true,
-            'isSmartGroup' => false
+            'isSmartGroup' => false,
         ],
-    ]
+    ],
 ]);
-
 
 if (HubspotClientHelper::isResponseSuccessful($formResponse)) {
     $_SESSION['FORM'] = [
         'formId' => $formResponse->getData()->guid,
-        'portalId' => $formResponse->getData()->portalId
+        'portalId' => $formResponse->getData()->portalId,
     ];
     header('Location: /forms/form.php');
 } else {
