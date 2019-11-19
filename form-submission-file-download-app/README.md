@@ -40,14 +40,22 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 The best way to run this project (with the least configuration), is using docker compose.  Change to the webroot and start it
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
-You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
 
-### Running tests
+Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.
 
-Run tests with codecept
+### NOTE about Ngrok Too Many Connections error
 
-```bash
-docker-compose run codecept run
-```
+If you are using Ngrok free plan and testing the application with large amount of import/deletions of Contacts you are likely to see Ngrok "Too Many Connections" error.
+This is caused by a large amount of weebhooks events being sent to Ngrok tunnel. To avoid it you can deploy sample applications on your server w/o Ngrok or upgrade to Ngrok Enterprise version
+
+### Configure webhooks
+
+Required webhooks url should look like https://***.ngrok.io/webhooks/handle.php
+
+Following [Webhooks Setup](https://developers.hubspot.com/docs/methods/webhooks/webhooks-overview) guide please note:
+- Every time the app is restarted you should update the webhooks url
+- The app requires `contact.propertyChange` subscription type 
+- Subscription is paused by default. You need to activate it manually after creating
+
