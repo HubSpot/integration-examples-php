@@ -27,11 +27,11 @@ include __DIR__.'/../_partials/header.php' ?>
     <tr>
         <td><?= $contact->vid;?></td>
         <td><?= $contact->properties->email->value;?></td>
-        <td><?php if (isset($contact->properties->$protected->value)) {?>
+        <td><?php if (isset($contact->properties->$protected->value) && !empty($contact->properties->$protected->value)) {?>
             <a href="<?=$contact->properties->$protected->value?>" target="blank">File</a>
         <?php } else {?>-<?php } ?></td>
       <td>
-        <?php if (isset($contact->properties->$public->value)) {?>
+        <?php if (isset($contact->properties->$public->value) && !empty($contact->properties->$public->value)) {?>
             <a href="<?=$contact->properties->$public->value?>" target="blank">File</a>
         <?php } else {?>-<?php } ?></td>
     </tr>

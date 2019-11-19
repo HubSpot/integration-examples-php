@@ -196,25 +196,26 @@
         },
         {
             "name": "hubspot/hubspot-php",
-            "version": "v1.2.3",
+            "version": "v1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/HubSpot/hubspot-php.git",
-                "reference": "436ddc18cc0400aedade4631332bbb2d670e85b3"
+                "reference": "00757398049b1664e77778622b2c0fcd0643bf0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/436ddc18cc0400aedade4631332bbb2d670e85b3",
-                "reference": "436ddc18cc0400aedade4631332bbb2d670e85b3",
+                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/00757398049b1664e77778622b2c0fcd0643bf0d",
+                "reference": "00757398049b1664e77778622b2c0fcd0643bf0d",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "guzzlehttp/guzzle": "~6.0",
-                "php": ">=5.5.0"
+                "php": ">=5.6.0"
             },
             "require-dev": {
-                "codeclimate/php-test-reporter": " dev-master@dev",
-                "phpspec/phpspec": "~2.0",
+                "friendsofphp/php-cs-fixer": "^2.13",
+                "phpspec/phpspec": "^3.4",
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
@@ -242,7 +243,7 @@
                 "api",
                 "hubspot"
             ],
-            "time": "2019-11-06T08:00:24+00:00"
+            "time": "2019-11-19T11:23:31+00:00"
         },
         {
             "name": "psr/http-message",

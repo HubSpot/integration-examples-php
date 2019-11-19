@@ -2,7 +2,7 @@
 
 include_once '../../vendor/autoload.php';
 
-//try {
+try {
     session_start();
     $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
     $publicUrls = [
@@ -28,8 +28,8 @@ include_once '../../vendor/autoload.php';
             http_response_code(404);
             exit();
     }
-//} catch (Throwable $t) {
-//    $message = $t->getMessage();
-//    include __DIR__ . '/../views/error.php';
-//    exit();
-//}
+} catch (Throwable $t) {
+    $message = $t->getMessage();
+    include __DIR__ . '/../views/error.php';
+    exit();
+}

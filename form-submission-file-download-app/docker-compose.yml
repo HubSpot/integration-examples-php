@@ -11,7 +11,6 @@ services:
       - 8999:80
     volumes:
       - ./src:/app/src
-      - ./vendor:/app/vendor
   ngrok:
     image: gtriggiano/ngrok-tunnel
     ports:
