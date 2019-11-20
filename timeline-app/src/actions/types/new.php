@@ -1,11 +1,7 @@
 <?php
 use Helpers\HubspotClientHelper;
 
-//$hubSpot = HubspotClientHelper::createFactory();
-
-$hubSpot = \SevenShores\Hubspot\Factory::create('73565ca9-e141-464b-a745-0857380bcc0c');
-
-
+$hubSpot = HubspotClientHelper::createFactory();
 $type = [
     'name' => getValueOrNull('name', $_POST),
     'headerTemplate' => getValueOrNull('headerTemplate', $_POST),

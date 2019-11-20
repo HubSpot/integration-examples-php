@@ -1,9 +1,9 @@
 <?php
 use Helpers\HubspotClientHelper;
 
-$hubSpot = \SevenShores\Hubspot\Factory::create('73565ca9-e141-464b-a745-0857380bcc0c');
+$hubSpot = HubspotClientHelper::createFactory();
 // https://developers.hubspot.com/docs/methods/timeline/get-event-types
-$response = $hubSpot->timeline()->getEventTypes(getEnvOrException('HUBSPOT_APPLICATION_ID'));
+$response = $hubSpot->timeline()->getEventTypes($_ENV['HUBSPOT_APPLICATION_ID']);
 
 if (!HubspotClientHelper::isResponseSuccessful($response)) {
    throw new Exception($response->getReasonPhrase());

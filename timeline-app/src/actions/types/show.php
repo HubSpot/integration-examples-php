@@ -1,8 +1,7 @@
 <?php
 use Helpers\HubspotClientHelper;
 
-$hubSpot = \SevenShores\Hubspot\Factory::create('73565ca9-e141-464b-a745-0857380bcc0c');
-
+$hubSpot = HubspotClientHelper::createFactory();
 if (!array_key_exists('id', $_GET)) {
     header('Location: /types/list.php');
 }
