@@ -26,7 +26,7 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 The best way to run this project (with the least configuration), is using docker compose.  Change to the webroot and start it
 
 ```bash
-docker-compose up --build
+docker-compose up --build web
 ```
 
 Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.
