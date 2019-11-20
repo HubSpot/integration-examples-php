@@ -15,9 +15,12 @@ foreach ([
     getEnvOrException('PROTECTED_PROPERTY'),
     getEnvOrException('PUBLIC_PROPERTY'),
 ] as $propetry) {
+    //call to https://developers.hubspot.com/docs/methods/companies/get_contact_property
     $response = $hubSpot->contactProperties()->get($propetry);
 
     if (HubspotClientHelper::isResponseNotFound($response)) {
+        // Create properties to store links to uploaded file if it doesn't exist yet
+        // call to https://developers.hubspot.com/docs/methods/contacts/v2/create_contacts_property
         $propertyResponse = $hubSpot->contactProperties()->create([
             'name' => $propetry,
             'label' => $propetry,
@@ -40,6 +43,8 @@ foreach ([
 $formName = $_POST['formName'];
 $propertyName = getEnvOrException('PROTECTED_PROPERTY');
 
+// Create a form on the portal
+// call to https://developers.hubspot.com/docs/methods/forms/v2/create_form
 $formResponse = $hubSpot->forms()->create([
     'name' => $formName,
     'submitText' => 'Save',
@@ -50,7 +55,7 @@ $formResponse = $hubSpot->forms()->create([
                 [
                     [
                         'name' => 'email',
-                        'label' => 'Email',
+                        'label' => 'Contacts Email',
                         'type' => 'string',
                         'fieldType' => 'text',
                         'required' => true,
