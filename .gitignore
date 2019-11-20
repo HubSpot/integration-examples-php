@@ -1,0 +1,6 @@
+vendor
+.env
+.php_cs
+.php_cs.cache
+.idea
+nbproject

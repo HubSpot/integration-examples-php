@@ -1,6 +1,6 @@
-<?php include __DIR__ . '/../_partials/header.php' ?>
+<?php include __DIR__.'/../_partials/header.php'; ?>
 
-<h3 id='alert-not-shown-events' class="hidden" datetime-mark="<?=time()?>">New webhooks are received. <a href="#">Reload</a> the page to see updates</h3>
+<h3 id='alert-not-shown-events' class="hidden" datetime-mark="<?php echo time(); ?>">New webhooks are received. <a href="#">Reload</a> the page to see updates</h3>
 <?php if ($paginator->getCount() > 0) { ?>
 <table>
     <thead>
@@ -14,11 +14,11 @@
 
     <?php foreach ($contacts as $contact) { ?>
         <tr>
-            <td><?= htmlentities($contact['id']) ?></a></td>
-            <td><?= htmlentities($contact['properties']->firstname->value).' '.htmlentities($contact['properties']->lastname->value) ?></td>
+            <td><?php echo htmlentities($contact['id']); ?></a></td>
+            <td><?php echo htmlentities($contact['properties']->firstname->value).' '.htmlentities($contact['properties']->lastname->value); ?></td>
             <td>
                 <?php foreach ($contact['events'] as $event) { ?>
-                    <span class="event <?= htmlentities($event['event_type']) ?>"><?= htmlentities($event['event_type']) ?><?php
+                    <span class="event <?php echo htmlentities($event['event_type']); ?>"><?php echo htmlentities($event['event_type']); ?><?php
                         if (!empty($event['propertyName'])) { ?>:<span><?php echo htmlentities($event['propertyName']); } ?></span><?php
                         if (!empty($event['propertyValue'])) { ?>:<span><?php echo htmlentities($event['propertyValue']); } ?></span></span>
                 <?php } ?>
@@ -31,6 +31,6 @@
 <h3 id="empty-message">Webhooks haven't been received yet.</h3>
 <?php } ?>
 <?php
-include __DIR__ . '/../_partials/pagination.php';
-include __DIR__ . '/../_partials/footer.php';
+include __DIR__.'/../_partials/pagination.php';
+include __DIR__.'/../_partials/footer.php';
 ?>

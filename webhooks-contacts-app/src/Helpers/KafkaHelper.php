@@ -1,4 +1,5 @@
 <?php
+
 namespace Helpers;
 
 use Kafka\Consumer;
@@ -11,7 +12,8 @@ class KafkaHelper
     protected static $producer = null;
     protected static $consumer = null;
 
-    public static function getProducer() {
+    public static function getProducer()
+    {
         if (!static::$producer) {
             $config = ProducerConfig::getInstance();
             $config->setMetadataRefreshIntervalMs($_ENV['KAFKA_REFRESH_INTERVAL_MS']);
@@ -22,11 +24,12 @@ class KafkaHelper
             $config->setProduceInterval($_ENV['KAFKA_PRODUCE_INTERVAL']);
             static::$producer = new Producer();
         }
+
         return static::$producer;
     }
 
-    public static function getConsumer(array $topics) {
-
+    public static function getConsumer(array $topics)
+    {
         $config = ConsumerConfig::getInstance();
         $config->setTopics($topics);
         if (!static::$consumer) {
@@ -36,7 +39,7 @@ class KafkaHelper
             $config->setGroupId($_ENV['KAFKA_GROUP_ID']);
             static::$consumer = new Consumer();
         }
+
         return static::$consumer;
     }
-
 }

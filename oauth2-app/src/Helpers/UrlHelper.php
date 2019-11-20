@@ -1,24 +1,25 @@
 <?php
 
-
 namespace Helpers;
-
-require_once __DIR__ . '/../../vendor/autoload.php';
 
 class UrlHelper
 {
-    public static function generateServerUri() {
+    public static function generateServerUri(): string
+    {
         $serverName = $_SERVER['SERVER_NAME'];
+
         if (!in_array($_SERVER['SERVER_PORT'], [80, 443])) {
-            $port = ":$_SERVER[SERVER_PORT]";
+            $port = ":{$_SERVER['SERVER_PORT']}";
         } else {
             $port = '';
         }
-        if (!empty($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) == 'on' || $_SERVER['HTTPS'] == '1')) {
+
+        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO']) {
             $scheme = 'https';
         } else {
             $scheme = 'http';
         }
+
         return $scheme.'://'.$serverName.$port;
     }
 }

@@ -5,7 +5,7 @@ use Helpers\Oauth2Helper;
 include_once '../../vendor/autoload.php';
 
 session_start();
-$uri = parse_url($_SERVER["REQUEST_URI"])['path'];
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {
     switch ($uri) {
@@ -13,7 +13,7 @@ try {
         case '/oauth/login.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
-        $path = __DIR__ . '/../actions' . $uri;
+        $path = __DIR__.'/../actions'.$uri;
             require $path;
             exit();
     }
@@ -25,7 +25,7 @@ try {
 
     switch ($uri) {
         // protected
-        case '/' :
+        case '/':
             header('Location: /companies/list.php');
             exit();
         case '/companies/new.php':
@@ -35,7 +35,7 @@ try {
         case '/companies/show.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
-            $path = __DIR__ .'/../actions'. $uri;
+            $path = __DIR__.'/../actions'.$uri;
             require $path;
             exit();
         default:

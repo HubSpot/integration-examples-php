@@ -1,4 +1,9 @@
-<?php include __DIR__.'/../_partials/header.php' ?>
+<?php
+/**
+ * @var array Already associated Contacts
+ * @var array $contacts Contacts
+ */
+include __DIR__.'/../_partials/header.php'; ?>
 
 <pre>
 // src/actions/companies/contacts.php
@@ -6,8 +11,8 @@ $hubSpot->contacts()->search($search)
 </pre>
 <form>
     <fieldset>
-        <input type="text" name="search" placeholder="Search.." id="search" value="<?= htmlentities($search) ?>">
-        <input type="hidden" name="companyId" value="<?= htmlentities($companyId) ?>"
+        <input type="text" name="search" placeholder="Search.." id="search" value="<?php echo htmlentities($search); ?>">
+        <input type="hidden" name="companyId" value="<?php echo htmlentities($companyId); ?>"
     </fieldset>
 </form>
 
@@ -17,20 +22,22 @@ $hubSpot->contacts()->search($search)
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Status</th>
         <th>Selected</th>
       </tr>
       </thead>
       <tbody>
       <?php foreach ($contacts as $contact) { ?>
         <tr>
-          <td><?= htmlentities($contact->vid) ?></td>
-          <td><?= htmlentities($contact->properties->firstname->value.' '.$contact->properties->firstname->value) ?></td>
-          <td><input type="checkbox" name="contactsIds[<?= htmlentities($contact->vid) ?>]" /></td>
+            <td><?php echo htmlentities($contact->vid); ?></td>
+            <td><?php echo htmlentities($contact->properties->firstname->value.' '.$contact->properties->firstname->value); ?></td>
+            <td><?php if (in_array($contact->vid, $associatedContacts)) {?>Associated<?php } else { ?>-<?php } ?></td>
+            <td><input type="checkbox" name="contactsIds[<?php echo htmlentities($contact->vid); ?>]" /></td>
         </tr>
       <?php }?>
       </tbody>
     </table>
-    <input type="hidden" name="companyId" value="<?= htmlentities($companyId) ?>" />
+    <input type="hidden" name="companyId" value="<?php echo htmlentities($companyId); ?>" />
 
 <pre>
 // src/actions/companies/contacts.php
@@ -45,4 +52,4 @@ $hubSpot->crmAssociations()->create([
     <input type="submit" name="deleteFromCompany" value="Delete selected from Company" />
 </form>
 
-<?php include __DIR__.'/../_partials/footer.php' ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>

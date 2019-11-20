@@ -1,10 +1,10 @@
 <?php
 
-$formFields = array([
+$formFields = [[
     'name' => 'email',
     'label' => 'Email',
     'value' => '',
-]);
+]];
 
 $notUpdated = true;
 

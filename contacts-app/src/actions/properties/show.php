@@ -13,7 +13,7 @@ if (isset($_POST['name'])) {
         exit();
     }
 
-    $property = (object)$propertyFields;
+    $property = (object) $propertyFields;
     $errorResponse = $response;
 } else {
     $property = [];

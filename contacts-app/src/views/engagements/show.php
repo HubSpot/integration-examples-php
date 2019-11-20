@@ -1,7 +1,7 @@
-<?php include __DIR__.'/../_partials/header.php' ?>
+<?php include __DIR__.'/../_partials/header.php'; ?>
 
 <?php if (isset($errorResponse)) {
-    include __DIR__ . '/../_partials/error_response.php';
+    include __DIR__.'/../_partials/error_response.php';
 } ?>
 
 <div class="row">
@@ -20,11 +20,11 @@
                 <input type="datetime-local" id="startTime" name="metadata[startTime]" />
                 <label for="endTime">End time</label>
                 <input type="datetime-local" id="endTime" name="metadata[endTime]" />
-                <input type="hidden" name="associations[contactIds][]" value="<?= htmlentities($contactId) ?>" />
+                <input type="hidden" name="associations[contactIds][]" value="<?php echo htmlentities($contactId); ?>" />
                 <input id="save" class="button-primary" type="submit" value="Save">
             </fieldset>
         </form>
     </div>
 </div>
 
-<?php include __DIR__.'/../_partials/footer.php' ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>

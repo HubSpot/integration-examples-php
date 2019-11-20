@@ -1,6 +1,6 @@
 {
     "require": {
-        "ryanwinchester/hubspot-php": "~1.0",
+        "hubspot/hubspot-php": "~1.0",
         "ext-curl": "*",
         "ext-json": "*"
     },

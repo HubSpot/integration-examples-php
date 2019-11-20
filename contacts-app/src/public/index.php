@@ -4,9 +4,9 @@ include_once '../../vendor/autoload.php';
 
 try {
     session_start();
-    $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     switch ($uri) {
-        case '/' :
+        case '/':
             header('Location: /contacts/list.php');
             exit();
         case '/contacts/list.php':
@@ -22,7 +22,7 @@ try {
         case '/engagements/show.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
-            $path = __DIR__ .'/../actions'. $uri;
+            $path = __DIR__.'/../actions'.$uri;
             require $path;
             exit();
         default:

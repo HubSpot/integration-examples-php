@@ -32,6 +32,7 @@ RUN mv chromedriver /usr/bin/chromedriver
 RUN chown root:root /usr/bin/chromedriver
 RUN chmod +x /usr/bin/chromedriver
 RUN chown root:root /usr/bin/chromedriver
+RUN rm chromedriver_linux64.zip
 
 RUN wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar
 RUN mv selenium-server-standalone-3.4.0.jar selenium-server-standalone.jar

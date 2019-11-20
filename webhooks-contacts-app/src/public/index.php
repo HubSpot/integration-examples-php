@@ -1,12 +1,11 @@
 <?php
 
 use Helpers\Oauth2Helper;
-use Repositories\EventsRepository;
 
 include_once '../../vendor/autoload.php';
 
 session_start();
-$uri = parse_url($_SERVER["REQUEST_URI"])['path'];
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {
     \Helpers\DBClientHelper::runMigrations();
@@ -18,7 +17,7 @@ try {
         case '/oauth/callback.php':
         case '/webhooks/handle.php':
         case '/ajax/events.php':
-            $path = __DIR__ . '/../actions' . $uri;
+            $path = __DIR__.'/../actions'.$uri;
             require $path;
             exit();
     }
@@ -30,12 +29,12 @@ try {
 
     switch ($uri) {
         // protected
-        case '/' :
+        case '/':
             header('Location: /webhooks/events.php');
             exit();
         case '/webhooks/events.php':
         case '/webhooks/delete.php':
-            $path = __DIR__ . '/../actions' . $uri;
+            $path = __DIR__.'/../actions'.$uri;
             require $path;
             exit();
         default:
@@ -44,6 +43,6 @@ try {
     }
 } catch (Throwable $t) {
     $message = $t->getMessage();
-    include __DIR__ . '/../views/error.php';
+    include __DIR__.'/../views/error.php';
     exit();
 }
