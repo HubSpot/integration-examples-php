@@ -3,9 +3,9 @@
         "hubspot/hubspot-php": "~1.2.3",
         "ext-curl": "*",
         "ext-json": "*",
-        "longman/telegram-bot": "^0.61.0",
         "ext-pdo": "*",
-        "byjg/migration": "4.0.*"
+        "byjg/migration": "4.0.*",
+        "irazasyed/telegram-bot-sdk": "^3.0"
     },
     "autoload": {
         "files": [

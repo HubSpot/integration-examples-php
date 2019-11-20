@@ -5,8 +5,31 @@ services:
     env_file:
       - .env
     build: .
+    depends_on:
+      - db
     ports:
       - 8999:80
+    environment:
+      DB_HOST: db
+      DB_NAME: timeline
+      DB_USERNAME: timeline
+      DB_PASSWORD: timeline
     volumes:
       - ./src:/app/src
       - ./vendor:/app/vendor
+      - ./db:/app/db
+      - ./sql:/app/sql
+  db:
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    logging:
+      driver: none
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: timeline
+      MYSQL_USER: timeline
+      MYSQL_PASSWORD: timeline
