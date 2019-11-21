@@ -12,8 +12,8 @@ if (!isset($_POST['formName'])) {
 $hubSpot = HubspotClientHelper::createFactory();
 
 foreach ([
-    getEnvOrException('PROTECTED_PROPERTY'),
-    getEnvOrException('PUBLIC_PROPERTY'),
+    getEnvOrException('PROTECTED_FILE_LINK_PROPERTY'),
+    getEnvOrException('PUBLIC_FILE_LINK_PROPERTY'),
 ] as $propetry) {
     //call to https://developers.hubspot.com/docs/methods/companies/get_contact_property
     $response = $hubSpot->contactProperties()->get($propetry);
@@ -41,7 +41,7 @@ foreach ([
 }
 
 $formName = $_POST['formName'];
-$propertyName = getEnvOrException('PROTECTED_PROPERTY');
+$propertyName = getEnvOrException('PROTECTED_FILE_LINK_PROPERTY');
 
 // Create a form on the portal
 // call to https://developers.hubspot.com/docs/methods/forms/v2/create_form
