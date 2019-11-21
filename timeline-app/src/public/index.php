@@ -9,6 +9,7 @@ session_start();
 $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
 
 try {
+    \Helpers\DBClientHelper::runMigrations();
 
     switch ($uri) {
         // allowed for anonymous
