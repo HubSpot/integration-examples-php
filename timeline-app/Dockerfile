@@ -14,3 +14,7 @@ ADD composer.json /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
+
+RUN apt-get install -y supervisor
+COPY docker/supervisor/processes.conf /etc/supervisor/conf.d/apache.conf
+CMD ["/usr/bin/supervisord"]
