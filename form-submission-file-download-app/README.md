@@ -6,7 +6,8 @@ Please see the documentation on [How do I create an app in HubSpot?](https://dev
 
 This Application demonstrates recommended approach to working with file uploads via HubSpot form submission. For security reasons HubSpot  makes uploaded files available to the  Users only if they are logged in. If you want not logged in Users to access the file you may do the following:
 1. Listen for a webhook for the file upload field (customer-defined, but similar to this https://github.com/HubSpot/integration-examples-php/tree/master/webhooks-contacts-app)
-2. Grab the file via https://developers.hubspot.com/docs/methods/form-integrations/v1/uploaded-files/signed-url-redirect
+2. Grab the file by hitting the URL stored by the form in Contact property 
+    - This URL can only be accessed by authenticated caller - see [OAuth 2.0 example](https://github.com/HubSpot/integration-examples-php/tree/master/oauth2-app) for an example of OAuth 2.0 authentication PHP code
 3. Upload the file to the file-manager via https://developers.hubspot.com/docs/methods/files/post_files
 4. Put the resulting file URL to a new contact property, something like "file public link" as an example
 
