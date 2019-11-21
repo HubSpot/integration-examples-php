@@ -2,7 +2,6 @@
 
 /**
  * sample integration with telegram sdk
- * execute with "docker-compose exec web php src/console/telegram/botUpdates.php"
  */
 
 require __DIR__.'/../../../vendor/autoload.php';
@@ -17,8 +16,6 @@ function check_updates() : void {
 
     foreach ($updates as $update) {
         \Repositories\TelegramUpdatesRepository::save(['id' => $update->update_id]);
-
-        var_dump($update);
 
         // send the same message back
         $telegram->sendMessage([
