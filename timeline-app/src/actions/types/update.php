@@ -1,7 +1,7 @@
 <?php
 use Helpers\HubspotClientHelper;
 
-$hubSpot = HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactoryDeveloperWithAPIKey();
 
 if (!array_key_exists('id', $_GET)) {
     header('Location: /types/list.php');

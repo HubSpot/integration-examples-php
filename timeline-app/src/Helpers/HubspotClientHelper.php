@@ -27,10 +27,10 @@ class HubspotClientHelper
         return self::create()->oAuth2();
     }
 
-    public static function createFactoryWithAPIKey() : Factory
+    public static function createFactoryDeveloperWithAPIKey() : Factory
     {
         return static::create([
-            'key' => getEnvOrException('HUBSPOT_API_KEY'),
+            'key' => getEnvOrException('HUBSPOT_DEVELOPER_API_KEY'),
             'oauth2' => false,
         ]);
     }
@@ -41,7 +41,7 @@ class HubspotClientHelper
             $factoryConfig,
             null,
             [
-                'http_errors' => false // pass any Guzzle related option to any request, e.g. throw no exceptions
+                'http_errors' => true // pass any Guzzle related option to any request, e.g. throw no exceptions
             ],
             true
         );

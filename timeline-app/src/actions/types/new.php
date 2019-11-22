@@ -1,7 +1,7 @@
 <?php
 use Helpers\HubspotClientHelper;
 
-$hubSpot = HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactoryDeveloperWithAPIKey();
 $type = [
     'name' => getValueOrNull('name', $_POST),
     'headerTemplate' => getValueOrNull('headerTemplate', $_POST),
@@ -10,15 +10,15 @@ $type = [
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $responce = $hubSpot->timeline()->createEventType(
+    $response = $hubSpot->timeline()->createEventType(
         $_ENV['HUBSPOT_APPLICATION_ID'],
         $type['name'],
         $type['headerTemplate'],
         $type['detailTemplate'],
         $type['objectType']
     );
-    if (HubspotClientHelper::isResponseSuccessful($responce)) {
-        header('Location: /types/show.php?id='.$responce->getData()->id);
+    if (HubspotClientHelper::isResponseSuccessful($response)) {
+        header('Location: /types/show.php?id=' . $response->getData()->id);
     }
 }
 
