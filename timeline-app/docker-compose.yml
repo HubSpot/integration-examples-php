@@ -17,7 +17,6 @@ services:
     volumes:
       - ./src:/app/src
       - ./vendor:/app/vendor
-      - ./db:/app/db
       - ./sql:/app/sql
   db:
     image: mysql:8.0
