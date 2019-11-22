@@ -5,7 +5,7 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "byjg/migration": "4.0.*",
-        "irazasyed/telegram-bot-sdk": "^3.0"
+        "longman/telegram-bot": "^0.61.0"
     },
     "autoload": {
         "files": [
