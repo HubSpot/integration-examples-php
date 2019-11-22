@@ -1,6 +1,6 @@
 # HubSpot-php sample app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs/methods/contacts/contacts-overview) endpoints and their related actions. This app also demonstrates the use of some of [Contacts Properties API](https://developers.hubspot.com/docs/methods/contacts/contact-properties-overview) and [Engagements API](https://developers.hubspot.com/docs/methods/engagements/engagements-overview)
+This is a sample app for the [hubspot-php SDK](https://github.com/hubspot/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs/methods/contacts/contacts-overview) endpoints and their related actions. This app also demonstrates the use of some of [Contacts Properties API](https://developers.hubspot.com/docs/methods/contacts/contact-properties-overview) and [Engagements API](https://developers.hubspot.com/docs/methods/engagements/engagements-overview)
 
 Please see the documentation on [How do I create an app in HubSpot?](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
 
