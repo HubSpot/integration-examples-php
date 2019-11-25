@@ -1,6 +1,8 @@
 <?php
 namespace Helpers;
 
+use Base64Url\Base64Url;
+
 class TelegramBotHelper
 {
     public static function generateBotLink(string $email) : string
@@ -8,7 +10,7 @@ class TelegramBotHelper
         return 'https://telegram.me/'
             . getEnvOrException('TELEGRAM_BOT_USERNAME') . '?'
             . http_build_query([
-                'email' => $email
+                'start' => Base64Url::encode($email)
             ]);
     }
 }
