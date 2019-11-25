@@ -1,8 +1,8 @@
-create table if not exists eventTypes
+create table if not exists event_types
 (
     id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     code        VARCHAR(255) unique not null,
-    hubspotEventTypeId bigint unique not null
+    hubspot_event_type_id bigint unique not null
 );
 
 create table if not exists invitations

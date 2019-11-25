@@ -15,7 +15,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode('BotAdded')) {
     if (HubspotClientHelper::isResponseSuccessful($botAdded)) {
         EventTypesRepository::insert([
             'code' => 'BotAdded',
-            'hubspotEventTypeId' => $botAdded->getData()->id,
+            'hubspot_event_type_id' => $botAdded->getData()->id,
             ]);
     }
 }
@@ -41,7 +41,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode('acceptedInvitation')) {
         if (HubspotClientHelper::isResponseSuccessful($property)) {
             EventTypesRepository::insert([
                 'code' => 'AcceptedInvitation',
-                'hubspotEventTypeId' => $invitation->getData()->id,
+                'hubspot_event_type_id' => $invitation->getData()->id,
             ]);
         }
     }

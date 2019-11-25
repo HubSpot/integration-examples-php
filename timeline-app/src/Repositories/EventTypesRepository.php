@@ -9,7 +9,7 @@ class EventTypesRepository
     public static function getHubspotEventIDByCode(string $code)
     {
         $query = DBClientHelper::getClient()
-                ->prepare('select hubspotEventTypeId from eventTypes where code = ?');
+                ->prepare('select hubspot_event_type_id from eventTypes where code = ?');
         $query->execute([$code]);
 
         return $query->fetchColumn(0);
@@ -17,7 +17,7 @@ class EventTypesRepository
 
     public static function insert($type) {
         $db = DBClientHelper::getClient();
-        $query = $db->prepare('insert into eventTypes (code, hubspotEventTypeId) values (?, ?)');
-        $query->execute([$type['code'], $type['hubspotEventTypeId']]);
+        $query = $db->prepare('insert into eventTypes (code, hubspot_event_type_id) values (?, ?)');
+        $query->execute([$type['code'], $type['hubspot_event_type_id']]);
     }
 }
