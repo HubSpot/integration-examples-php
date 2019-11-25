@@ -17,6 +17,9 @@
             </a>
             <ul class="navigation-list float-right">
                 <li class="navigation-item">
+                    <a class="navigation-link" href="/telegram/link.php">Telegram Bot</a>
+                </li>
+                <li class="navigation-item">
                     <a class="navigation-link" href="/types/list.php">Types</a>
                 </li>
                 <li class="navigation-item">

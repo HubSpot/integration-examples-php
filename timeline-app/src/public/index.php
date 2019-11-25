@@ -28,7 +28,7 @@ try {
         case '/oauth/login.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
-        case '/telegram/registration.php':
+        case '/telegram/link.php':
             $path = __DIR__ . '/../actions' . $uri;
             require $path;
             exit();
