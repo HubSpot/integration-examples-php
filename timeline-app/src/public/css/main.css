@@ -43,6 +43,10 @@
     text-decoration: none
 }
 
+.text-center {
+    text-align: center;
+}
+
 .row.authorize-button {
     justify-content: center;
 }

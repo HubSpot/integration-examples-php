@@ -1,15 +1,18 @@
 <?php
 
 use Helpers\OAuth2Helper;
-use \Helpers\HubspotClientHelper;
+use Helpers\HubspotClientHelper;
+use Repositories\TokensRepository;
 
-$tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByCode(
+$response = HubspotClientHelper::getOAuth2Resource()->getTokensByCode(
     OAuth2Helper::getClientId(),
     OAuth2Helper::getClientSecret(),
     OAuth2Helper::getRedirectUri(),
     $_GET['code']
-)->toArray();
+);
 
-OAuth2Helper::saveTokens($tokens);
+if (HubspotClientHelper::isResponseSuccessful($response)) {
+    TokensRepository::save($response->toArray());
 
-header('Location: /');
+    header('Location: /');
+}
