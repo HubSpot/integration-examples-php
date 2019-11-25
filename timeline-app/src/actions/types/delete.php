@@ -1,7 +1,7 @@
 <?php
 use Helpers\HubspotClientHelper;
 
-$hubSpot = HubspotClientHelper::createFactoryDeveloperWithAPIKey();
+$hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 
 if (array_key_exists('id', $_GET)) {
     $response = $hubSpot->timeline()->deleteEventType($_ENV['HUBSPOT_APPLICATION_ID'], intval($_GET['id']));

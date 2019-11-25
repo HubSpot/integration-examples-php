@@ -27,7 +27,7 @@ class HubspotClientHelper
         return self::create()->oAuth2();
     }
 
-    public static function createFactoryDeveloperWithAPIKey() : Factory
+    public static function createFactoryWithDeveloperAPIKey() : Factory
     {
         return static::create([
             'key' => getEnvOrException('HUBSPOT_DEVELOPER_API_KEY'),

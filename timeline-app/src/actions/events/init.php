@@ -2,7 +2,7 @@
 use Helpers\HubspotClientHelper;
 use Repositories\EventTypesRepository;
 
-$hubSpot = HubspotClientHelper::createFactoryDeveloperWithAPIKey();
+$hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 if (!EventTypesRepository::getHubspotEventIDByCode('BotAdded')) {
     $botAdded = $hubSpot->timeline()->createEventType(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
@@ -16,7 +16,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode('BotAdded')) {
         EventTypesRepository::insert([
             'code' => 'BotAdded',
             'hubspot_event_type_id' => $botAdded->getData()->id,
-            ]);
+        ]);
     }
 }
 

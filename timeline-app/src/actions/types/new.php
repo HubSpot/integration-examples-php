@@ -1,7 +1,7 @@
 <?php
 use Helpers\HubspotClientHelper;
 
-$hubSpot = HubspotClientHelper::createFactoryDeveloperWithAPIKey();
+$hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 $type = [
     'name' => getValueOrNull('name', $_POST),
     'headerTemplate' => getValueOrNull('headerTemplate', $_POST),
@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $type['objectType']
     );
     if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /types/show.php?id=' . $response->getData()->id);
+        header('Location: /types/show.php?id='.$response->getData()->id);
     }
 }
 
-include __DIR__ . '/../../views/types/form.php';
+include __DIR__.'/../../views/types/form.php';
 
