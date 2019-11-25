@@ -32,7 +32,7 @@ if (count($invitations) > 0) {
     <h4>No invitations have been added yet.</h4>
 <?php } ?>
 <div>
-    <a id='invitation-new' class="button" href="/invitations/new.php">New Invintation</a>
+    <a id='invitation-new' class="button" href="/invitations/new.php">New Invitation</a>
 </div>
 
 <?php include __DIR__.'/../_partials/footer.php' ?>
