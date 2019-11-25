@@ -38,11 +38,10 @@ class OAuth2Helper
     {
         return self::APP_REQUIRED_SCOPES;
     }
-
-    public static function saveTokens($tokens)
+    
+    public static function getExpiresAt(int $expiresIn): int
     {
-        $tokens['expires_at'] = time() + $tokens['expires_in'] * 0.95;
-        $_SESSION[static::SESSION_TOKENS_KEY] = $tokens;
+        return time() + $expiresIn * 0.95;
     }
 
     public static function isAuthenticated() : bool
