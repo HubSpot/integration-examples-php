@@ -15,8 +15,8 @@ include __DIR__.'/../_partials/header.php';
     <form method="post">
         <fieldset>
             <h4>To generate telegram link for specific contact please enter an email</h4>
-            <input type="email" required placeholder="Email" id="email" name="email" value="<?=$user['email'];?>">
-            <input id="get-offers" class="button-primary" type="submit" value="Generate link">
+            <input type="email" required placeholder="Email" id="email" name="email"">
+            <input class="button-primary" type="submit" value="Generate link">
         </fieldset>
     </form>
 
