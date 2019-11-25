@@ -1,8 +1,13 @@
-create table if not exists tokens
+create table if not exists eventTypes
 (
     id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    refresh_token VARCHAR(255) not null,
-    access_token VARCHAR(255) not null,
-    expires_at bigint not null,
-    expires_in int not null
+    code        VARCHAR(255) unique not null,
+    hubspotEventTypeId bigint unique not null
+);
+
+create table if not exists invitations
+(
+    id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name        VARCHAR(255) not null,
+    text        text not null
 );
