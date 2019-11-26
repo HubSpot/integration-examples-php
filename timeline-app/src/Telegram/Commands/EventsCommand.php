@@ -20,23 +20,31 @@ class EventsCommand extends SystemCommand
     public function execute()
     {
         $message = $this->getMessage();
-
         $chat_id = $message->getChat()->getId();
-
-        $invitation = InvitationsRepository::getRandom();
 
         $data = [
             'chat_id' => $chat_id,
-            'text' => $invitation['text'],
-            'reply_markup' => json_encode([
-                'inline_keyboard' => [
-                    [
-                        ['text' => 'YES', 'callback_data' => InvitationReply::encodeYesReply($invitation['id'])],
-                        ['text' => 'NO', 'callback_data' => InvitationReply::encodeNoReply($invitation['id'])],
-                    ]
-                ]
-            ]),
         ];
+
+        $invitation = InvitationsRepository::getRandom();
+        if (empty($invitation)) {
+            $data += [
+                'text' => 'No more upcoming events :('
+            ];
+        } else {
+            $invitationId = $invitation['id'];
+            $data += [
+                'text' => $invitation['text'],
+                'reply_markup' => json_encode([
+                    'inline_keyboard' => [
+                        [
+                            ['text' => 'YES', 'callback_data' => InvitationReply::encodeYesReply($invitationId)],
+                            ['text' => 'NO', 'callback_data' => InvitationReply::encodeNoReply($invitationId)],
+                        ]
+                    ]
+                ]),
+            ];
+        }
 
         return Request::sendMessage($data);
     }

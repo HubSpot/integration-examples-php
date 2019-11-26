@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Telegram;
 
 class InvitationReply
@@ -16,12 +15,17 @@ class InvitationReply
         list($this->invitationId, $this->reply) = explode('-', $data);
     }
 
-    public function getInvitationId()
+    public function getInvitationId() : int
     {
         return $this->invitationId;
     }
 
-    public function isYesReply()
+    public function getReply() : string
+    {
+        return $this->reply;
+    }
+
+    public function isYesReply() : bool
     {
         return $this->reply === self::YES;
     }

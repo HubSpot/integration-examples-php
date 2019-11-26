@@ -19,7 +19,7 @@ class CallbackqueryCommand extends SystemCommand
 
         $data = [
             'callback_query_id' => $this->getCallbackQuery()->getId(),
-            'text'              => 'Saved!',
+            'text'              => $invitationReply->getReply(),
             'cache_time'        => 5,
         ];
 
