@@ -24,6 +24,15 @@ class InvitationsRepository {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function getRandom()
+    {
+        $query = DBClientHelper::getClient()
+            ->prepare('select * from invitations order by rand() limit 1');
+        $query->execute([]);
+
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
     public static function insert(array $invitation)
     {
         $query = DBClientHelper::getClient()
