@@ -16,6 +16,11 @@ try {
             header('Location: /types/list.php');
             exit();
         case '/events/init.php':
+        case '/invitations/new.php':
+        case '/invitations/show.php':
+        case '/invitations/list.php':
+        case '/invitations/update.php':
+        case '/invitations/delete.php':
         case '/types/new.php':
         case '/types/show.php':
         case '/types/list.php':

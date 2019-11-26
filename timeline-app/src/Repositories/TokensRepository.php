@@ -15,7 +15,8 @@ class TokensRepository
         return $query->fetch();
     }
 
-    public static function insert(array $token) {
+    public static function insert(array $token)
+    {
         $db = DBClientHelper::getClient();
         $query = $db->prepare('insert into tokens (refresh_token, access_token, expires_in, expires_at) values (?, ?, ?, ?)');
         $query->execute([
@@ -26,7 +27,8 @@ class TokensRepository
         ]);
     }
     
-    public static function update(array $token) {
+    public static function update(array $token)
+    {
         $db = DBClientHelper::getClient();
         $query = $db->prepare('update tokens set refresh_token = ?, access_token = ?, expires_in = ?, expires_at = ? where id = 1');
         $query->execute([
@@ -37,7 +39,8 @@ class TokensRepository
         ]);
     }
     
-    public static function save($token) {
+    public static function save($token)
+    {
         if (static::getToken()) {
             static::update($token);
         } else {

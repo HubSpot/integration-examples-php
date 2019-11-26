@@ -23,6 +23,9 @@
                     <a class="navigation-link" href="/types/list.php">Types</a>
                 </li>
                 <li class="navigation-item">
+                    <a class="navigation-link" href="/invitations/list.php">Invitations</a>
+                </li>
+                <li class="navigation-item">
                     <a class="navigation-link" href="/oauth/login.php">OAuth2</a>
                 </li>
             </ul>
