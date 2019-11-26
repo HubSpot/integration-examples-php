@@ -2,7 +2,10 @@
 
 use Repositories\InvitationsRepository;
 
-$invitation = getDataFromPost(['name', 'text']);
+$invitation = [
+    'name' => getValueOrNull('name', $_POST),
+    'text' => getValueOrNull('text', $_POST),
+];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     InvitationsRepository::insert($invitation);
