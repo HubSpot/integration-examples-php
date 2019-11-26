@@ -15,7 +15,7 @@ include __DIR__.'/../_partials/header.php';
                 <?php foreach ($invitation as $key=>$value) {?>
                 <tr>
                     <td><?=$key;?></td>
-                    <td><?=$value;?></td>
+                    <td><?=htmlspecialchars($value);?></td>
                 </tr>
                 <?php } ?>
             </tbody>
