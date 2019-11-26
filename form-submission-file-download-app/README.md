@@ -12,7 +12,7 @@ This Application demonstrates the recommended approach to working with file uplo
 3. Upload the file to the file-manager via https://developers.hubspot.com/docs/methods/files/post_files
 4. Put the resulting file URL to a new contact property, something like "file public link" as an example
 
-This design ie implemented in this Application
+This design is implemented in this Application
 
 1. There is an initialization script [init.php](https://github.com/HubSpot/integration-examples-php/tree/master/form-submission-file-download-app/src/actions/forms/init.php) invoked by the user on the initial Application page. It is designed to create a form for file upload and custom properties specified by environment variables PUBLIC_FILE_LINK_PROPERTY and PROTECTED_FILE_LINK_PROPERTY for uploaded protected file link and public file link storage
 2. After the initialization is done the form is created using JavaScript script provided by HubSpot to embed forms on your website. (src="//js.hsforms.net/forms/shell.js) - this is done in [form.php](https://github.com/HubSpot/integration-examples-php/tree/master/form-submission-file-download-app/src/views/forms/form.php)
