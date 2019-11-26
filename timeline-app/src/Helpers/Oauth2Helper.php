@@ -1,7 +1,8 @@
 <?php
 
-
 namespace Helpers;
+
+use Repositories\TokensRepository;
 
 class OAuth2Helper
 {
@@ -51,19 +52,18 @@ class OAuth2Helper
 
     public static function refreshAndGetAccessToken()
     {
-        if (empty($_SESSION[static::SESSION_TOKENS_KEY])) {
+        $tokens = TokensRepository::getToken();
+        
+        if (empty($tokens)) {
             throw new \Exception("Please authorize via OAuth2");
         }
-
-        $tokens = $_SESSION[static::SESSION_TOKENS_KEY];
-
         if (time() > $tokens['expires_at']) {
             $tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByRefresh(
                 self::getClientId(),
                 self::getClientSecret(),
                 $tokens['refresh_token']
             )->toArray();
-            self::saveTokens($tokens);
+            TokensRepository::save($tokens);
         }
 
         return $tokens['access_token'];

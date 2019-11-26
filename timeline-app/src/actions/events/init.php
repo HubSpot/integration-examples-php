@@ -24,7 +24,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode('acceptedInvitation')) {
     $invitation = $hubSpot->timeline()->createEventType(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         'User accepted an invitation',
-        '# User accepted {{name}}',
+        '#User accepted to visit {{ name }}',
         'This event happened on {{#formatDate timestamp}}{{/formatDate}}',
         'CONTACT'
     );
