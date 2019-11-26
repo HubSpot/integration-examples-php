@@ -496,16 +496,16 @@
         },
         {
             "name": "hubspot/hubspot-php",
-            "version": "v1.2.5",
+            "version": "v1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/HubSpot/hubspot-php.git",
-                "reference": "00757398049b1664e77778622b2c0fcd0643bf0d"
+                "reference": "1ca1283f8ab0748ff4c79369ab30da7739ae4138"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/00757398049b1664e77778622b2c0fcd0643bf0d",
-                "reference": "00757398049b1664e77778622b2c0fcd0643bf0d",
+                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/1ca1283f8ab0748ff4c79369ab30da7739ae4138",
+                "reference": "1ca1283f8ab0748ff4c79369ab30da7739ae4138",
                 "shasum": ""
             },
             "require": {
@@ -543,20 +543,20 @@
                 "api",
                 "hubspot"
             ],
-            "time": "2019-11-19T11:23:31+00:00"
+            "time": "2019-11-26T13:53:00+00:00"
         },
         {
             "name": "longman/telegram-bot",
-            "version": "0.61.0",
+            "version": "0.61.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-telegram-bot/core.git",
-                "reference": "8588b97de32b7e4ca0a8c4659eb2642d31142ed6"
+                "reference": "85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/8588b97de32b7e4ca0a8c4659eb2642d31142ed6",
-                "reference": "8588b97de32b7e4ca0a8c4659eb2642d31142ed6",
+                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e",
+                "reference": "85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e",
                 "shasum": ""
             },
             "require": {
@@ -604,7 +604,7 @@
                 "bot",
                 "telegram"
             ],
-            "time": "2019-11-02T00:34:57+00:00"
+            "time": "2019-11-23T21:48:39+00:00"
         },
         {
             "name": "psr/cache",
