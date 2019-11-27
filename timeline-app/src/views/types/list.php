@@ -5,6 +5,13 @@
 include __DIR__.'/../_partials/header.php';
 ?>
 
+<pre>
+// src/actions/types/list.php - Get Timeline Event Types
+$hubSpot->timeline()->getEventTypes('HubSpot Application ID')
+
+// src/actions/types/delete.php - Delete a timeline Event Type
+$hubSpot->timeline()->deleteEventType('HubSpot Application ID', 'Event Type ID');
+</pre>
 <table class="types-list">
     <thead>
         <tr>

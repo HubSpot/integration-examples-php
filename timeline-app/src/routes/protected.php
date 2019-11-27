@@ -12,7 +12,6 @@ return [
     '/types/update.php',
     '/types/delete.php',
     '/types/properties/new.php',
-    '/types/properties/list.php',
     '/types/properties/update.php',
     '/types/properties/delete.php',
     '/telegram/link.php',

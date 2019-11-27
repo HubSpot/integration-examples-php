@@ -9,7 +9,26 @@ $objectTypes = [
     'DEAL' => 'Deal'
 ];
 ?>
+<pre>
+// src/actions/types/new.php - Create a new Timeline Event Type
+$hubSpot->timeline()->createEventType(
+        'HubSpot Application ID',
+        'Event Type Name',
+        'Header Template',
+        'Detail Template',
+        'Object Type'
+    );
 
+// src/actions/types/update.php - Update a Timeline Event Type
+$hubSpot->timeline()->updateEventType(
+        'HubSpot Application ID',
+        'Event Type ID',
+        'Event Type Name',
+        'Header Template',
+        'Detail Template',
+        'Object Type'
+    );
+</pre>
 <form method="post">
 <fieldset>
     <label for="name">Name</label>

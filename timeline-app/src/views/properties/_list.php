@@ -16,8 +16,8 @@ if (count($properties) > 0) {
     <tbody>
     <?php foreach ($properties as $property) {?>
         <tr>
-            <td><a href="/types/properties/show.php?id=<?=$property->id;?>"><?=$property->id;?></a></td>
-            <td><?= htmlentities($property->label)?></td>
+            <td><?=$property->id;?></td>
+            <td><?=htmlentities($property->label)?></td>
             <td>
                 <a class="button" href="/types/properties/update.php?type_id=<?=$type->id;?>&property_id=<?=$property->id;?>">Update</a>
                 <a class="button" href="/types/properties/delete.php?type_id=<?=$type->id;?>&property_id=<?=$property->id;?>">Delete</a>
@@ -32,3 +32,13 @@ if (count($properties) > 0) {
 <div>
     <a id='type-new' class="button" href="/types/properties/new.php?id=<?=$type->id;?>">New property</a>
 </div>
+<pre>
+// src/actions/types/properties/delete.php
+Delete Property for Timeline Event Type
+$hubSpot->timeline()
+    ->deleteEventTypeProperty(
+        'HubSpot Application ID',
+        'Event Type ID'
+        'Property ID'
+    );
+</pre>
