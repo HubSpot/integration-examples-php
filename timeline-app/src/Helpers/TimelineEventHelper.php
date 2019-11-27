@@ -9,7 +9,8 @@ use Repositories\UsersRepository;
 
 class TimelineEventHelper
 {
-    public static function createEvent(int $invitationId, int $telegramChatId) {
+    public static function createEvent(int $invitationId, int $telegramChatId) : void
+    {
         $hubSpot = HubspotClientHelper::createFactory();
         $hubSpot->timeline()->createOrUpdate(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
