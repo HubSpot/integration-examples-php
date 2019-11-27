@@ -5,7 +5,7 @@ use Repositories\EventTypesRepository;
 use Repositories\InvitationsRepository;
 
 $hubSpot = HubspotClientHelper::createFactory();
-
+/*
 $botAddedResponse = $hubSpot->timeline()->createOrUpdate(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         EventTypesRepository::getHubspotEventIDByCode('BotAdded'),
@@ -15,14 +15,14 @@ $botAddedResponse = $hubSpot->timeline()->createOrUpdate(
 
 var_dump($botAddedResponse->getStatusCode(), $botAddedResponse->getReasonPhrase());
 
-$key = uniqid();
+$key = uniqid();*/
 
 $invitationResponse = $hubSpot->timeline()->createOrUpdate(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         EventTypesRepository::getHubspotEventIDByCode('acceptedInvitation'),
-        $key,
-        '8501',
+        uniqid(),
         null,
+        'tanas@smart-it.io',
         null,
         [],
         null,
@@ -32,11 +32,10 @@ $invitationResponse = $hubSpot->timeline()->createOrUpdate(
 var_dump($invitationResponse->getStatusCode(), $invitationResponse->getReasonPhrase());
    
 
-$response = $hubSpot->timeline()->getEvent(
-        getEnvOrException('HUBSPOT_APPLICATION_ID'),
-        EventTypesRepository::getHubspotEventIDByCode('acceptedInvitation'),
-        $key
-    );
-
-var_dump($response->getStatusCode(), $response->getReasonPhrase(), $response->getData());
- 
+//$response = $hubSpot->timeline()->getEvent(
+//        getEnvOrException('HUBSPOT_APPLICATION_ID'),
+//        EventTypesRepository::getHubspotEventIDByCode('acceptedInvitation'),
+//        $key
+//    );
+//
+//var_dump($response->getStatusCode(), $response->getReasonPhrase(), $response->getData());

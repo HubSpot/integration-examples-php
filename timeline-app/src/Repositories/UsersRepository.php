@@ -14,4 +14,14 @@ class UsersRepository
         $query = $db->prepare("insert into user(telegram_chat_id, email) values (?, ?) ON DUPLICATE KEY UPDATE email = ?");
         $query->execute($params);
     }
+
+    public static function getEmailByTelegramChatId(int $telegramChatId)
+    {
+        $query = DBClientHelper::getClient()
+            ->prepare('select email from user where telegram_chat_id = ?');
+        $query->execute([$telegramChatId]);
+
+        return $query->fetchColumn(0);
+    }
+
 }
