@@ -1,8 +1,8 @@
 # HubSpot-php sample Timeline app
 
 This is a sample app for the [hubspot-php SDK](https://github.com/HubSpot/hubspot-php). 
-Currently, this app focuses on the integration of [Timeline API](https://developers.hubspot.com/docs/methods/timeline/timeline-overview)
-with [Telegram](https://telegram.org/).
+Currently, this app is focused on demonstrating of [Timeline API](https://developers.hubspot.com/docs/methods/timeline/timeline-overview)
+integration with [Telegram](https://telegram.org/).
 
 Please see the documentation on:
 - [How do I create an app in HubSpot?](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
