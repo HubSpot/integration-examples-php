@@ -1,7 +1,6 @@
 <?php
 
 return [
-    '/events/send.php',
     '/invitations/new.php',
     '/invitations/show.php',
     '/invitations/list.php',
