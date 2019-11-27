@@ -2,6 +2,11 @@
 use Helpers\HubspotClientHelper;
 use Repositories\EventTypesRepository;
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    include __DIR__.'/../../views/events/init.php';
+    exit();
+}
+
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 if (!EventTypesRepository::getHubspotEventIDByCode('BotAdded')) {
     $botAdded = $hubSpot->timeline()->createEventType(
