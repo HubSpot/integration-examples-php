@@ -47,7 +47,7 @@ class OAuth2Helper
 
     public static function isAuthenticated() : bool
     {
-        return isset($_SESSION[static::SESSION_TOKENS_KEY]);
+        return !empty(TokensRepository::getToken());
     }
 
     public static function refreshAndGetAccessToken()
