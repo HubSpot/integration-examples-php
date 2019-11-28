@@ -57,5 +57,4 @@ timeline event will be created.
 
 - A background job listens for telegram updates, handles users replies. Located at 
 `src/console/telegram/handleUpdates.php`
-- CRUD actions for invitations, event types, oauth are places to corresponding directories
-in `src/actions`
+- CRUD actions for invitations, event types, oauth are places in `src/actions`
