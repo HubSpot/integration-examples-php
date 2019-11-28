@@ -10,7 +10,7 @@ $authUrl = OAuth2::getAuthUrl(
     ['Scopes']
 );
 </pre>
-<h3 class="text-center">Could you authorize? We need your access token.</h3>
+<h3 class="text-center">In order to continue please authorize via OAuth</h3>
 <div class="row authorize-button">
     <a class="button" href="/oauth/authorize.php">Authorize</a>
 </div>
