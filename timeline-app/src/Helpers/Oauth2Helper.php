@@ -14,7 +14,7 @@ class OAuth2Helper
     {
         $clientId = $_ENV['HUBSPOT_CLIENT_ID'];
         if (empty($clientId)) {
-            throw new \Exception("Please specify HUBSPOT_CLIENT_ID in .env");
+            throw new \Exception('Please specify HUBSPOT_CLIENT_ID in .env');
         }
 
         return $clientId;
@@ -24,7 +24,7 @@ class OAuth2Helper
     {
         $clientSecret = $_ENV['HUBSPOT_CLIENT_SECRET'];
         if (empty($clientSecret)) {
-            throw new \Exception("Please specify HUBSPOT_CLIENT_SECRET in .env");
+            throw new \Exception('Please specify HUBSPOT_CLIENT_SECRET in .env');
         }
 
         return $clientSecret;
@@ -39,13 +39,13 @@ class OAuth2Helper
     {
         return self::APP_REQUIRED_SCOPES;
     }
-    
+
     public static function getExpiresAt(int $expiresIn): int
     {
         return time() + $expiresIn * 0.95;
     }
 
-    public static function isAuthenticated() : bool
+    public static function isAuthenticated(): bool
     {
         return !empty(TokensRepository::getToken());
     }
@@ -53,9 +53,9 @@ class OAuth2Helper
     public static function refreshAndGetAccessToken()
     {
         $tokens = TokensRepository::getToken();
-        
+
         if (empty($tokens)) {
-            throw new \Exception("Please authorize via OAuth2");
+            throw new \Exception('Please authorize via OAuth2');
         }
         if (time() > $tokens['expires_at']) {
             $tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByRefresh(

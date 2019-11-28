@@ -1,4 +1,5 @@
 <?php
+
 use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
@@ -19,4 +20,4 @@ if (!HubspotClientHelper::isResponseSuccessful($propertiesResponse)) {
 }
 $properties = $propertiesResponse->getData();
 
-include __DIR__ . '/../../views/types/show.php';
+include __DIR__.'/../../views/types/show.php';

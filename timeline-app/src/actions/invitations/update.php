@@ -8,11 +8,11 @@ if (!array_key_exists('id', $_GET)) {
 
 $invitation = InvitationsRepository::getById($_GET['id']);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ('POST' === $_SERVER['REQUEST_METHOD']) {
     $invitation['name'] = $_POST['name'];
     $invitation['text'] = $_POST['text'];
     InvitationsRepository::update($invitation);
-    
+
     header('Location: /invitations/list.php');
 }
 

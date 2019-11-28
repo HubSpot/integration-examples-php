@@ -1,4 +1,5 @@
 <?php
+
 use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
@@ -6,7 +7,7 @@ $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 $response = $hubSpot->timeline()->getEventTypes(getEnvOrException('HUBSPOT_APPLICATION_ID'));
 
 if (!HubspotClientHelper::isResponseSuccessful($response)) {
-   throw new Exception($response->getReasonPhrase());
+    throw new Exception($response->getReasonPhrase());
 }
 
 $types = $response->getData();

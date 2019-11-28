@@ -11,7 +11,8 @@ class TokensRepository
     public static function getToken()
     {
         $query = DBClientHelper::getClient()
-                ->query('select * from tokens order by id desc limit 1');
+            ->query('select * from tokens order by id desc limit 1')
+        ;
 
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -27,7 +28,7 @@ class TokensRepository
             OAuth2Helper::getExpiresAt($token['expires_in']),
         ]);
     }
-    
+
     public static function update(array $token)
     {
         $db = DBClientHelper::getClient();
@@ -40,7 +41,7 @@ class TokensRepository
             $token['id'],
         ]);
     }
-    
+
     public static function save($token)
     {
         $savedToken = static::getToken();

@@ -7,9 +7,9 @@ $invitation = [
     'text' => getValueOrNull('text', $_POST),
 ];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ('POST' === $_SERVER['REQUEST_METHOD']) {
     InvitationsRepository::insert($invitation);
-    
+
     header('Location: /invitations/list.php');
 }
 

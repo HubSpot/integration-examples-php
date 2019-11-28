@@ -1,4 +1,5 @@
 <?php
+
 use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
@@ -6,10 +7,10 @@ $type = [
     'name' => getValueOrNull('name', $_POST),
     'headerTemplate' => getValueOrNull('headerTemplate', $_POST),
     'detailTemplate' => getValueOrNull('detailTemplate', $_POST),
-    'objectType' => getValueOrNull('objectType', $_POST)
+    'objectType' => getValueOrNull('objectType', $_POST),
 ];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ('POST' === $_SERVER['REQUEST_METHOD']) {
     $response = $hubSpot->timeline()->createEventType(
         $_ENV['HUBSPOT_APPLICATION_ID'],
         $type['name'],
@@ -23,4 +24,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 include __DIR__.'/../../views/types/form.php';
-

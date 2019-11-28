@@ -1,12 +1,12 @@
 <?php
 /**
- * @var array $type timeline event type
+ * @var array timeline event type
  */
 include __DIR__.'/../_partials/header.php';
 $objectTypes = [
     'CONTACT' => 'Contact',
     'COMPANY' => 'Company',
-    'DEAL' => 'Deal'
+    'DEAL' => 'Deal',
 ];
 ?>
 <pre>
@@ -32,19 +32,19 @@ $hubSpot->timeline()->updateEventType(
 <form method="post">
 <fieldset>
     <label for="name">Name</label>
-    <input type="text" placeholder="Name" id="name" name="name" value="<?=$type['name'];?>">
+    <input type="text" placeholder="Name" id="name" name="name" value="<?php echo $type['name']; ?>">
     <label for="headerTemplate">Header Template</label>
-    <input type="text" placeholder="Header Template" id="headerTemplate" name="headerTemplate" value="<?=$type['headerTemplate'];?>">
+    <input type="text" placeholder="Header Template" id="headerTemplate" name="headerTemplate" value="<?php echo $type['headerTemplate']; ?>">
     <label for="detailTemplate">Detail Template</label>
-    <input type="text" placeholder="Detail Template" id="detailTemplate" name="detailTemplate" value="<?=$type['detailTemplate'];?>">
+    <input type="text" placeholder="Detail Template" id="detailTemplate" name="detailTemplate" value="<?php echo $type['detailTemplate']; ?>">
     <label for="objectType">Object Type</label>
     <select id="objectType" name="objectType">
-        <?php foreach ($objectTypes as $key=>$value) { ?>
-        <option <?php if ($type['objectType'] == $key) {?>selected <?php } ?>value="<?=$key;?>"><?=$value;?></option>
+        <?php foreach ($objectTypes as $key => $value) { ?>
+        <option <?php if ($type['objectType'] == $key) {?>selected <?php } ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
         <?php } ?>
     </select>
     <input id="save" class="button-primary" type="submit" value="Save">
 </fieldset>
 </form>
 
-<?php include __DIR__.'/../_partials/footer.php' ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>

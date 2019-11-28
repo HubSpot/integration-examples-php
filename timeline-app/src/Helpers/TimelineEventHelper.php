@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Helpers;
 
 use Repositories\EventTypesRepository;
@@ -9,7 +8,7 @@ use Repositories\UsersRepository;
 
 class TimelineEventHelper
 {
-    public static function createEvent(int $invitationId, int $telegramChatId) : void
+    public static function createEvent(int $invitationId, int $telegramChatId): void
     {
         $hubSpot = HubspotClientHelper::createFactory();
         $hubSpot->timeline()->createOrUpdate(

@@ -1,4 +1,4 @@
-<?php include __DIR__.'/../_partials/header.php' ?>
+<?php include __DIR__.'/../_partials/header.php'; ?>
 
 <pre>
 // src/actions/oauth/authorize.php - Generate URL for OAuth
@@ -15,4 +15,4 @@ $authUrl = OAuth2::getAuthUrl(
     <a class="button" href="/oauth/authorize.php">Authorize</a>
 </div>
 
-<?php include __DIR__.'/../_partials/footer.php' ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>

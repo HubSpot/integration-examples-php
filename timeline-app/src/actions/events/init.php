@@ -1,8 +1,9 @@
 <?php
+
 use Helpers\HubspotClientHelper;
 use Repositories\EventTypesRepository;
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     include __DIR__.'/../../views/events/init.php';
     exit();
 }
@@ -33,16 +34,16 @@ if (!EventTypesRepository::getHubspotEventIDByCode('acceptedInvitation')) {
         'This event happened on {{#formatDate timestamp}}{{/formatDate}}',
         'CONTACT'
     );
-    
+
     if (HubspotClientHelper::isResponseSuccessful($invitation)) {
-       $property = $hubSpot->timeline()->createEventTypeProperty(
-            getEnvOrException('HUBSPOT_APPLICATION_ID'),
-            $invitation->getData()->id,
-            'name',
-            'Invitation Name',
-            'String'
-        );
-        
+        $property = $hubSpot->timeline()->createEventTypeProperty(
+           getEnvOrException('HUBSPOT_APPLICATION_ID'),
+           $invitation->getData()->id,
+           'name',
+           'Invitation Name',
+           'String'
+       );
+
         if (HubspotClientHelper::isResponseSuccessful($property)) {
             EventTypesRepository::insert([
                 'code' => 'AcceptedInvitation',

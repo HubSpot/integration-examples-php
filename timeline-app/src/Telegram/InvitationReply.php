@@ -15,33 +15,33 @@ class InvitationReply
         list($this->invitationId, $this->reply) = explode('-', $data);
     }
 
-    public function getInvitationId() : int
+    public function getInvitationId(): int
     {
         return $this->invitationId;
     }
 
-    public function getReply() : string
+    public function getReply(): string
     {
         return $this->reply;
     }
 
-    public function isYesReply() : bool
+    public function isYesReply(): bool
     {
-        return $this->reply === self::YES;
+        return self::YES === $this->reply;
     }
 
-    public static function encodeYesReply(int $invitationId) : string
+    public static function encodeYesReply(int $invitationId): string
     {
         return self::encodeReply($invitationId, self::YES);
     }
 
-    public static function encodeNoReply(int $invitationId) : string
+    public static function encodeNoReply(int $invitationId): string
     {
         return self::encodeReply($invitationId, self::NO);
     }
 
-    protected static function encodeReply(int $invitationId, string $reply) : string
+    protected static function encodeReply(int $invitationId, string $reply): string
     {
-        return "$invitationId-$reply";
+        return "{$invitationId}-{$reply}";
     }
 }

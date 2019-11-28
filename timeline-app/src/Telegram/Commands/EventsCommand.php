@@ -2,20 +2,21 @@
 
 namespace Longman\TelegramBot\Commands\SystemCommands;
 
-use Telegram\InvitationReply;
 use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Entities\ServerResponse;
 use Longman\TelegramBot\Exception\TelegramException;
 use Longman\TelegramBot\Request;
 use Repositories\InvitationsRepository;
+use Telegram\InvitationReply;
 
 class EventsCommand extends SystemCommand
 {
     protected $usage = '/events';
 
     /**
-     * @return ServerResponse
      * @throws TelegramException
+     *
+     * @return ServerResponse
      */
     public function execute()
     {
@@ -29,7 +30,7 @@ class EventsCommand extends SystemCommand
         $invitation = InvitationsRepository::getRandom();
         if (empty($invitation)) {
             $data += [
-                'text' => 'No more upcoming events :('
+                'text' => 'No more upcoming events :(',
             ];
         } else {
             $invitationId = $invitation['id'];
@@ -40,8 +41,8 @@ class EventsCommand extends SystemCommand
                         [
                             ['text' => 'YES', 'callback_data' => InvitationReply::encodeYesReply($invitationId)],
                             ['text' => 'NO', 'callback_data' => InvitationReply::encodeNoReply($invitationId)],
-                        ]
-                    ]
+                        ],
+                    ],
                 ]),
             ];
         }

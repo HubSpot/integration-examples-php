@@ -15,8 +15,9 @@ class StartCommand extends SystemCommand
     protected $usage = '/start';
 
     /**
-     * @return ServerResponse
      * @throws TelegramException
+     *
+     * @return ServerResponse
      */
     public function execute()
     {
@@ -33,11 +34,11 @@ class StartCommand extends SystemCommand
         }
 
         $chat_id = $message->getChat()->getId();
-        $text    = 'Hi there!' . PHP_EOL . 'Type /events to see available events!';
+        $text = 'Hi there!'.PHP_EOL.'Type /events to see available events!';
 
         $data = [
             'chat_id' => $chat_id,
-            'text'    => $text,
+            'text' => $text,
         ];
 
         return Request::sendMessage($data);

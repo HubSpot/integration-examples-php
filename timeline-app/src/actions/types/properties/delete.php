@@ -1,4 +1,5 @@
 <?php
+
 use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
@@ -12,7 +13,7 @@ $response = $hubSpot->timeline()->deleteEventTypeProperty(
     $_GET['property_id']
 );
 
-if(HubspotClientHelper::isEmptyResponseSuccessful($response)) {
-    header('Location: /types/show.php?id=' . $_GET['type_id']);
+if (HubspotClientHelper::isEmptyResponseSuccessful($response)) {
+    header('Location: /types/show.php?id='.$_GET['type_id']);
     exit();
 }

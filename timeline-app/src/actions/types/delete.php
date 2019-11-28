@@ -1,4 +1,5 @@
 <?php
+
 use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
@@ -9,7 +10,6 @@ if (array_key_exists('id', $_GET)) {
     if (!HubspotClientHelper::isEmptyResponseSuccessful($response)) {
         throw new Exception($response->getReasonPhrase());
     }
-
 }
 
 header('Location: /types/list.php');

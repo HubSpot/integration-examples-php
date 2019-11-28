@@ -1,12 +1,12 @@
 <?php
 /**
- * @var array $property timeline event type's property
+ * @var array timeline event type's property
  */
 include __DIR__.'/../_partials/header.php';
 $propertyTypes = [
     'Date',
     'Numeric',
-    'String'
+    'String',
 ];
 ?>
 <pre>
@@ -32,18 +32,18 @@ $hubSpot->timeline()->updateEventType(
 <form method="post">
     <fieldset>
         <label for="name">Name</label>
-        <input type="text" placeholder="Name" id="name"<?php if (isset($_GET['property_id'])) { ?> readonly<?php } ?> name="name" value="<?=$property['name'];?>">
+        <input type="text" placeholder="Name" id="name"<?php if (isset($_GET['property_id'])) { ?> readonly<?php } ?> name="name" value="<?php echo $property['name']; ?>">
         <label for="label">Label</label>
-        <input type="text" placeholder="Label" id="label" name="label" value="<?=$property['label'];?>">
+        <input type="text" placeholder="Label" id="label" name="label" value="<?php echo $property['label']; ?>">
         <label for="propertyType">Property Type</label>
         <select id="propertyType" name="propertyType">
             <option disabled<?php if (empty($property['propertyType'])) { ?>selected<?php } ?>>Select Property Type</option>
             <?php foreach ($propertyTypes as $value) { ?>
-                <option <?php if ($property['propertyType'] == $value) {?>selected <?php } ?>value="<?=$value;?>"><?=$value;?></option>
+                <option <?php if ($property['propertyType'] == $value) {?>selected <?php } ?>value="<?php echo $value; ?>"><?php echo $value; ?></option>
             <?php } ?>
         </select>
         <input id="save" class="button-primary" type="submit" value="Save">
     </fieldset>
 </form>
 
-<?php include __DIR__.'/../_partials/footer.php' ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>

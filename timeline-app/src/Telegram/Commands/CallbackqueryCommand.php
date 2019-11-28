@@ -10,9 +10,10 @@ use Telegram\InvitationReply;
 class CallbackqueryCommand extends SystemCommand
 {
     /**
-     * @return \Longman\TelegramBot\Entities\ServerResponse
      * @throws \Longman\TelegramBot\Exception\TelegramException
      * @throws \Exception
+     *
+     * @return \Longman\TelegramBot\Entities\ServerResponse
      */
     public function execute()
     {
@@ -26,8 +27,8 @@ class CallbackqueryCommand extends SystemCommand
 
         $data = [
             'callback_query_id' => $this->getCallbackQuery()->getId(),
-            'text'              => $invitationReply->getReply(),
-            'cache_time'        => 5,
+            'text' => $invitationReply->getReply(),
+            'cache_time' => 5,
         ];
 
         return Request::answerCallbackQuery($data);

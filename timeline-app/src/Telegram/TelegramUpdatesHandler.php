@@ -7,10 +7,10 @@ use Repositories\TelegramUpdatesRepository;
 
 class TelegramUpdatesHandler
 {
-    protected $telegram;
     const COMMANDS_PATHS = [
-        __DIR__ . '/Commands',
+        __DIR__.'/Commands',
     ];
+    protected $telegram;
 
     public function __construct(string $botApiKey, string $botUsername)
     {
@@ -19,7 +19,8 @@ class TelegramUpdatesHandler
         $this->telegram->addCommandsPaths(self::COMMANDS_PATHS);
     }
 
-    public function handle() : void {
+    public function handle(): void
+    {
         $maxUpdateId = TelegramUpdatesRepository::findMaxId();
         $updates = \Longman\TelegramBot\Request::getUpdates(['offset' => $maxUpdateId + 1])->getResult();
         foreach ($updates as $update) {

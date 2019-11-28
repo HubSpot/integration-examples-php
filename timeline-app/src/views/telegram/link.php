@@ -1,6 +1,6 @@
 <?php
 /**
- * @var string $botLink
+ * @var string
  */
 include __DIR__.'/../_partials/header.php';
 ?>
@@ -22,4 +22,4 @@ include __DIR__.'/../_partials/header.php';
 
 <?php } ?>
 
-<?php include __DIR__.'/../_partials/footer.php' ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>

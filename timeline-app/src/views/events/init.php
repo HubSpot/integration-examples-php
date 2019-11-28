@@ -1,4 +1,4 @@
-<?php include __DIR__.'/../_partials/header.php' ?>
+<?php include __DIR__.'/../_partials/header.php'; ?>
 
 <h3 class="text-center">Initialization Script - press Go button to initialize event types</h3>
 <div class="row">
@@ -22,4 +22,4 @@ $hubSpot->timeline()->createEventType(
     <div class="column column-20"></div>
 </div>
 
-<?php include __DIR__.'/../_partials/footer.php' ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>
