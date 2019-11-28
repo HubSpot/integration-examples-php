@@ -7,6 +7,7 @@ include __DIR__.'/../_partials/header.php'; ?>
 
 <table class="contacts-list">
   <thead>
+  <tr><h2>Refresh this page to see the latest results of webhook events</h2></tr>
   <tr>
     <th>ID</th>
     <th>Email</th>

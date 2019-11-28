@@ -15,19 +15,23 @@ if (!Webhooks::isHubspotSignatureValid($_SERVER['HTTP_X_HUBSPOT_SIGNATURE'], get
 
 $events = json_decode($requestBody, true);
 
-$publicProperty = getEnvOrException('PUBLIC_PROPERTY');
-$protectedProperty = getEnvOrException('PROTECTED_PROPERTY');
+$publicProperty = getEnvOrException('PUBLIC_FILE_LINK_PROPERTY');
+$protectedProperty = getEnvOrException('PROTECTED_FILE_LINK_PROPERTY');
 
 foreach ($events as $event) {
+    // check if we got an event on property change corresponding to file submitted through our form
     if ('contact.propertyChange' == $event['subscriptionType']
             && $event['propertyName'] == $protectedProperty) {
         if (!empty($event['propertyValue'])) {
+            //Get file from the form  https://developers.hubspot.com/docs/methods/form-integrations/v1/uploaded-files/signed-url-redirect
             $response = $hubSpot->forms()->getUploadedFileByUrl($event['propertyValue']);
 
+            // Then upload this file via file maneger https://developers.hubspot.com/docs/methods/files/post_files
             if (HubspotClientHelper::isResponseSuccessful($response)) {
                 $uploadResponse = $hubSpot->files()->upload(StreamWrapper::getResource($response->getBody()), ['file_names' => uniqid()]);
 
                 if (HubspotClientHelper::isResponseSuccessful($uploadResponse)) {
+                    // Update the property with Public link to the file
                     $hubSpot->contacts()->update(
                         $event['objectId'],
                         [

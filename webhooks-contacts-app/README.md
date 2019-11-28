@@ -1,6 +1,6 @@
 # HubSpot-php sample Webhooks app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/ryanwinchester/hubspot-php). 
+This is a sample app for the [hubspot-php SDK](https://github.com/hubspot/hubspot-php). 
 Currently, this app focuses on demonstrating the functionality of [Webhooks API](https://developers.hubspot.com/docs/methods/webhooks/webhooks-overview), contact creation/deletion in particular.
 
 Please note that the Webhooks events are not sent in chronological order with respect to the creation time. Events might be sent in large numbers, for example when the user imports large number of contacts or deletes a large list of contacts.
