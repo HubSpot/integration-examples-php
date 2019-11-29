@@ -1,0 +1,19 @@
+{
+    "require": {
+        "hubspot/hubspot-php": "~1.2.3",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "byjg/migration": "4.0.*",
+        "longman/telegram-bot": "^0.61.0",
+        "spomky-labs/base64url": "^2.0"
+    },
+    "autoload": {
+        "files": [
+            "src/Helpers/functions.php"
+        ],
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
