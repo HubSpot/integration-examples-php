@@ -16,7 +16,6 @@ services:
       DB_PASSWORD: timeline
     volumes:
       - ./src:/app/src
-      - ./vendor:/app/vendor
       - ./sql:/app/sql
   db:
     image: mysql:8.0
