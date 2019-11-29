@@ -4,6 +4,9 @@ include_once '../../vendor/autoload.php';
 
 try {
     session_start();
+
+    \Helpers\DBClientHelper::runMigrations();
+
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     $publicUrls = [
         '/forms/init.php',

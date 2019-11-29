@@ -9,8 +9,30 @@ services:
       context: ./
     ports:
       - 8999:80
+    environment:
+      DB_HOST: db
+      DB_NAME: form
+      DB_USERNAME: form
+      DB_PASSWORD: form
+    depends_on:
+      - db
     volumes:
       - ./src:/app/src
+      - ./sql:/app/sql
+  db:
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    logging:
+      driver: none
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: form
+      MYSQL_USER: form
+      MYSQL_PASSWORD: form
   ngrok:
     image: gtriggiano/ngrok-tunnel
     ports:
