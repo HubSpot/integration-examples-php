@@ -84,6 +84,8 @@ $formResponse = $hubSpot->forms()->create([
     ],
 ]);
 
+//var_dump($formResponse); die();
+
 if (HubspotClientHelper::isResponseSuccessful($formResponse)) {
     $_SESSION['FORM'] = [
         'formId' => $formResponse->getData()->guid,

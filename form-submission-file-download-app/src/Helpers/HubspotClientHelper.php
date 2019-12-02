@@ -4,6 +4,7 @@ namespace Helpers;
 
 use SevenShores\Hubspot\Factory;
 use SevenShores\Hubspot\Http\Response;
+use SevenShores\Hubspot\Resources\OAuth2;
 
 class HubspotClientHelper
 {
@@ -13,14 +14,18 @@ class HubspotClientHelper
 
     public static function createFactory(): Factory
     {
-        if (empty($_ENV['HUBSPOT_API_KEY'])) {
-            throw new \Exception('Please specify API key');
-        }
+        $accessToken = OAuth2Helper::refreshAndGetAccessToken();
 
-        return static::create([
-            'key' => $_ENV['HUBSPOT_API_KEY'],
-            'oauth2' => false,
+        return self::create([
+            'key' => $accessToken,
+            'oauth2' => true,
         ]);
+    }
+
+
+    public static function getOAuth2Resource(): OAuth2
+    {
+        return self::create()->oAuth2();
     }
 
     public static function isResponseSuccessful(Response $response): bool
