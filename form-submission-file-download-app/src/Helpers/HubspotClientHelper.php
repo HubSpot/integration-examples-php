@@ -16,12 +16,11 @@ class HubspotClientHelper
     {
         $accessToken = OAuth2Helper::refreshAndGetAccessToken();
 
-        return self::create([
+        return static::create([
             'key' => $accessToken,
             'oauth2' => true,
         ]);
     }
-
 
     public static function getOAuth2Resource(): OAuth2
     {

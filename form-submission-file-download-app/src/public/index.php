@@ -16,14 +16,12 @@ try {
         exit();
     }
 
-
-
     if (in_array($uri, $protectedRoutes)) {
         if (!\Helpers\OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');
             exit();
         }
-        if (empty($_SESSION['FORM']) && $uri !== '/forms/init.php') {
+        if (empty($_SESSION['FORM']) && '/forms/init.php' !== $uri) {
             header('Location: /forms/init.php');
             exit();
         }

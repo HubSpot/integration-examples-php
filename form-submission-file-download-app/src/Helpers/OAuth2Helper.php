@@ -9,7 +9,7 @@ class OAuth2Helper
     const APP_REQUIRED_SCOPES = ['contacts', 'forms'];
     const CALLBACK_PATH = '/oauth/callback.php';
 
-    public static function getClientId()
+    public static function getClientId(): string
     {
         $clientId = $_ENV['HUBSPOT_CLIENT_ID'];
         if (empty($clientId)) {
@@ -19,7 +19,7 @@ class OAuth2Helper
         return $clientId;
     }
 
-    public static function getClientSecret()
+    public static function getClientSecret(): string
     {
         $clientSecret = $_ENV['HUBSPOT_CLIENT_SECRET'];
         if (empty($clientSecret)) {
@@ -29,12 +29,12 @@ class OAuth2Helper
         return $clientSecret;
     }
 
-    public static function getRedirectUri()
+    public static function getRedirectUri(): string
     {
         return UrlHelper::generateServerUri().self::CALLBACK_PATH;
     }
 
-    public static function getScope()
+    public static function getScope(): array
     {
         return self::APP_REQUIRED_SCOPES;
     }
@@ -49,7 +49,7 @@ class OAuth2Helper
         return !empty(TokensRepository::getToken());
     }
 
-    public static function refreshAndGetAccessToken()
+    public static function refreshAndGetAccessToken(): string
     {
         $tokens = TokensRepository::getToken();
 
