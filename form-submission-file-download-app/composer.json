@@ -2,7 +2,8 @@
     "require": {
         "hubspot/hubspot-php": "~1.0",
         "ext-curl": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "byjg/migration": "^4.0"
     },
     "autoload": {
         "files": [

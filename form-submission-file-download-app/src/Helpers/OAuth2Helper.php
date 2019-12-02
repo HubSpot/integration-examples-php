@@ -2,11 +2,12 @@
 
 namespace Helpers;
 
+use Repositories\TokensRepository;
+
 class OAuth2Helper
 {
-    const APP_REQUIRED_SCOPES = ['contacts'];
+    const APP_REQUIRED_SCOPES = ['contacts', 'forms'];
     const CALLBACK_PATH = '/oauth/callback.php';
-    const SESSION_TOKENS_KEY = 'tokens';
 
     public static function getClientId(): string
     {
@@ -30,40 +31,38 @@ class OAuth2Helper
 
     public static function getRedirectUri(): string
     {
-        return UrlHelper::generateServerUri().static::CALLBACK_PATH;
+        return UrlHelper::generateServerUri().self::CALLBACK_PATH;
     }
 
     public static function getScope(): array
     {
-        return static::APP_REQUIRED_SCOPES;
+        return self::APP_REQUIRED_SCOPES;
     }
 
-    public static function saveTokens(array $tokens): void
+    public static function getExpiresAt(int $expiresIn): int
     {
-        $tokens['expires_at'] = time() + $tokens['expires_in'] * 0.95;
-        $_SESSION[static::SESSION_TOKENS_KEY] = $tokens;
+        return time() + $expiresIn * 0.95;
     }
 
     public static function isAuthenticated(): bool
     {
-        return isset($_SESSION[static::SESSION_TOKENS_KEY]);
+        return !empty(TokensRepository::getToken());
     }
 
     public static function refreshAndGetAccessToken(): string
     {
-        if (empty($_SESSION[static::SESSION_TOKENS_KEY])) {
+        $tokens = TokensRepository::getToken();
+
+        if (empty($tokens)) {
             throw new \Exception('Please authorize via OAuth2');
         }
-
-        $tokens = $_SESSION[static::SESSION_TOKENS_KEY];
-
         if (time() > $tokens['expires_at']) {
             $tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByRefresh(
                 self::getClientId(),
                 self::getClientSecret(),
                 $tokens['refresh_token']
             )->toArray();
-            self::saveTokens($tokens);
+            TokensRepository::save($tokens);
         }
 
         return $tokens['access_token'];

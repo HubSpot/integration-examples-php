@@ -29,11 +29,6 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 
 1. Copy .env.template to .env
 2. Specify authorization data in .env:
-
-   - Paste your HubSpot API Key as the value for HUBSPOT_API_KEY
-
-   and
-
    - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
    - Paste PUBLIC_FILE_LINK_PROPERTY and PROTECTED_FILE_LINK_PROPERTY
 
@@ -42,7 +37,7 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 The best way to run this project (with the least configuration), is using docker compose. Change to the webroot and start it
 
 ```bash
-docker-compose up --build web
+docker-compose up --build
 ```
 
 Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.
