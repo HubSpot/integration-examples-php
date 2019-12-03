@@ -6,7 +6,7 @@ use Repositories\TokensRepository;
 
 class OAuth2Helper
 {
-    const APP_REQUIRED_SCOPES = ['contacts', 'forms'];
+    const APP_REQUIRED_SCOPES = ['contacts', 'forms', 'forms-uploaded-files', 'files'];
     const CALLBACK_PATH = '/oauth/callback.php';
 
     public static function getClientId(): string
