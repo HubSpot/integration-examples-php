@@ -27,7 +27,7 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/).
     
 3. Register telegram bot using [this guide](https://core.telegram.org/bots). Specify received bot data in .env:
    
-    - Paste TELEGRAM_BOT_API_KEY and TELEGRAM_BOT_USERNAME
+    - Paste TELEGRAM_BOT_API_TOKEN and TELEGRAM_BOT_USERNAME
     
 ### Running
 
