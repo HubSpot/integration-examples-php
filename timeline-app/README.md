@@ -42,7 +42,7 @@ To test the application proceed as follows:
 
 1. There is an initialization script init.php invoked by the user 
 on the initial Application page. It is designed to create event types which will be used
-for creating timeline events further.
+for creating timeline events later.
 
 2. After the initialization is done authorize the applications via OAuth2.
 
@@ -55,6 +55,6 @@ timeline event will be created.
 
 ### Project structure:
 
-- A background job listens for telegram updates, handles users replies. Located at 
+- A background job listens for telegram updates, handles users replies. It is implemented by 
 `src/console/telegram/handleUpdates.php`
-- CRUD actions for invitations, event types, oauth are places in `src/actions`
+- CRUD actions for invitations, event types, oauth are located in `src/actions`
