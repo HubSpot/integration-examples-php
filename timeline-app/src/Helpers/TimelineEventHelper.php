@@ -3,26 +3,23 @@
 namespace Helpers;
 
 use Repositories\EventTypesRepository;
-use Repositories\InvitationsRepository;
 use Repositories\UsersRepository;
 
 class TimelineEventHelper
 {
-    public static function createEvent(int $invitationId, int $telegramChatId): void
+    public static function createEvent(string $telegramChatId, string $eventTypeCode, array $eventTypeData = [])
     {
         $hubSpot = HubspotClientHelper::createFactory();
-        $hubSpot->timeline()->createOrUpdate(
+        return $hubSpot->timeline()->createOrUpdate(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
-            EventTypesRepository::getHubspotEventIDByCode('acceptedInvitation'),
+            EventTypesRepository::getHubspotEventIDByCode($eventTypeCode),
             uniqid(),
             null,
             UsersRepository::getEmailByTelegramChatId($telegramChatId),
             null,
             [],
             null,
-            [
-                'name' => InvitationsRepository::getById($invitationId)['name'],
-            ]
+            $eventTypeData
         );
     }
 }
