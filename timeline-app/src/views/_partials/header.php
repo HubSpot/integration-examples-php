@@ -17,13 +17,13 @@
             </a>
             <ul class="navigation-list float-right">
                 <li class="navigation-item">
-                    <a class="navigation-link" href="/telegram/link.php">Telegram Bot</a>
+                    <a class="navigation-link" href="/telegram/link.php">Manage Telegram Bot Invites </a>
                 </li>
                 <li class="navigation-item">
-                    <a class="navigation-link" href="/types/list.php">Types</a>
+                    <a class="navigation-link" href="/types/list.php">Manage Event Types</a>
                 </li>
                 <li class="navigation-item">
-                    <a class="navigation-link" href="/invitations/list.php">Invitations</a>
+                    <a class="navigation-link" href="/invitations/list.php">Manage Invitations</a>
                 </li>
                 <li class="navigation-item">
                     <a class="navigation-link" href="/oauth/login.php">OAuth2</a>
