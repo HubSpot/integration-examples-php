@@ -7,6 +7,7 @@ services:
     build: .
     depends_on:
       - db
+    command: dockerize -wait-retry-interval 5s -timeout 30s -wait tcp://db:3306 /usr/bin/supervisord
     ports:
       - 8999:80
     environment:

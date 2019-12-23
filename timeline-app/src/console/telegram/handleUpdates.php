@@ -1,8 +1,13 @@
 <?php
 
+use Helpers\DBClientHelper;
+use Telegram\TelegramUpdatesHandler;
+
 require __DIR__.'/../../../vendor/autoload.php';
 
-$telegramUpdatesHandler = new \Telegram\TelegramUpdatesHandler(
+DBClientHelper::runMigrations();
+
+$telegramUpdatesHandler = new TelegramUpdatesHandler(
     getEnvOrException('TELEGRAM_BOT_API_KEY'),
     getEnvOrException('TELEGRAM_BOT_USERNAME')
 );

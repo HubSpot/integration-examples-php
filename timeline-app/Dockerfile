@@ -17,4 +17,9 @@ RUN /usr/local/bin/composer install
 
 RUN apt-get install -y supervisor
 COPY docker/supervisor/processes.conf /etc/supervisor/conf.d/apache.conf
-CMD ["/usr/bin/supervisord"]
+
+RUN apt-get install -y wget
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
