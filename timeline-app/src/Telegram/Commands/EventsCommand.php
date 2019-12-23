@@ -2,6 +2,9 @@
 
 namespace Longman\TelegramBot\Commands\SystemCommands;
 
+use Enums\EventTypeCode;
+use Enums\UserInvitationAction;
+use Helpers\TimelineEventHelper;
 use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Entities\ServerResponse;
 use Longman\TelegramBot\Exception\TelegramException;
@@ -21,10 +24,10 @@ class EventsCommand extends SystemCommand
     public function execute()
     {
         $message = $this->getMessage();
-        $chat_id = $message->getChat()->getId();
+        $chatId = $message->getChat()->getId();
 
         $data = [
-            'chat_id' => $chat_id,
+            'chat_id' => $chatId,
         ];
 
         $invitation = InvitationsRepository::getRandom();
@@ -34,6 +37,7 @@ class EventsCommand extends SystemCommand
             ];
         } else {
             $invitationId = $invitation['id'];
+            $this->createTimelineEvent($invitationId);
             $data += [
                 'text' => $invitation['text'],
                 'reply_markup' => json_encode([
@@ -48,5 +52,19 @@ class EventsCommand extends SystemCommand
         }
 
         return Request::sendMessage($data);
+    }
+
+    protected function createTimelineEvent($invitationId)
+    {
+        $chatId = $this->getMessage()->getChat()->getId();
+        $action = UserInvitationAction::RECEIVED;
+        TimelineEventHelper::createEvent(
+            $chatId,
+            EventTypeCode::USER_INVITATION_ACTION,
+            [
+                'name' => InvitationsRepository::getById($invitationId)['name'],
+                'action' => $action,
+            ]
+        );
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Enums\EventTypeCode;
 use Helpers\Oauth2Helper;
 use Repositories\EventTypesRepository;
 
@@ -15,8 +16,8 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if (!in_array($uri, $publicRoutes)) {
-        if (!EventTypesRepository::getHubspotEventIDByCode('BotAdded')
-                || !EventTypesRepository::getHubspotEventIDByCode('acceptedInvitation')) {
+        if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
+                || !EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
             header('Location: /events/init.php');
         } elseif (!Oauth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');
