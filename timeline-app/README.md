@@ -53,6 +53,14 @@ a HubSpot contact with telegram chat by email. Generate bot link, share it with 
 4. Telegram bot sends invitations to participate in events. If a contact agrees - corresponding 
 timeline event will be created.
 
+### Debugging
+
+To see telegram bot logs execute
+
+```bash
+docker-compose exec web cat /var/log/supervisor/telegram-handle-updates-out.log
+```
+
 ### Project structure:
 
 - A background job listens for telegram updates, handles users replies. It is implemented by 
