@@ -9,7 +9,7 @@ include __DIR__.'/../_partials/header.php';
     <h4>Successfully sent to selected contact lists</h4>
 <?php } ?>
 
-<h3>Select contact lists to send the invitation to</h3>
+<h3>Select static contact lists to send the invitation to</h3>
 
 <form method="post">
     <table class="types-list">

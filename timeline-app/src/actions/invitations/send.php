@@ -40,6 +40,6 @@ if (isset($_POST['listIds'])) {
     $sent = true;
 }
 
-$contactLists = $hubSpot->contactLists()->all()->getData()->lists;
+$contactLists = $hubSpot->contactLists()->getAllStatic(['count' => 250])->getData()->lists;
 
 include __DIR__.'/../../views/invitations/send.php';
