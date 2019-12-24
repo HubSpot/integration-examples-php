@@ -10,7 +10,7 @@ use Longman\TelegramBot\Entities\ServerResponse;
 use Longman\TelegramBot\Exception\TelegramException;
 use Longman\TelegramBot\Request;
 use Repositories\InvitationsRepository;
-use Telegram\InvitationReply;
+use Telegram\TelegramBot;
 
 class EventsCommand extends SystemCommand
 {
@@ -26,32 +26,18 @@ class EventsCommand extends SystemCommand
         $message = $this->getMessage();
         $chatId = $message->getChat()->getId();
 
-        $data = [
-            'chat_id' => $chatId,
-        ];
-
         $invitation = InvitationsRepository::getRandom();
+
         if (empty($invitation)) {
-            $data += [
+            $data = [
+                'chat_id' => $chatId,
                 'text' => 'No more upcoming events :(',
             ];
-        } else {
-            $invitationId = $invitation['id'];
-            $this->createTimelineEvent($invitationId);
-            $data += [
-                'text' => $invitation['text'],
-                'reply_markup' => json_encode([
-                    'inline_keyboard' => [
-                        [
-                            ['text' => 'YES', 'callback_data' => InvitationReply::encodeYesReply($invitationId)],
-                            ['text' => 'NO', 'callback_data' => InvitationReply::encodeNoReply($invitationId)],
-                        ],
-                    ],
-                ]),
-            ];
+            return Request::sendMessage($data);
         }
 
-        return Request::sendMessage($data);
+        TelegramBot::sendInvitation($invitation, $chatId);
+        $this->createTimelineEvent($invitation['id']);
     }
 
     protected function createTimelineEvent($invitationId)
