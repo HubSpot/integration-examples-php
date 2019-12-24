@@ -1,18 +1,15 @@
 <?php
 
 use Helpers\DBClientHelper;
-use Telegram\TelegramUpdatesHandler;
+use Telegram\TelegramBot;
 
 require __DIR__.'/../../../vendor/autoload.php';
 
 DBClientHelper::runMigrations();
 
-$telegramUpdatesHandler = new TelegramUpdatesHandler(
-    getEnvOrException('TELEGRAM_BOT_API_TOKEN'),
-    getEnvOrException('TELEGRAM_BOT_USERNAME')
-);
+$telegramUpdatesHandler = TelegramBot::init();
 
 while (true) {
-    $telegramUpdatesHandler->handle();
+    $telegramUpdatesHandler->processUpdates();
     sleep(1);
 }

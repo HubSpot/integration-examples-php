@@ -23,4 +23,14 @@ class UsersRepository
 
         return $query->fetchColumn(0);
     }
+
+    public static function getTelegramChatIdByEmail(string $email)
+    {
+        $query = DBClientHelper::getClient()
+            ->prepare('select telegram_chat_id from user where email = ?')
+        ;
+        $query->execute([$email]);
+
+        return $query->fetchColumn(0);
+    }
 }
