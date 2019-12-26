@@ -38,8 +38,8 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         'User received/accepted/rejected an invitation',
         'User {{ action }} an invitation for {{ name }}',
-        'Event URL: {{ event_url }}
-         This event happened on {{#formatDate timestamp}}{{/formatDate}}',
+        ' - Event URL: [{{ event_url }}]({{ event_url }})
+          - This event happened on {{#formatDate timestamp}}{{/formatDate}}'
         'CONTACT'
     );
 
