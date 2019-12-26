@@ -11,6 +11,7 @@ $invitation = InvitationsRepository::getById($_GET['id']);
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
     $invitation['name'] = $_POST['name'];
     $invitation['text'] = $_POST['text'];
+    $invitation['event_url'] = $_POST['event_url'];
     InvitationsRepository::update($invitation);
 
     header('Location: /invitations/list.php');

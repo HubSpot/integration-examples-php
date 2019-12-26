@@ -37,8 +37,9 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
     $invitationEventType = $hubSpot->timeline()->createEventType(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         'User received/accepted/rejected an invitation',
-        '#User {{ action }} an invitation for {{ name }}',
-        'This event happened on {{#formatDate timestamp}}{{/formatDate}}',
+        'User {{ action }} an invitation for {{ name }}',
+        'Event URL: {{ event_url }}
+         This event happened on {{#formatDate timestamp}}{{/formatDate}}',
         'CONTACT'
     );
 
