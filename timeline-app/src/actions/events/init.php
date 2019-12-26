@@ -44,6 +44,9 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
     );
 
     if (HubspotClientHelper::isResponseSuccessful($invitationEventType)) {
+    // We need to add 3 custom properties to this Event type in order to use them in Event's template
+        //add custom property 'name' to this Event Type 
+        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
         $nameProperty = $hubSpot->timeline()->createEventTypeProperty(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $invitationEventType->getData()->id,
@@ -51,7 +54,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
             'Invitation Name',
             'String'
         );
-        //add custom property to this Event Type 
+        //add custom property 'action' to this Event Type 
         //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
         $actionProperty = $hubSpot->timeline()->createEventTypeProperty(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
@@ -61,6 +64,15 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
             'String'
         );
 
+        //add custom property 'event_url' to this Event Type 
+        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
+        $actionProperty = $hubSpot->timeline()->createEventTypeProperty(
+            getEnvOrException('HUBSPOT_APPLICATION_ID'),
+            $invitationEventType->getData()->id,
+            'event_url',
+            'Event URL',
+            'String'
+        );
         if (HubspotClientHelper::isResponseSuccessful($nameProperty)
             && HubspotClientHelper::isResponseSuccessful($actionProperty)) {
             EventTypesRepository::insert([
