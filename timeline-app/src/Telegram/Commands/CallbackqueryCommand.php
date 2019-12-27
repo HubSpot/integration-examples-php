@@ -34,9 +34,6 @@ class CallbackqueryCommand extends SystemCommand
 
     protected function createTimelineEvent(InvitationReply $invitationReply)
     {
-        var_dump($invitationReply);
-//        var_dump(InvitationsRepository::getById($invitationId));
-
         $chatId = $this->getCallbackQuery()->getMessage()->getChat()->getId();
         $invitationId = $invitationReply->getInvitationId();
         $action = $invitationReply->isYesReply() ? UserInvitationAction::ACCEPTED : UserInvitationAction::REJECTED;
