@@ -39,11 +39,12 @@ class InvitationsRepository
     public static function insert(array $invitation)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('insert into invitations (name, text) values (?, ?)')
+            ->prepare('insert into invitations (name, text, event_url) values (?, ?, ?)')
         ;
         $query->execute([
             $invitation['name'],
             $invitation['text'],
+            $invitation['event_url'],
         ]);
     }
 
@@ -55,6 +56,7 @@ class InvitationsRepository
         $query->execute([
             $invitation['name'],
             $invitation['text'],
+            $invitation['event_url'],
             $invitation['id'],
         ]);
     }

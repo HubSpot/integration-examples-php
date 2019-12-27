@@ -43,6 +43,7 @@ class CallbackqueryCommand extends SystemCommand
             [
                 'name' => InvitationsRepository::getById($invitationId)['name'],
                 'action' => $action,
+                'event_url' => InvitationsRepository::getById($invitationId)['event_url'],
             ]
         );
     }

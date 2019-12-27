@@ -22,4 +22,10 @@ class EventTypesRepository
         $query = $db->prepare('insert into event_types (code, hubspot_event_type_id) values (?, ?)');
         $query->execute([$type['code'], $type['hubspot_event_type_id']]);
     }
+    public static function delete() 
+    {
+        $db = DBClientHelper::getClient();
+        $query = $db->prepare('delete from  event_types');
+        $query->execute();
+    }
 }

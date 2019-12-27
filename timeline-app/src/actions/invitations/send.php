@@ -23,6 +23,7 @@ $sendInvitationAndCreateTimelineEvent = function($invitation, $contact) use ($hu
             [
                 'name' => $invitation['name'],
                 'action' => UserInvitationAction::RECEIVED,
+                'event_url' => $invitation['event_url'],
             ]
         );
     }
