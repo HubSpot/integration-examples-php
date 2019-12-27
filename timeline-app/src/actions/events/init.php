@@ -9,6 +9,8 @@ if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     exit();
 }
 
+EventTypesRepository::delete();
+
 //Intialize HubSpot API Wrapper using HUBSPOT_DEVELOPER_API_KEY needed to create Event Type
 //Note that you asscoiate Event Types with application while actual events will be associated with objects in Portals, e.g. Contacts 
 //That is why Developer API Key is used to initialize the Wrapper to make calls to Event Type API links
@@ -38,8 +40,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         'User received/accepted/rejected an invitation',
         'User {{ action }} an invitation for {{ name }}',
-        ' - Event URL: [{{ event_url }}]({{ event_url }})
-          - This event happened on {{#formatDate timestamp}}{{/formatDate}}'
+        'Event URL: [{{ event_url }}]({{ event_url }})'."  \n".'This event happened on {{#formatDate timestamp}}{{/formatDate}}',
         'CONTACT'
     );
 
