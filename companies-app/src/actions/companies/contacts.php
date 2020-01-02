@@ -51,10 +51,13 @@ if (!empty($search)) {
 
 $associatedContacts = [];
 if (count($contacts) > 0) {
-    $associatedContacts = $hubSpot->crmAssociations()->get(
+    $associationResponse = $hubSpot->crmAssociations()->get(
         $companyId,
         $hubSpot->crmAssociations()::COMPANY_TO_CONTACT,
         ['limit' => 20]
-    )->getData()->results;
+    );
+    if (HubspotClientHelper::isResponseSuccessful($associationResponse)) {
+        $associatedContacts = $associationResponse->getData()->results;
+    }
 }
 include __DIR__.'/../../views/companies/contacts.php';
