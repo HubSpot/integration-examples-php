@@ -10,6 +10,10 @@ include __DIR__.'/../_partials/header.php';
 <?php } ?>
 
 <h3>Select static contact lists to send the invitation to</h3>
+<pre>
+// src/actions/events/send.php - get all static lists
+$contactLists = $hubSpot->contactLists()->getAllStatic(['count' => 250])->getData()->lists;
+</pre>
 
 <form method="post">
     <table class="types-list">
