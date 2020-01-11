@@ -4,6 +4,7 @@ This is a sample app for the [hubspot-php SDK](https://github.com/HubSpot/hubspo
 Currently, this app is focused on demonstrating of [Timeline API](https://developers.hubspot.com/docs/methods/timeline/timeline-overview)
 integration with [Telegram](https://telegram.org/).
 
+### HubSpot CRM and Telegram messandger integration
 This application lets you communicate with your CRM contacts via Telegram messanger chat bot and keep track of their responses in HubSpot CRM Contact's Timeline. It demonstrates the use of [HubSpot Timeline API](https://developers.hubspot.com/docs/methods/timeline/timeline-overview) as well as [HubSpot Contact List API](https://developers.hubspot.com/docs/methods/lists/contact-lists-overview) and Telegram Chat Bot API. As of now you can create new Event Types in CRM using this application but only two Event Types are used to create Timeline Events recording customer's responses to the event invites sent via Telegram Chat Bot.
 
 You can
