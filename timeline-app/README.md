@@ -19,7 +19,7 @@ You can
 - Create invites to your events and send them to your Static Contact Lists [src/actions/invitations]
   - Telegram bot sends invitations to participate in events. 
   - If a contact responds  - corresponding timeline event will be created.
-  - Sending an inite as well as user starting the Bot are also recored as Timeline Events
+  - Sending an invite as well as user starting the Bot are also recored as Timeline Events
 - Track Contact's responses as Timeline Events using [TimelineEventHelper.php](src/Helpers/TimelineEventHelper.php)
 
 Please see the documentation on:
