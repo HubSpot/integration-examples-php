@@ -23,6 +23,7 @@ $sendInvitationAndCreateTimelineEvent = function($invitation, $contact) use ($hu
             [
                 'name' => $invitation['name'],
                 'action' => UserInvitationAction::RECEIVED,
+                'event_url' => $invitation['event_url'],
             ]
         );
     }
@@ -39,7 +40,7 @@ if (isset($_POST['listIds'])) {
     }
     $sent = true;
 }
-
+//Call to get lists of contacts https://developers.hubspot.com/docs/methods/lists/get_static_lists
 $contactLists = $hubSpot->contactLists()->getAllStatic(['count' => 250])->getData()->lists;
 
 include __DIR__.'/../../views/invitations/send.php';

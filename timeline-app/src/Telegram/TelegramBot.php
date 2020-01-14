@@ -56,4 +56,22 @@ class TelegramBot
 
         return Request::sendMessage($data);
     }
+
+    public static function sendInvitationLink(array $invitation, int $chatId)
+    {
+        $invitationId = $invitation['id'];
+        $data = [
+            'chat_id' => $chatId,
+            'text' => 'Thank You! Press here to learn more about the event',
+            'reply_markup' => json_encode([
+                'inline_keyboard' => [
+                    [
+                        ['text' => 'Go To '.$invitation['name'], 'url' =>  $invitation['event_url']]
+                    ],
+                ],
+            ]),
+        ];
+
+        return Request::sendMessage($data);
+    }
 }

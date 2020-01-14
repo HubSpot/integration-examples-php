@@ -9,8 +9,15 @@ if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     exit();
 }
 
+EventTypesRepository::delete();
+
+//Intialize HubSpot API Wrapper using HUBSPOT_DEVELOPER_API_KEY needed to create Event Type
+//Note that you asscoiate Event Types with application while actual events will be associated with objects in Portals, e.g. Contacts 
+//That is why Developer API Key is used to initialize the Wrapper to make calls to Event Type API links
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
+
 if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)) {
+    //create one event type with  https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
     $botAdded = $hubSpot->timeline()->createEventType(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         'Telegram Bot added',
@@ -26,37 +33,52 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)) {
         ]);
     }
 }
-
+//
 if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
-    $invitation = $hubSpot->timeline()->createEventType(
+    //create another event type with  https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
+    $invitationEventType = $hubSpot->timeline()->createEventType(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         'User received/accepted/rejected an invitation',
-        '#User {{ action }} an invitation for {{ name }}',
-        'This event happened on {{#formatDate timestamp}}{{/formatDate}}',
+        'User {{ action }} an invitation for {{ name }}',
+        'Event URL: [{{ event_url }}]({{ event_url }})'."  \n".'This event happened on {{#formatDate timestamp}}{{/formatDate}}',
         'CONTACT'
     );
 
-    if (HubspotClientHelper::isResponseSuccessful($invitation)) {
+    if (HubspotClientHelper::isResponseSuccessful($invitationEventType)) {
+    // We need to add 3 custom properties to this Event type in order to use them in Event's template
+        //add custom property 'name' to this Event Type 
+        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
         $nameProperty = $hubSpot->timeline()->createEventTypeProperty(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
-            $invitation->getData()->id,
+            $invitationEventType->getData()->id,
             'name',
             'Invitation Name',
             'String'
         );
+        //add custom property 'action' to this Event Type 
+        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
         $actionProperty = $hubSpot->timeline()->createEventTypeProperty(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
-            $invitation->getData()->id,
+            $invitationEventType->getData()->id,
             'action',
             'User Action',
             'String'
         );
 
+        //add custom property 'event_url' to this Event Type 
+        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
+        $actionProperty = $hubSpot->timeline()->createEventTypeProperty(
+            getEnvOrException('HUBSPOT_APPLICATION_ID'),
+            $invitationEventType->getData()->id,
+            'event_url',
+            'Event URL',
+            'String'
+        );
         if (HubspotClientHelper::isResponseSuccessful($nameProperty)
             && HubspotClientHelper::isResponseSuccessful($actionProperty)) {
             EventTypesRepository::insert([
                 'code' => EventTypeCode::USER_INVITATION_ACTION,
-                'hubspot_event_type_id' => $invitation->getData()->id,
+                'hubspot_event_type_id' => $invitationEventType->getData()->id,
             ]);
         }
     }

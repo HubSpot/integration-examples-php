@@ -9,6 +9,7 @@ use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Request;
 use Repositories\InvitationsRepository;
 use Telegram\InvitationReply;
+use Telegram\TelegramBot;
 
 class CallbackqueryCommand extends SystemCommand
 {
@@ -29,6 +30,10 @@ class CallbackqueryCommand extends SystemCommand
             'cache_time' => 5,
         ];
 
+        if ($invitationReply->isYesReply()) {
+            $invitationId = $invitationReply->getInvitationId();
+            TelegramBot::sendInvitationLink(InvitationsRepository::getById($invitationId), $this->getCallbackQuery()->getMessage()->getChat()->getId());
+        }
         return Request::answerCallbackQuery($data);
     }
 
@@ -43,6 +48,7 @@ class CallbackqueryCommand extends SystemCommand
             [
                 'name' => InvitationsRepository::getById($invitationId)['name'],
                 'action' => $action,
+                'event_url' => InvitationsRepository::getById($invitationId)['event_url'],
             ]
         );
     }
