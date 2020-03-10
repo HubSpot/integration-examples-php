@@ -31,5 +31,5 @@ while (true) {
 
     echo PHP_EOL.'Request: Get contacts'.PHP_EOL;
 
-    $hubspot->crm()->contacts()->basicApi()->getPage();
+    $hubspot->contacts()->all();
 }
