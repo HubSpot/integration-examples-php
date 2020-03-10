@@ -3,9 +3,10 @@
         "hubspot/hubspot-php": "~1.0",
         "ext-curl": "*",
         "ext-json": "*",
-        "nmred/kafka-php": "0.2.*",
         "ext-pdo": "*",
-        "byjg/migration": "4.0.*"
+        "byjg/migration": "4.0.*",
+        "psr/log": "^1.1",
+        "monolog/monolog": "^2.0"
     },
     "autoload": {
         "files": [
