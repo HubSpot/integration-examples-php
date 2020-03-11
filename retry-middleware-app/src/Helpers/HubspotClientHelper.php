@@ -22,13 +22,11 @@ class HubspotClientHelper
     public static function createFactory(): Factory
     {
         $accessToken = OAuth2Helper::refreshAndGetAccessToken();
-        
-        $config = [
+
+        return self::create([
             'key' => $accessToken,
             'oauth2' => true,
-        ];
-
-        return self::create($config, new Client($config, static::getGuzzleClient()));
+        ]);
     }
 
     public static function getOAuth2Resource(): OAuth2
@@ -45,7 +43,7 @@ class HubspotClientHelper
     {
         return new Factory(
             $factoryConfig,
-            null,
+            new Client($factoryConfig, static::getGuzzleClient()),
             [
                 'http_errors' => false, // pass any Guzzle related option to any request, e.g. throw no exceptions
             ],
