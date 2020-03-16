@@ -4,6 +4,7 @@ services:
   web:
     env_file:
       - .env
+    command: dockerize -wait-retry-interval 3s -timeout 30s -wait tcp://db:3306 /usr/bin/supervisord
     environment:
       DB_HOST: db
       DB_NAME: retrymiddleware
