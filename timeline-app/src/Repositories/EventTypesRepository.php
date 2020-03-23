@@ -9,8 +9,8 @@ class EventTypesRepository
     public static function getHubspotEventIDByCode(string $code)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('select hubspot_event_type_id from event_types where code = ?')
-        ;
+            ->prepare('select hubspot_event_type_id from event_types where code = ?');
+        
         $query->execute([$code]);
 
         return $query->fetchColumn(0);

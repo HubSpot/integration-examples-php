@@ -8,7 +8,7 @@ integration with [Telegram](https://telegram.org/).
 This application lets you communicate with your CRM contacts via Telegram messanger chat bot and keep track of their responses in HubSpot CRM Contact's Timeline. It demonstrates the use of [HubSpot Timeline API](https://developers.hubspot.com/docs/methods/timeline/timeline-overview) as well as [HubSpot Contact List API](https://developers.hubspot.com/docs/methods/lists/contact-lists-overview) and Telegram Chat Bot API. As of now you can create new Event Types in CRM using this application but only two Event Types are used to create Timeline Events recording customer's responses to the event invites sent via Telegram Chat Bot.
 
 You can
-- Authorize this application with HubSpot using OAuth 2.0 - see [Oauth2Helper.php](src/Helpers/Oauth2Helper.php) for OAuth 2.0 utilities.
+- Authorize this application with HubSpot using OAuth 2.0 - see [OAuth2Helper.php](src/Helpers/OAuth2Helper.php) for OAuth 2.0 utilities.
   - Note: we store access tokens in MySQL DB
 - Initialization script [init.php](src/actions/events/init.php) creates two Event Types in HubSpot associated with your Application (you should use Developer HAPI Key for that)
   - User is expected to run this script first in the application

@@ -14,7 +14,7 @@ class HubspotClientHelper
     public static function createFactory(): Factory
     {
         $useOauth = OAuth2Helper::isAuthenticated();
-        $key = $useOauth ? Oauth2Helper::refreshAndGetAccessToken() : $_ENV['HUBSPOT_API_KEY'];
+        $key = $useOauth ? OAuth2Helper::refreshAndGetAccessToken() : $_ENV['HUBSPOT_API_KEY'];
         if (empty($key)) {
             throw new \Exception('Please specify API key or authorize via OAuth');
         }
