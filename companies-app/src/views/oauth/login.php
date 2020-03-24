@@ -1,6 +1,7 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
-<div class="row authorize-button">
+<h3 class="text-center">In order to continue please authorize via OAuth</h3>
+<div class="text-center">
     <a class="button" href="/oauth/authorize.php">Authorize</a>
 </div>
 

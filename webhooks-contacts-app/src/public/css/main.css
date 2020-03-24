@@ -98,3 +98,8 @@
     background-color: #9b4dca;
     color: #fff;
 }
+
+.text-center {
+    text-align: center;
+    justify-content: center;
+}

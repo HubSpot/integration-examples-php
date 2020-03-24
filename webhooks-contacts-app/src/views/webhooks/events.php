@@ -1,6 +1,6 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
-<h3 id='alert-not-shown-events' class="hidden" datetime-mark="<?php echo time(); ?>">New webhooks are received. <a href="#">Reload</a> the page to see updates</h3>
+<h3 id='alert-not-shown-events' class="hidden text-center" datetime-mark="<?php echo time(); ?>">New webhooks are received. <a href="#">Reload</a> the page to see updates</h3>
 <?php if ($paginator->getCount() > 0) { ?>
 <table>
     <thead>
@@ -28,7 +28,7 @@
     </tbody>
 </table>
 <?php } else { ?>
-<h3 id="empty-message">Webhooks haven't been received yet.</h3>
+<h3 id="empty-message" class="text-center">Webhooks haven't been received yet.</h3>
 <?php } ?>
 <?php
 include __DIR__.'/../_partials/pagination.php';

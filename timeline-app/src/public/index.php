@@ -1,7 +1,7 @@
 <?php
 
 use Enums\EventTypeCode;
-use Helpers\Oauth2Helper;
+use Helpers\OAuth2Helper;
 use Repositories\EventTypesRepository;
 
 include_once '../../vendor/autoload.php';
@@ -19,7 +19,7 @@ try {
         if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
                 || !EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
             header('Location: /events/init.php');
-        } elseif (!Oauth2Helper::isAuthenticated()) {
+        } elseif (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');
         }
     }

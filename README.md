@@ -7,4 +7,5 @@ This repository contains a number of sample applications
  - [Webhooks API demo application](https://github.com/HubSpot/integration-examples-php/tree/master/webhooks-contacts-app)
  - [Form submission and File Download application](https://github.com/HubSpot/integration-examples-php/tree/master/form-submission-file-download-app)
  - [Timeline API demo application](https://github.com/HubSpot/integration-examples-php/tree/master/timeline-app)
+ - [Retry Middleware demo application](https://github.com/HubSpot/integration-examples-php/tree/master/retry-middleware-app)
 

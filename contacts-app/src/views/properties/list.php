@@ -17,7 +17,7 @@
       <td><?php echo htmlentities($property->label); ?></td>
       <td><?php echo htmlentities($property->description); ?></td>
       <td><?php echo htmlentities($property->type); ?></td>
-        <td><?php if (!$property->mutableDefinitionNotDeletable && !$property->readOnlyDefinition) { ?>
+        <td><?php if (!$property->mutableDefinitionNotDeletable) { ?>
                 <a id="remove-<?php echo htmlentities($property->name); ?>" href="/properties/delete.php?name=<?php echo htmlentities($property->name); ?>">
                     <input type="button" value="Delete" title="Delete" class="button-primary"/>
                 </a> <?php } ?></td>

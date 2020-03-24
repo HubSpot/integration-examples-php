@@ -1,6 +1,6 @@
 <?php
 
-use Helpers\Oauth2Helper;
+use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
 
@@ -9,38 +9,30 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {
     \Helpers\DBClientHelper::runMigrations();
-
-    switch ($uri) {
-        // allowed for anonymous
-        case '/oauth/login.php':
-        case '/oauth/authorize.php':
-        case '/oauth/callback.php':
-        case '/webhooks/handle.php':
-        case '/ajax/events.php':
-            $path = __DIR__.'/../actions'.$uri;
-            require $path;
+    
+    // allowed for anonymous
+    $publicRoutes = require '../routes/public.php';
+    // protected
+    $protectedRoutes = require '../routes/protected.php';
+    
+    if (!in_array($uri, $publicRoutes)) {
+        if (!OAuth2Helper::isAuthenticated()) {
+            header('Location: /oauth/login.php');
             exit();
+        }
     }
-
-    if (!Oauth2Helper::isAuthenticated()) {
-        header('Location: /oauth/login.php');
+    
+    if ('/' === $uri) {
+        header('Location: /webhooks/events.php');
+        exit();
+    }
+    
+    if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
+        http_response_code(404);
         exit();
     }
 
-    switch ($uri) {
-        // protected
-        case '/':
-            header('Location: /webhooks/events.php');
-            exit();
-        case '/webhooks/events.php':
-        case '/webhooks/delete.php':
-            $path = __DIR__.'/../actions'.$uri;
-            require $path;
-            exit();
-        default:
-            http_response_code(404);
-            exit();
-    }
+    require __DIR__.'/../actions'.$uri;
 } catch (Throwable $t) {
     $message = $t->getMessage();
     include __DIR__.'/../views/error.php';
