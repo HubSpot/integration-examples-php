@@ -28,7 +28,7 @@ function create_or_delete_contacts_associations($companyId, $contactsIds)
         $redirectParams['contactsDeleted'] = true;
     }
 
-    return '/companies/show.php?'.http_build_query($redirectParams);
+    return '/companies/show?'.http_build_query($redirectParams);
 }
 
 $companyId = $_GET['companyId'] ?: null;

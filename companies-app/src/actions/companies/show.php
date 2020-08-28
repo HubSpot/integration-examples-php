@@ -37,7 +37,7 @@ if (isset($_POST['name'])) {
     $redirectParams['id'] = $response->getData()->companyId;
 
     if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /companies/show.php?'.http_build_query($redirectParams));
+        header('Location: /companies/show?'.http_build_query($redirectParams));
         exit();
     }
 
