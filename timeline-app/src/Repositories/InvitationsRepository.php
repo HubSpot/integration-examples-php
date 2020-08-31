@@ -50,7 +50,7 @@ class InvitationsRepository
     public static function update(array $invitation)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('update invitations set name = ?, text = ? where id = ?');
+            ->prepare('update invitations set name = ?, text = ?, event_url = ? where id = ?');
         
         $query->execute([
             $invitation['name'],
