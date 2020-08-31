@@ -64,7 +64,7 @@ class OAuth2Helper
                 self::getClientSecret(),
                 $token['refresh_token']
             )->toArray();
-            
+
             TokensRepository::save($token);
         }
 

@@ -1,7 +1,7 @@
 <?php
 
-use Helpers\OAuth2Helper;
 use Helpers\DBClientHelper;
+use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
 

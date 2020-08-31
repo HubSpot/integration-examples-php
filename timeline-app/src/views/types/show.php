@@ -25,8 +25,8 @@ $hubSpot->timeline()->getEventTypeProperties('HubSpot Application ID', 'Event Ty
             </tbody>
         </table>
         <div>
-            <a id='type-update' class="button" href="/types/update.php?id=<?php echo $type->id; ?>">Update</a>
-            <a id='type-delete' class="button" href="/types/delete.php?id=<?php echo $type->id; ?>">Delete</a>
+            <a id='type-update' class="button" href="/types/update?id=<?php echo $type->id; ?>">Update</a>
+            <a id='type-delete' class="button" href="/types/delete?id=<?php echo $type->id; ?>">Delete</a>
         </div>
         <pre>
 // src/actions/types/delete.php

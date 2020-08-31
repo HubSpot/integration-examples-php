@@ -9,3 +9,4 @@ services:
       - 8999:80
     volumes:
       - ./src:/app/src
+      - ../favicon-32x32.webp:/app/src/public/favicon-32x32.webp

@@ -2,7 +2,7 @@
 
 $searchDomain = $_GET['search'];
 if (empty($searchDomain)) {
-    header('Location: /companies/list.php');
+    header('Location: /companies/list');
     exit();
 }
 

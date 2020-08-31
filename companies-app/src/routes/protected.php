@@ -1,11 +1,11 @@
 <?php
 
 return [
-    '/companies/new.php',
-    '/companies/list.php',
-    '/companies/search.php',
-    '/companies/contacts.php',
-    '/companies/show.php',
-    '/oauth/authorize.php',
-    '/oauth/callback.php',
+    '/companies/new',
+    '/companies/list',
+    '/companies/search',
+    '/companies/contacts',
+    '/companies/show',
+    '/oauth/authorize',
+    '/oauth/callback',
 ];

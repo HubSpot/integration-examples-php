@@ -24,7 +24,7 @@ $hubSpot->companies()->getById($companyId)->getData();
 </pre>
         <?php } ?>
 
-        <form method="post" action="/companies/show.php">
+        <form method="post" action="/companies/show">
             <fieldset>
                 <?php if (isset($id)) { ?>
                     <input type="hidden" name="id" value="<?php echo htmlentities($id); ?>" />
@@ -93,7 +93,7 @@ $hubSpot->crmAssociations()->get(
                 </tbody>
             </table>
 
-            <a href="/companies/contacts.php?companyId=<?php echo htmlentities($id); ?>">
+            <a href="/companies/contacts?companyId=<?php echo htmlentities($id); ?>">
                 <input class="button-primary" type="button" value="Manage Contacts">
             </a>
         <?php } ?>
