@@ -4,7 +4,7 @@ use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 if (!array_key_exists('type_id', $_GET) || !array_key_exists('property_id', $_GET)) {
-    header('Location: /types/list.php');
+    header('Location: /types/list');
 }
 
 $response = $hubSpot->timeline()->deleteEventTypeProperty(
@@ -14,6 +14,6 @@ $response = $hubSpot->timeline()->deleteEventTypeProperty(
 );
 
 if (HubspotClientHelper::isEmptyResponseSuccessful($response)) {
-    header('Location: /types/show.php?id='.$_GET['type_id']);
+    header('Location: /types/show?id='.$_GET['type_id']);
     exit();
 }

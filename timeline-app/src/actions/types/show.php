@@ -4,7 +4,7 @@ use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 if (!array_key_exists('id', $_GET)) {
-    header('Location: /types/list.php');
+    header('Location: /types/list');
 }
 
 $response = $hubSpot->timeline()->getEventTypeById($_ENV['HUBSPOT_APPLICATION_ID'], intval($_GET['id']));

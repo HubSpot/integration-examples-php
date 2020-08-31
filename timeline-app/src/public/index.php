@@ -16,16 +16,16 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if (!in_array($uri, $publicRoutes)) {
-        if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
+        if (!OAuth2Helper::isAuthenticated()) {
+            header('Location: /oauth/login');
+        }elseif (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
                 || !EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
-            header('Location: /events/init.php');
-        } elseif (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /events/init');
         }
     }
 
     if ('/' === $uri) {
-        header('Location: /telegram/link.php');
+        header('Location: /telegram/link');
         exit();
     }
 
@@ -34,7 +34,7 @@ try {
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
 } catch (Throwable $throwable) {
     $message = $throwable->getMessage();

@@ -19,7 +19,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
         $type['objectType']
     );
     if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /types/show.php?id='.$response->getData()->id);
+        header('Location: /types/show?id='.$response->getData()->id);
     }
 }
 

@@ -19,8 +19,8 @@ if (count($properties) > 0) {
             <td><?php echo $property->id; ?></td>
             <td><?php echo htmlentities($property->label); ?></td>
             <td>
-                <a class="button" href="/types/properties/update.php?type_id=<?php echo $type->id; ?>&property_id=<?php echo $property->id; ?>">Update</a>
-                <a class="button" href="/types/properties/delete.php?type_id=<?php echo $type->id; ?>&property_id=<?php echo $property->id; ?>">Delete</a>
+                <a class="button" href="/types/properties/update?type_id=<?php echo $type->id; ?>&property_id=<?php echo $property->id; ?>">Update</a>
+                <a class="button" href="/types/properties/delete?type_id=<?php echo $type->id; ?>&property_id=<?php echo $property->id; ?>">Delete</a>
             </td>
         </tr>
     <?php } ?>
@@ -31,7 +31,7 @@ if (count($properties) > 0) {
     <h4>This type have no properties</h4>
 <?php } ?>
 <div>
-    <a id='type-new' class="button" href="/types/properties/new.php?id=<?php echo $type->id; ?>">New property</a>
+    <a id='type-new' class="button" href="/types/properties/new?id=<?php echo $type->id; ?>">New property</a>
 </div>
 <pre>
 // src/actions/types/properties/delete.php
