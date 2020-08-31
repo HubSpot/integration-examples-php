@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $contactLists array consist of types (array)
+ * @var array consist of types (array)
  */
 include __DIR__.'/../_partials/header.php';
 ?>
@@ -27,7 +27,7 @@ $contactLists = $hubSpot->contactLists()->getAllStatic(['count' => 250])->getDat
         <tbody>
             <?php foreach ($contactLists as $list) { ?>
                 <tr>
-                    <td><input type="checkbox" name="listIds[]" value="<?php echo htmlentities($list->listId) ?>"/> </td>
+                    <td><input type="checkbox" name="listIds[]" value="<?php echo htmlentities($list->listId); ?>"/> </td>
                     <td><?php echo htmlentities($list->name); ?></td>
                     <td><?php echo htmlentities($list->metaData->size); ?></td>
                 </tr>

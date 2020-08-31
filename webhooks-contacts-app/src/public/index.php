@@ -9,24 +9,24 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {
     \Helpers\DBClientHelper::runMigrations();
-    
+
     // allowed for anonymous
     $publicRoutes = require '../routes/public.php';
     // protected
     $protectedRoutes = require '../routes/protected.php';
-    
+
     if (!in_array($uri, $publicRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');
             exit();
         }
     }
-    
+
     if ('/' === $uri) {
         header('Location: /webhooks/events.php');
         exit();
     }
-    
+
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
         http_response_code(404);
         exit();

@@ -12,19 +12,19 @@ try {
     $publicRoutes = require '../routes/public.php';
     // protected
     $protectedRoutes = require '../routes/protected.php';
-    
+
     if (!in_array($uri, $publicRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login');
             exit();
         }
     }
-    
+
     if ('/' === $uri) {
         header('Location: /companies/list');
         exit();
     }
-    
+
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
         http_response_code(404);
         exit();

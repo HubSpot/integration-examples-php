@@ -11,8 +11,7 @@ use Telegram\TelegramBot;
 TelegramBot::init();
 $hubSpot = HubspotClientHelper::createFactory();
 
-$sendInvitationAndCreateTimelineEvent = function($invitation, $contact) use ($hubSpot)
-{
+$sendInvitationAndCreateTimelineEvent = function ($invitation, $contact) use ($hubSpot) {
     $email = $contact->properties->email->value;
     $chatId = UsersRepository::getTelegramChatIdByEmail($email);
     if (!empty($chatId)) {

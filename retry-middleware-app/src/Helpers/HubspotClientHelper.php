@@ -6,14 +6,14 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
-use SevenShores\Hubspot\Http\Client;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use SevenShores\Hubspot\Delay;
 use SevenShores\Hubspot\Factory;
+use SevenShores\Hubspot\Http\Client;
 use SevenShores\Hubspot\Http\Response;
 use SevenShores\Hubspot\Resources\OAuth2;
 use SevenShores\Hubspot\RetryMiddlewareFactory;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 
 class HubspotClientHelper
 {
@@ -39,18 +39,6 @@ class HubspotClientHelper
         return self::HTTP_OK === $response->getStatusCode();
     }
 
-    protected static function create($factoryConfig = []): Factory
-    {
-        return new Factory(
-            $factoryConfig,
-            new Client($factoryConfig, static::getGuzzleClient()),
-            [
-                'http_errors' => false, // pass any Guzzle related option to any request, e.g. throw no exceptions
-            ],
-            true
-        );
-    }
-    
     /**
      * This function creates GuzzleClient and suts up Retries Middlewares in it.
      */
@@ -80,5 +68,17 @@ class HubspotClientHelper
         );
 
         return new GuzzleClient(['handler' => $handlerStack]);
+    }
+
+    protected static function create($factoryConfig = []): Factory
+    {
+        return new Factory(
+            $factoryConfig,
+            new Client($factoryConfig, static::getGuzzleClient()),
+            [
+                'http_errors' => false, // pass any Guzzle related option to any request, e.g. throw no exceptions
+            ],
+            true
+        );
     }
 }

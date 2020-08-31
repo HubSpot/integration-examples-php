@@ -18,7 +18,7 @@ try {
     if (!in_array($uri, $publicRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login');
-        }elseif (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
+        } elseif (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
                 || !EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
             header('Location: /events/init');
         }
