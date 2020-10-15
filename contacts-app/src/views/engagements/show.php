@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="column column-50">
-        <form method="post" action="/engagements/show.php">
+        <form method="post" action="/engagements/show">
             <fieldset>
                 <label for="type">Type</label>
                 <select name="engagement[type]" id="type">
