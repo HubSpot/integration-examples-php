@@ -3,7 +3,7 @@
 function get_contacts_for_export($properties, $maxPages = 10)
 {
     $hubSpot = Helpers\HubspotClientHelper::createFactory();
-    
+
     $contacts = [];
     $vidOffset = null;
     for ($pageNum = 0; $pageNum < $maxPages; ++$pageNum) {
@@ -11,7 +11,7 @@ function get_contacts_for_export($properties, $maxPages = 10)
         $response = $hubSpot->contacts()->all([
             'count' => 10,
             'vidOffset' => $vidOffset,
-            'property' => $properties
+            'property' => $properties,
         ]);
         foreach ($response->getData()->contacts as $contact) {
             $contacts[] = $contact;
