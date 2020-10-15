@@ -10,7 +10,7 @@ try {
     $routes = require '../routes/all.php';
 
     if ('/' === $uri) {
-        header('Location: /contacts/list.php');
+        header('Location: /contacts/list');
         exit();
     }
 
@@ -19,7 +19,7 @@ try {
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();

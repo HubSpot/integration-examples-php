@@ -1,6 +1,6 @@
 <?php ?>
 <h3>Properties</h3>
-    <form method="post" action="/contacts/show.php">
+    <form method="post" action="/contacts/show">
         <fieldset>
             <?php
             foreach ($formFields as $field) { ?>

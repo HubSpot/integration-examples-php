@@ -17,7 +17,7 @@ if (isset($_POST['engagement'])) {
     if (HubspotClientHelper::isResponseSuccessful($response)) {
         $clientId = $associations['contactIds'][0];
 
-        header('Location: /contacts/show.php?vid='.$clientId);
+        header('Location: /contacts/show?vid='.$clientId);
         exit();
     }
     $errorResponse = $response;
