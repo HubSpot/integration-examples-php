@@ -28,8 +28,7 @@ foreach ($events as $event) {
 
             // Then upload this file via file maneger https://developers.hubspot.com/docs/methods/files/post_files
             if (HubspotClientHelper::isResponseSuccessful($response)) {
-                $uploadResponse = $hubSpot->files()->upload(StreamWrapper::getResource($response->getBody()), ['file_names' => uniqid()]);
-
+                $uploadResponse = $hubSpot->files()->upload(StreamWrapper::getResource($response->getBody()));
                 if (HubspotClientHelper::isResponseSuccessful($uploadResponse)) {
                     // Update the property with Public link to the file
                     $hubSpot->contacts()->update(
