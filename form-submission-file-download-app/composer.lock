@@ -527,21 +527,21 @@
         },
         {
             "name": "hubspot/hubspot-php",
-            "version": "v3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/HubSpot/hubspot-php.git",
-                "reference": "2008ad437e9763041855512f2e21c58abaf058ff"
+                "reference": "6936cbcea491fce09bcc379d99afde251f270957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/2008ad437e9763041855512f2e21c58abaf058ff",
-                "reference": "2008ad437e9763041855512f2e21c58abaf058ff",
+                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/6936cbcea491fce09bcc379d99afde251f270957",
+                "reference": "6936cbcea491fce09bcc379d99afde251f270957",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/guzzle": "~7.0",
+                "guzzlehttp/guzzle": "~6.0 | ^7.0",
                 "php": ">=7.2"
             },
             "require-dev": {
@@ -574,7 +574,7 @@
                 "api",
                 "hubspot"
             ],
-            "time": "2020-10-13T12:24:29+00:00"
+            "time": "2020-10-23T10:40:40+00:00"
         },
         {
             "name": "psr/cache",
