@@ -19,6 +19,7 @@ services:
     volumes:
       - ./src:/app/src
       - ./sql:/app/sql
+      - ../favicon-32x32.webp:/app/src/public/favicon-32x32.webp
   db:
     image: mysql:8.0
     command: mysqld --default-authentication-plugin=mysql_native_password

@@ -48,7 +48,7 @@ $propertyName = getEnvOrException('PROTECTED_FILE_LINK_PROPERTY');
 $formResponse = $hubSpot->forms()->create([
     'name' => $formName,
     'submitText' => 'Save',
-    'redirect' => UrlHelper::generateServerUri().'/contacts/list.php',
+    'redirect' => UrlHelper::generateServerUri().'/contacts/list',
     'formFieldGroups' => [
         [
             'fields' => [
@@ -90,7 +90,7 @@ if (HubspotClientHelper::isResponseSuccessful($formResponse)) {
         'portalId' => $formResponse->getData()->portalId,
     ];
 
-    header('Location: /forms/form.php');
+    header('Location: /forms/form');
 } else {
     throw new Exception($formResponse->getReasonPhrase());
 }

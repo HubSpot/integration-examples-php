@@ -12,24 +12,24 @@ try {
 
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     if ('/' === $uri) {
-        header('Location: /contacts/list.php');
+        header('Location: /contacts/list');
         exit();
     }
 
     if (in_array($uri, $protectedRoutes)) {
         if (!\Helpers\OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /oauth/login');
             exit();
         }
 
-        if (!in_array($uri, ['/forms/init.php', '/webhooks/init.php'])) {
+        if (!in_array($uri, ['/forms/init', '/webhooks/init'])) {
             if (empty($_SESSION['FORM'])) {
-                header('Location: /forms/init.php');
+                header('Location: /forms/init');
                 exit();
             }
 
             if (empty($_SESSION['WEBHOOKS'])) {
-                header('Location: /webhooks/init.php');
+                header('Location: /webhooks/init');
                 exit();
             }
         }
@@ -40,7 +40,7 @@ try {
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();

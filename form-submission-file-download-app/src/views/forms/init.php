@@ -4,8 +4,8 @@
  */
 include __DIR__.'/../_partials/header.php'; ?>
 <div class="row">
-    <div class="column column-20"></div>
-    <div class="column column-60">
+    <div class="column column-15"></div>
+    <div class="column column-70">
 <pre>
 // src/actions/forms/init.php - form and properties initialization script
 $propertyResponse = $hubSpot->contactProperties()->create(...)
@@ -17,11 +17,13 @@ $formResponse = $hubSpot->forms()->create(...)
             <p>This script creates two custom properies, upload form and webhook.</p>
             <div>
                 <label>Form Name</label>
-                <input type="text" name="formName" value="<?php echo $formName; ?>">
+                <input type="text" required="" name="formName" value="<?php echo $formName; ?>">
             </div>
-            <button type="submit">Go</button>
+            <div class="text-center">
+                <button type="submit">Go</button>
+            </div>
         </form>
     </div>
-    <div class="column column-20"></div>
+    <div class="column column-15"></div>
 </div>
 <?php include __DIR__.'/../_partials/footer.php'; ?>

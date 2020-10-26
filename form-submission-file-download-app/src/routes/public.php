@@ -1,8 +1,8 @@
 <?php
 
 return [
-    '/oauth/login.php',
-    '/oauth/authorize.php',
-    '/oauth/callback.php',
-    '/webhooks/handle.php',
+    '/oauth/login',
+    '/oauth/authorize',
+    '/oauth/callback',
+    '/webhooks/handle',
 ];

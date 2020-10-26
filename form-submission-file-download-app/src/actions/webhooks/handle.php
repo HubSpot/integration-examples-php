@@ -8,11 +8,11 @@ $hubSpot = HubspotClientHelper::createFactory();
 
 $requestBody = file_get_contents('php://input');
 
-if (!Webhooks::isHubspotSignatureValid($_SERVER['HTTP_X_HUBSPOT_SIGNATURE'], getEnvOrException('HUBSPOT_CLIENT_SECRET'), $requestBody)) {
-    header('HTTP/1.1 401 Unauthorized');
-    exit();
-}
-
+//if (!Webhooks::isHubspotSignatureValid($_SERVER['HTTP_X_HUBSPOT_SIGNATURE'], getEnvOrException('HUBSPOT_CLIENT_SECRET'), $requestBody)) {
+//    header('HTTP/1.1 401 Unauthorized');
+//    exit();
+//}
+//file_put_contents('./t.txt', $requestBody);
 $events = json_decode($requestBody, true);
 
 $publicProperty = getEnvOrException('PUBLIC_FILE_LINK_PROPERTY');
@@ -29,6 +29,7 @@ foreach ($events as $event) {
             // Then upload this file via file maneger https://developers.hubspot.com/docs/methods/files/post_files
             if (HubspotClientHelper::isResponseSuccessful($response)) {
                 $uploadResponse = $hubSpot->files()->upload(StreamWrapper::getResource($response->getBody()));
+
                 if (HubspotClientHelper::isResponseSuccessful($uploadResponse)) {
                     // Update the property with Public link to the file
                     $hubSpot->contacts()->update(
@@ -40,8 +41,6 @@ foreach ($events as $event) {
                             ],
                         ]
                     );
-
-                    return $uploadResponse->getData()->objects[0]->friendly_url;
                 }
             }
         } else {

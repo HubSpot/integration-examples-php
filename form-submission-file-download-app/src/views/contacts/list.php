@@ -1,7 +1,6 @@
 <?php
 /**
- * @var string Public file
- * @var string $protected Protected file
+ * @var string $search 
  */
 include __DIR__.'/../_partials/header.php'; ?>
 
@@ -17,7 +16,7 @@ include __DIR__.'/../_partials/header.php'; ?>
   </thead>
   <tbody>
 
-  <form id="search-form" action="/contacts/list.php">
+  <form id="search-form" action="/contacts/list">
       <fieldset>
           <input type="text" name="search" placeholder="Search.." id="search" value="<?php echo $search; ?>">
       </fieldset>
