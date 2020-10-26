@@ -15,12 +15,22 @@ class HubspotClientHelper
     public static function createFactory(): Factory
     {
         $accessToken = OAuth2Helper::refreshAndGetAccessToken();
-        
+
         return static::create([
             'key' => $accessToken,
             'oauth2' => true,
         ]);
     }
+    
+
+    public static function createFactoryWithDeveloperAPIKey(): Factory
+    {
+        return static::create([
+            'key' => getEnvOrException('HUBSPOT_DEVELOPER_API_KEY'),
+            'oauth2' => false,
+        ]);
+    }
+    
 
     public static function getOAuth2Resource(): OAuth2
     {
