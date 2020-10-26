@@ -1,6 +1,6 @@
 {
     "require": {
-        "hubspot/hubspot-php": "~1.0",
+        "hubspot/hubspot-php": "~3.0",
         "ext-curl": "*",
         "ext-json": "*",
         "byjg/migration": "^4.0"
