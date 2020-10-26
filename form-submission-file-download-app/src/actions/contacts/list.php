@@ -15,7 +15,7 @@ if (isset($_GET['search'])) {
             $public,
         ],
     ])->getData()->contacts;
-    
+
     $search = $_GET['search'];
 } else {
     $contacts = $hubSpot->contacts()->recent([

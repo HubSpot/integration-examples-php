@@ -1,6 +1,6 @@
 <?php
 /**
- * @var string $search 
+ * @var string $search
  */
 include __DIR__.'/../_partials/header.php'; ?>
 
