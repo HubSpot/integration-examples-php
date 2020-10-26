@@ -30,6 +30,7 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 1. Copy .env.template to .env
 2. Specify authorization data in .env:
    - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
+   - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
    - Paste PUBLIC_FILE_LINK_PROPERTY and PROTECTED_FILE_LINK_PROPERTY
 
 ### Running
