@@ -89,7 +89,7 @@ if (HubspotClientHelper::isResponseSuccessful($formResponse)) {
         'formId' => $formResponse->getData()->guid,
         'portalId' => $formResponse->getData()->portalId,
     ];
-    
+
     header('Location: /forms/form.php');
 } else {
     throw new Exception($formResponse->getReasonPhrase());

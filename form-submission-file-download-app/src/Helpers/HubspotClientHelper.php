@@ -21,7 +21,6 @@ class HubspotClientHelper
             'oauth2' => true,
         ]);
     }
-    
 
     public static function createFactoryWithDeveloperAPIKey(): Factory
     {
@@ -30,7 +29,6 @@ class HubspotClientHelper
             'oauth2' => false,
         ]);
     }
-    
 
     public static function getOAuth2Resource(): OAuth2
     {

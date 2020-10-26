@@ -21,7 +21,7 @@ try {
             header('Location: /oauth/login.php');
             exit();
         }
-        
+
         if (!in_array($uri, ['/forms/init.php', '/webhooks/init.php'])) {
             if (empty($_SESSION['FORM'])) {
                 header('Location: /forms/init.php');
