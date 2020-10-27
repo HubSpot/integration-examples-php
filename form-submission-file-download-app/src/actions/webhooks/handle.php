@@ -8,11 +8,11 @@ $hubSpot = HubspotClientHelper::createFactory();
 
 $requestBody = file_get_contents('php://input');
 
-//if (!Webhooks::isHubspotSignatureValid($_SERVER['HTTP_X_HUBSPOT_SIGNATURE'], getEnvOrException('HUBSPOT_CLIENT_SECRET'), $requestBody)) {
-//    header('HTTP/1.1 401 Unauthorized');
-//    exit();
-//}
-//file_put_contents('./t.txt', $requestBody);
+if (!Webhooks::isHubspotSignatureValid($_SERVER['HTTP_X_HUBSPOT_SIGNATURE'], getEnvOrException('HUBSPOT_CLIENT_SECRET'), $requestBody)) {
+    header('HTTP/1.1 401 Unauthorized');
+    exit();
+}
+
 $events = json_decode($requestBody, true);
 
 $publicProperty = getEnvOrException('PUBLIC_FILE_LINK_PROPERTY');
