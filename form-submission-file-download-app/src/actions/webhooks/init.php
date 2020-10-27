@@ -32,9 +32,8 @@ foreach ($subscriptions as $subscription) {
         );
     }
 }
-UrlHelper::generateServerUri().'/webhooks/handle.php';
 
-$respons = $webhooksClient->updateSettings($appId, ['webhookUrl' => UrlHelper::generateServerUri().'/webhooks/handle.php']);
+$respons = $webhooksClient->updateSettings($appId, ['webhookUrl' => UrlHelper::generateServerUri().'/webhooks/handle']);
 
 if (empty($propertyId)) {
     $webhooksClient->createSubscription($appId, [
@@ -48,4 +47,6 @@ if (empty($propertyId)) {
     $webhooksClient->updateSubscription($appId, $propertyId, ['enabled' => true]);
 }
 
-header('Location: /forms/form.php');
+$_SESSION['WEBHOOKS'] = true;
+
+header('Location: /forms/form');

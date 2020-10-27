@@ -1,8 +1,8 @@
 <?php
 
 return [
-    '/forms/init.php',
-    '/webhooks/init.php',
-    '/forms/form.php',
-    '/contacts/list.php',
+    '/forms/init',
+    '/webhooks/init',
+    '/forms/form',
+    '/contacts/list',
 ];
