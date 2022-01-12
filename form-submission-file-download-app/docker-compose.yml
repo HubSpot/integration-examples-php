@@ -41,5 +41,6 @@ services:
     environment:
       TARGET_HOST: web
       TARGET_PORT: 80
+      NGROK_TOKEN: "${NGROK_AUTHTOKEN}"
     depends_on:
       - web
