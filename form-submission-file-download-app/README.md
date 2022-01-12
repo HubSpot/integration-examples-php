@@ -34,7 +34,7 @@ Make sure you have:
    - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
    - Paste HUBSPOT_DEVELOPER_API_KEY and HUBSPOT_APPLICATION_ID for webhooks creation
    - Paste PUBLIC_FILE_LINK_PROPERTY and PROTECTED_FILE_LINK_PROPERTY
-3. Specify your Ngrok authtoken to NGROK_AUTHTOKEN  
+3. Paste your Ngrok authtoken to NGROK_AUTHTOKEN in .env
 
 ### Running
 
