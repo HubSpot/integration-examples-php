@@ -23,8 +23,9 @@ This design is implemented in this Application
 
 ### Setup App
 
-Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
-Make sure you have [Ngrok account](https://ngrok.com/).
+Make sure you have:
+- [Docker Compose](https://docs.docker.com/compose/) installed
+- [Ngrok account](https://ngrok.com/)
 
 ### Configure
 

@@ -31,12 +31,15 @@ Please note that event_id sent by HubSpot needs to be stored as int
 
 ### Setup App
 
-Make sure you have [Docker Compose](https://docs.docker.com/compose/) and [Ngrok](https://ngrok.com/) installed.
+Make sure you have:
+- [Docker Compose](https://docs.docker.com/compose/) installed
+- [Ngrok account](https://ngrok.com/)
 
 ### Configure
 
 1. Copy .env.template to .env
 2. Paste your HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET
+3. Paste your Ngrok authtoken to NGROK_AUTHTOKEN in .env
 
 ### Running
 
