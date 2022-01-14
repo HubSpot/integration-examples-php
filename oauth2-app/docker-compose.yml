@@ -9,8 +9,5 @@ services:
       context: ./
     ports:
       - 8999:80
-      - 4444:4444
     volumes:
       - ./src:/app/src
-      - ./codeception.yml:/app/codeception.yml
-      - ./tests:/app/tests
