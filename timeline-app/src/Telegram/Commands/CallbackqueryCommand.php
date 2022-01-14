@@ -6,6 +6,7 @@ use Enums\EventTypeCode;
 use Enums\UserInvitationAction;
 use Helpers\TimelineEventHelper;
 use Longman\TelegramBot\Commands\SystemCommand;
+use Longman\TelegramBot\Entities\ServerResponse;
 use Longman\TelegramBot\Request;
 use Repositories\InvitationsRepository;
 use Telegram\InvitationReply;
@@ -19,7 +20,7 @@ class CallbackqueryCommand extends SystemCommand
      *
      * @return \Longman\TelegramBot\Entities\ServerResponse
      */
-    public function execute()
+    public function execute(): ServerResponse
     {
         $invitationReply = new InvitationReply($this->getCallbackQuery()->getData());
         $this->createTimelineEvent($invitationReply);
