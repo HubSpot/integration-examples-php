@@ -1,6 +1,6 @@
 <?php
 
 return [
-    '/webhooks/events.php',
-    '/webhooks/delete.php',
+    '/webhooks/events',
+    '/webhooks/delete',
 ];

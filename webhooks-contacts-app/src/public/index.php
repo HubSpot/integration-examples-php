@@ -17,13 +17,13 @@ try {
 
     if (!in_array($uri, $publicRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /oauth/login');
             exit();
         }
     }
 
     if ('/' === $uri) {
-        header('Location: /webhooks/events.php');
+        header('Location: /webhooks/events');
         exit();
     }
 
@@ -32,7 +32,7 @@ try {
         exit();
     }
 
-    require __DIR__.'/../actions'.$uri;
+    require __DIR__.'/../actions'.$uri.'.php';
 } catch (Throwable $t) {
     $message = $t->getMessage();
     include __DIR__.'/../views/error.php';
