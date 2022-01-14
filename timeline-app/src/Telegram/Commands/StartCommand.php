@@ -21,7 +21,7 @@ class StartCommand extends SystemCommand
      *
      * @return ServerResponse
      */
-    public function execute()
+    public function execute(): ServerResponse
     {
         $message = $this->getMessage();
         $chatId = $message->getChat()->getId();
