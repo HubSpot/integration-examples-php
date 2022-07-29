@@ -1,4 +1,6 @@
-<?php if (isset($engagements, $contactId)) { ?>
+<?php 
+use Helpers\EngagementsHelper;
+if (isset($engagements, $contactId)) { ?>
     <h3>Engagements</h3>
     <table>
         <thead>
@@ -9,11 +11,11 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($engagements as $engagement) { ?>
+        <?php foreach ($engagements as $engagement) { var_dump($engagement); ?>
             <tr>
                 <td><?php echo htmlentities($engagement->engagement->id); ?></td>
                 <td><?php echo htmlentities($engagement->engagement->type); ?></td>
-                <td><?php echo htmlentities($engagement->metadata->title); ?></td>
+                <td><?php echo htmlentities($engagement->metadata->title ?? ''); ?></td>
             </tr>
         <?php }?>
         </tbody>
