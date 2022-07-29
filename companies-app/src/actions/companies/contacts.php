@@ -40,10 +40,9 @@ if (isset($_POST['contactsIds'])) {
     exit();
 }
 
-$search = $_GET['search'];
-if (!empty($search)) {
+if (isset($_GET['search'])) {
     // https://developers.hubspot.com/docs/methods/contacts/search_contacts
-    $contacts = $hubSpot->contacts()->search($search)->getData()->contacts;
+    $contacts = $hubSpot->contacts()->search($_GET['search'])->getData()->contacts;
 } else {
     // https://developers.hubspot.com/docs/methods/companies/get-all-companies
     $contacts = $hubSpot->contacts()->all([])->getData()->contacts;
