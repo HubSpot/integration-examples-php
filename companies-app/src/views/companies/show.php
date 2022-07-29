@@ -11,9 +11,9 @@
     <div class="column">
         <h3>Company Properties</h3>
 
-        <?php if ($_GET['updated']) { ?>
+        <?php if (isset($_GET['updated'])) { ?>
             <h3 class="alert-success">Successfully updated Company properties</h3>
-        <?php } elseif ($_GET['created']) { ?>
+        <?php } elseif (isset($_GET['created'])) { ?>
             <h3 class="alert-success" '>Successfully created Company</h3>
         <?php } ?>
 
@@ -62,10 +62,10 @@ $hubSpot->companies()->create($companyProperties);
         <?php if (isset($contacts)) { ?>
             <h3>Contacts</h3>
 
-            <?php if ($_GET['contactsAdded']) { ?>
+            <?php if (isset($_GET['contactsAdded'])) { ?>
                 <h3 class="alert-success">Successfully added contacts</h3>
             <?php } ?>
-            <?php if ($_GET['contactsDeleted']) { ?>
+            <?php if (isset($_GET['contactsDeleted'])) { ?>
                 <h3 class="alert-success">Successfully deleted contacts</h3>
             <?php } ?>
 <pre>
@@ -87,7 +87,7 @@ $hubSpot->crmAssociations()->get(
                 <?php foreach ($contacts as $contact) { ?>
                     <tr>
                         <td><?php echo htmlentities($contact['id']); ?></td>
-                        <td><?php echo htmlentities($contact['name']); ?></td>
+                        <td><?php echo htmlentities($contact['firstname'] . '' . $contact['lastname']); ?></td>
                     </tr>
                 <?php }?>
                 </tbody>

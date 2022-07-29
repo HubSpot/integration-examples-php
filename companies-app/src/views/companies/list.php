@@ -11,7 +11,7 @@ $hubSpot->companies()->searchByDomain($searchDomain, [
 
 <form action="/companies/search.php">
     <fieldset>
-        <input type="text" name="search" placeholder="Search by domain.." id="search" value="<?php echo $search; ?>">
+        <input type="text" name="search" placeholder="Search by domain.." id="search" value="<?php if (isset($search)) { echo $search; }?>">
     </fieldset>
 </form>
 
