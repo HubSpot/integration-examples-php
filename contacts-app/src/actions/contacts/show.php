@@ -19,7 +19,7 @@ if (isset($_POST['email'])) {
     $createOrUpdateResponse = $hubSpot->contacts()->createOrUpdate($contactProperties['email'], $properties);
     if (HubspotClientHelper::isResponseSuccessful($createOrUpdateResponse)) {
         $vid = $createOrUpdateResponse->getData()->vid;
-        header('Location: /contacts/show?vid='.$vid);
+        header('Location: /contacts/show?vid='.$vid.'&&updated=true');
         exit();
     }
 
@@ -34,8 +34,15 @@ if (isset($_GET['vid'])) {
         $contactProperties[$key] = $property->value;
     }
     $contactId = $_GET['vid'];
-    // https://developers.hubspot.com/docs/methods/engagements/get_associated_engagements
-    $engagements = $hubSpot->engagements()->associated('CONTACT', $contactId)->getData()->results;
+    // https://developers.hubspot.com/docs/methods/crm-associations/get-associations
+    $engagementIds = $hubSpot->crmAssociations()->get($contactId, $hubSpot->crmAssociations()::CONTACT_TO_ENGAGEMENT)->getData()->results;
+    $engagements = [];
+    foreach ($engagementIds as $engagementId) {
+        $engagement = $hubSpot->engagements()->get($engagementId)->getData();
+        if (!empty($engagement)) {
+            $engagements[] = $engagement;
+        }
+    }
 }
 
 // https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
@@ -50,7 +57,7 @@ foreach ($properties as $property) {
         $formFields[] = [
             'name' => $property->name,
             'label' => $property->label,
-            'value' => $contactProperties[$propertyName],
+            'value' => $contactProperties[$propertyName] ?? '',
         ];
     }
 }

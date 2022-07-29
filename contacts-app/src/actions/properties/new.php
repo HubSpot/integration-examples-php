@@ -19,6 +19,7 @@ if (isset($_POST['name'])) {
 } else {
     $property = (object) [
         'type' => 'string',
+        'readOnlyDefinition' => false,
     ];
 }
 

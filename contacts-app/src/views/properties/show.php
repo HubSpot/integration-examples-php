@@ -13,14 +13,14 @@ if ($property->readOnlyDefinition) {
     <fieldset>
         <label for="name">Name</label>
         <input type="text" name="name" id="name" <?php if (array_key_exists('name', $_GET)) { ?>
-               readonly <?php } ?>value="<?php echo htmlentities($property->name); ?>" />
+               readonly <?php } ?>value="<?php echo htmlentities($property->name ?? ''); ?>" />
 
         <label for="label">Label</label>
-        <input type="text" name="label" id="label" value="<?php echo htmlentities($property->label); ?>"<?php echo $readOnly; ?> />
+        <input type="text" name="label" id="label" value="<?php echo htmlentities($property->label ?? ''); ?>"<?php echo $readOnly; ?> />
         <label for="description">Description</label>
-        <textarea name="description" id="description"<?php echo $readOnly; ?>><?php echo htmlentities($property->description); ?></textarea>
+        <textarea name="description" id="description"<?php echo $readOnly; ?>><?php echo htmlentities($property->description ?? ''); ?></textarea>
         <label for="group-name">Group Name</label>
-        <input type="text" name="groupName" id="group-name" value="<?php echo htmlentities($property->groupName); ?>"<?php echo $readOnly; ?> />
+        <input type="text" name="groupName" id="group-name" value="<?php echo htmlentities($property->groupName ?? ''); ?>"<?php echo $readOnly; ?> />
 
         <label for="type">Type</label>
         <input readonly type="text" name="type" id="type" value="<?php echo htmlentities($property->type); ?>"<?php echo $readOnly; ?> />

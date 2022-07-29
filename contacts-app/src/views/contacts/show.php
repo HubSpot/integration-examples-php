@@ -3,7 +3,7 @@
 <?php
       if (isset($errorResponse)) {
           include __DIR__.'/../_partials/error_response.php';
-      } elseif (!$_GET['notUpdated'] && !$notUpdated) {
+      } elseif (isset($_GET['updated'])) {
           echo "<h3 class='alert-success'>Successfully updated Contact properties</h3>";
       }
 ?>

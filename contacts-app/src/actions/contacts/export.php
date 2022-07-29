@@ -37,7 +37,7 @@ function generate_csv_rows($contacts, $properties)
     foreach ($contacts as $contact) {
         $row = [$contact->vid];
         foreach ($properties as $property) {
-            $row[] = $contact->properties->{$property}->value;
+            $row[] = $contact->properties->{$property}->value ?? null;
         }
         $rows[] = $row;
     }
