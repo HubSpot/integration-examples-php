@@ -17,8 +17,6 @@ class CallbackqueryCommand extends SystemCommand
     /**
      * @throws \Longman\TelegramBot\Exception\TelegramException
      * @throws \Exception
-     *
-     * @return \Longman\TelegramBot\Entities\ServerResponse
      */
     public function execute(): ServerResponse
     {

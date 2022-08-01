@@ -23,7 +23,8 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
     if (HubspotClientHelper::isResponseSuccessful($response)) {
         header('Location: /types/show?id='.$_GET['id']);
-        exit();
+
+        exit;
     }
 }
 

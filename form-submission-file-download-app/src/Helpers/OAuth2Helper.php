@@ -6,8 +6,8 @@ use Repositories\TokensRepository;
 
 class OAuth2Helper
 {
-    const APP_REQUIRED_SCOPES = ['contacts', 'forms', 'forms-uploaded-files', 'files'];
-    const CALLBACK_PATH = '/oauth/callback';
+    public const APP_REQUIRED_SCOPES = ['contacts', 'forms', 'forms-uploaded-files', 'files'];
+    public const CALLBACK_PATH = '/oauth/callback';
 
     public static function getClientId(): string
     {

@@ -1,4 +1,5 @@
 <?php
+
 use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
@@ -15,23 +16,28 @@ try {
     if (!in_array($uri, $publicRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login');
-            exit();
+
+            exit;
         }
     }
 
     if ('/' === $uri) {
         header('Location: /contacts/list');
-        exit();
+
+        exit;
     }
 
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
         http_response_code(404);
-        exit();
+
+        exit;
     }
 
     require __DIR__.'/../actions'.$uri.'.php';
 } catch (Throwable $t) {
     $message = $t->getMessage();
+
     include __DIR__.'/../views/error.php';
-    exit();
+
+    exit;
 }

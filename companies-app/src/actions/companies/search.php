@@ -3,12 +3,13 @@
 $searchDomain = $_GET['search'];
 if (empty($searchDomain)) {
     header('Location: /companies/list');
-    exit();
+
+    exit;
 }
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
-https://developers.hubspot.com/docs/methods/companies/search_companies_by_domain
+https:// developers.hubspot.com/docs/methods/companies/search_companies_by_domain
 $companies = $hubSpot->companies()->searchByDomain($searchDomain, [
     'name', 'domain',
 ])->getData()->results;

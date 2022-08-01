@@ -8,7 +8,7 @@ use Repositories\TelegramUpdatesRepository;
 
 class TelegramBot
 {
-    const COMMANDS_PATHS = [
+    public const COMMANDS_PATHS = [
         __DIR__.'/Commands',
     ];
     protected $telegram;

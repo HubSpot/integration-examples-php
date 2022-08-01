@@ -19,8 +19,10 @@
             <td>
                 <?php foreach ($contact['events'] as $event) { ?>
                     <span class="event <?php echo htmlentities($event['event_type']); ?>"><?php echo htmlentities($event['event_type']); ?><?php
-                        if (!empty($event['propertyName'])) { ?>:<span><?php echo htmlentities($event['propertyName']); } ?></span><?php
-                        if (!empty($event['propertyValue'])) { ?>:<span><?php echo htmlentities($event['propertyValue']); } ?></span></span>
+                    if (!empty($event['propertyName'])) { ?>:<span><?php echo htmlentities($event['propertyName']);
+                    } ?></span><?php
+                    if (!empty($event['propertyValue'])) { ?>:<span><?php echo htmlentities($event['propertyValue']);
+                    } ?></span></span>
                 <?php } ?>
             </td>
         </tr>
@@ -32,5 +34,6 @@
 <?php } ?>
 <?php
 include __DIR__.'/../_partials/pagination.php';
+
 include __DIR__.'/../_partials/footer.php';
 ?>

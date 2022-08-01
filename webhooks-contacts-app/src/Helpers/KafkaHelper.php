@@ -9,8 +9,8 @@ use Kafka\ProducerConfig;
 
 class KafkaHelper
 {
-    protected static $producer = null;
-    protected static $consumer = null;
+    protected static $producer;
+    protected static $consumer;
 
     public static function getProducer()
     {

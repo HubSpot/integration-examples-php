@@ -15,5 +15,6 @@ $response = $hubSpot->timeline()->deleteEventTypeProperty(
 
 if (HubspotClientHelper::isEmptyResponseSuccessful($response)) {
     header('Location: /types/show?id='.$_GET['type_id']);
-    exit();
+
+    exit;
 }

@@ -24,7 +24,8 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
     if (HubspotClientHelper::isResponseSuccessful($response)) {
         header('Location: /types/show?id='.$_GET['type_id']);
-        exit();
+
+        exit;
     }
 } else {
     $response = $hubSpot->timeline()->getEventTypeProperties($_ENV['HUBSPOT_APPLICATION_ID'], $_GET['type_id']);

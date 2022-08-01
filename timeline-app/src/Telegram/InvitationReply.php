@@ -4,8 +4,8 @@ namespace Telegram;
 
 class InvitationReply
 {
-    const YES = 'yes';
-    const NO = 'no';
+    public const YES = 'yes';
+    public const NO = 'no';
 
     protected $invitationId;
     protected $reply;

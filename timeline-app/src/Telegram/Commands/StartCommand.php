@@ -18,8 +18,6 @@ class StartCommand extends SystemCommand
 
     /**
      * @throws TelegramException
-     *
-     * @return ServerResponse
      */
     public function execute(): ServerResponse
     {

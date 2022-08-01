@@ -5,8 +5,10 @@ use Helpers\UrlHelper;
 
 if (!isset($_POST['formName'])) {
     $formName = 'HubSpot PHP Sample Form Submission and File Download App '.uniqid();
+
     include __DIR__.'/../../views/forms/init.php';
-    exit();
+
+    exit;
 }
 
 $hubSpot = HubspotClientHelper::createFactory();
@@ -15,7 +17,7 @@ foreach ([
     getEnvOrException('PROTECTED_FILE_LINK_PROPERTY'),
     getEnvOrException('PUBLIC_FILE_LINK_PROPERTY'),
 ] as $propetry) {
-    //call to https://developers.hubspot.com/docs/methods/companies/get_contact_property
+    // call to https://developers.hubspot.com/docs/methods/companies/get_contact_property
     $response = $hubSpot->contactProperties()->get($propetry);
 
     if (HubspotClientHelper::isResponseNotFound($response)) {
@@ -36,7 +38,7 @@ foreach ([
     }
 
     if ('file' !== $hubSpotProperty->fieldType) {
-        throw  new Exception('Property '.$property.' already exists and it is not file');
+        throw new Exception('Property '.$property.' already exists and it is not file');
     }
 }
 

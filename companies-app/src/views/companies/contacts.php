@@ -11,7 +11,9 @@ $hubSpot->contacts()->search($search)
 </pre>
 <form>
     <fieldset>
-        <input type="text" name="search" placeholder="Search.." id="search" value="<?php  if (isset($search)) { echo htmlentities($search); } ?>">
+        <input type="text" name="search" placeholder="Search.." id="search" value="<?php if (isset($search)) {
+            echo htmlentities($search);
+        } ?>">
         <input type="hidden" name="companyId" value="<?php echo htmlentities($companyId); ?>"
     </fieldset>
 </form>

@@ -10,6 +10,7 @@ class Paginator
      * @var string
      */
     protected $url;
+
     /**
      * @var int
      */

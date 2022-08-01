@@ -37,7 +37,8 @@ if (isset($_POST['contactsIds'])) {
     $contactsIds = array_keys($_POST['contactsIds']);
     $redirectUrl = create_or_delete_contacts_associations($companyId, $contactsIds);
     header('Location: '.$redirectUrl);
-    exit();
+
+    exit;
 }
 
 if (isset($_GET['search'])) {
@@ -59,4 +60,5 @@ if (count($contacts) > 0) {
         $associatedContacts = $associationResponse->getData()->results;
     }
 }
+
 include __DIR__.'/../../views/companies/contacts.php';

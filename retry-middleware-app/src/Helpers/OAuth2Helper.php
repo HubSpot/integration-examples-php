@@ -6,9 +6,9 @@ use Repositories\TokensRepository;
 
 class OAuth2Helper
 {
-    const APP_REQUIRED_SCOPES = ['contacts'];
-    const CALLBACK_PATH = '/oauth/callback';
-    const SESSION_TOKENS_KEY = 'tokens';
+    public const APP_REQUIRED_SCOPES = ['contacts'];
+    public const CALLBACK_PATH = '/oauth/callback';
+    public const SESSION_TOKENS_KEY = 'tokens';
 
     public static function getClientId(): string
     {

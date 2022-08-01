@@ -5,7 +5,8 @@ use Helpers\UrlHelper;
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     include __DIR__.'/../../views/webhooks/init.php';
-    exit();
+
+    exit;
 }
 
 $webhooksClient = HubspotClientHelper::createFactoryWithDeveloperAPIKey()
