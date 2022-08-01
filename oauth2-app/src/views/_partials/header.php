@@ -17,7 +17,7 @@
       </a>
       <ul class="navigation-list float-right">
         <li class="navigation-item">
-          <a class="navigation-link" href="/oauth/authorize.php">OAuth2</a>
+          <a class="navigation-link" href="/oauth/login">OAuth2</a>
         </li>
       </ul>
     </div>
