@@ -8,8 +8,8 @@ use SevenShores\Hubspot\Resources\OAuth2;
 
 class HubspotClientHelper
 {
-    const HTTP_OK = 200;
-    const HTTP_OK_EMPTY = 204;
+    public const HTTP_OK = 200;
+    public const HTTP_OK_EMPTY = 204;
 
     public static function createFactory(): Factory
     {

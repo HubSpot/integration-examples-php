@@ -1,6 +1,4 @@
-<?php 
-use Helpers\EngagementsHelper;
-if (isset($engagements, $contactId)) { ?>
+<?php if (isset($engagements, $contactId)) { ?>
     <h3>Engagements</h3>
     <table>
         <thead>

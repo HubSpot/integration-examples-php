@@ -11,7 +11,8 @@ if (isset($_POST['name'])) {
 
     if (HubspotClientHelper::isResponseSuccessful($response)) {
         header('Location: /properties/list');
-        exit();
+
+        exit;
     }
 
     $property = (object) $propertyFields;

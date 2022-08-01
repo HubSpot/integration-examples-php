@@ -11,18 +11,23 @@ try {
 
     if ('/' === $uri) {
         header('Location: /contacts/list');
-        exit();
+
+        exit;
     }
 
     if (!in_array($uri, $routes)) {
         http_response_code(404);
-        exit();
+
+        exit;
     }
 
     $path = __DIR__.'/../actions'.$uri.'.php';
+
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();
+
     include __DIR__.'/../views/error.php';
-    exit();
+
+    exit;
 }
