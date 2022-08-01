@@ -9,8 +9,10 @@ if (isset($_GET['name'])) {
     $response = $hubSpot->contactProperties()->delete($_GET['name']);
     if (!HubspotClientHelper::isResponseSuccessfulButEmpty($response)) {
         $message = json_encode($response);
+
         include __DIR__.'/../../views/error.php';
-        exit();
+
+        exit;
     }
 }
 

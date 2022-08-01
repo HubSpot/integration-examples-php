@@ -5,7 +5,8 @@ $search = $_GET['search'];
 
 if (empty($search)) {
     header('Location: /contacts/list');
-    exit();
+
+    exit;
 }
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();

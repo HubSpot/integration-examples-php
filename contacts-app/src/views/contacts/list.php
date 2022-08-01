@@ -12,7 +12,9 @@
 
   <form id="search-form" action="/contacts/search">
       <fieldset>
-          <input type="text" name="search" placeholder="Search.." id="search" value="<?php if (isset($search)) { echo $search; }?>">
+          <input type="text" name="search" placeholder="Search.." id="search" value="<?php if (isset($search)) {
+              echo $search;
+          }?>">
       </fieldset>
   </form>
 

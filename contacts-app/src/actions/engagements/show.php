@@ -12,14 +12,16 @@ if (isset($_POST['engagement'])) {
 
     $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
-    //https://developers.hubspot.com/docs/methods/engagements/create_engagement
+    // https://developers.hubspot.com/docs/methods/engagements/create_engagement
     $response = $hubSpot->engagements()->create($engagement, $associations, $metadata);
     if (HubspotClientHelper::isResponseSuccessful($response)) {
         $clientId = $associations['contactIds'][0];
 
         header('Location: /contacts/show?vid='.$clientId);
-        exit();
+
+        exit;
     }
     $errorResponse = $response;
+
     include __DIR__.'/../../views/engagements/show.php';
 }
