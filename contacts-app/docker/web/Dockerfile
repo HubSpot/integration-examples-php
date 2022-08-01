@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y git zip unzip
 RUN mkdir -p /app
 ADD composer.lock /app
 ADD composer.json /app
-ADD .php-cs-fixer.php /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
