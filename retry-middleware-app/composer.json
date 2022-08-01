@@ -1,12 +1,12 @@
 {
     "require": {
-        "hubspot/hubspot-php": "~2.0",
+        "hubspot/hubspot-php": "~4.0",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-pdo": "*",
-        "byjg/migration": "4.0.*",
-        "psr/log": "^1.1",
-        "monolog/monolog": "^2.0"
+        "psr/log": "^3.0",
+        "monolog/monolog": "^3.2",
+        "byjg/migration": "^4.2"
     },
     "autoload": {
         "files": [
