@@ -14,15 +14,12 @@ class HubspotClientHelper
     public static function createFactory(): Factory
     {
         $useOauth = OAuth2Helper::isAuthenticated();
-        $key = $useOauth ? OAuth2Helper::refreshAndGetAccessToken() : $_ENV['HUBSPOT_API_KEY'];
-        if (empty($key)) {
-            throw new \Exception('Please specify API key or authorize via OAuth');
+        $token = $useOauth ? OAuth2Helper::refreshAndGetAccessToken() : $_ENV['HUBSPOT_ACCESS_TOKEN'];
+        if (empty($token)) {
+            throw new \Exception('Please specify access token or authorize via OAuth');
         }
 
-        return static::create([
-            'key' => $key,
-            'oauth2' => $useOauth,
-        ]);
+        return static::create($token);
     }
 
     public static function getOAuth2Resource(): OAuth2
@@ -40,10 +37,10 @@ class HubspotClientHelper
         return $response->getStatusCode() === static::HTTP_OK_EMPTY;
     }
 
-    protected static function create($factoryConfig = []): Factory
+    protected static function create(string $token): Factory
     {
-        return new Factory(
-            $factoryConfig,
+        return Factory::createWithOAuth2Token(
+            $token,
             null,
             [
                 'http_errors' => false, // pass any Guzzle related option to any request, e.g. throw no exceptions

@@ -11,7 +11,7 @@ if (isset($engagements, $contactId)) { ?>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($engagements as $engagement) { var_dump($engagement); ?>
+        <?php foreach ($engagements as $engagement) { ?>
             <tr>
                 <td><?php echo htmlentities($engagement->engagement->id); ?></td>
                 <td><?php echo htmlentities($engagement->engagement->type); ?></td>
