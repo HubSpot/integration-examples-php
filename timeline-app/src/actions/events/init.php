@@ -6,18 +6,19 @@ use Repositories\EventTypesRepository;
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     include __DIR__.'/../../views/events/init.php';
-    exit();
+
+    exit;
 }
 
 EventTypesRepository::delete();
 
-//Intialize HubSpot API Wrapper using HUBSPOT_DEVELOPER_API_KEY needed to create Event Type
-//Note that you asscoiate Event Types with application while actual events will be associated with objects in Portals, e.g. Contacts
-//That is why Developer API Key is used to initialize the Wrapper to make calls to Event Type API links
+// Intialize HubSpot API Wrapper using HUBSPOT_DEVELOPER_API_KEY needed to create Event Type
+// Note that you asscoiate Event Types with application while actual events will be associated with objects in Portals, e.g. Contacts
+// That is why Developer API Key is used to initialize the Wrapper to make calls to Event Type API links
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 
 if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)) {
-    //create one event type with  https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
+    // create one event type with  https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
     $botAdded = $hubSpot->timeline()->createEventType(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         'Telegram Bot added',
@@ -35,7 +36,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)) {
 }
 
 if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
-    //create another event type with  https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
+    // create another event type with  https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
     $invitationEventType = $hubSpot->timeline()->createEventType(
         getEnvOrException('HUBSPOT_APPLICATION_ID'),
         'User received/accepted/rejected an invitation',
@@ -46,8 +47,8 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
 
     if (HubspotClientHelper::isResponseSuccessful($invitationEventType)) {
         // We need to add 3 custom properties to this Event type in order to use them in Event's template
-        //add custom property 'name' to this Event Type
-        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
+        // add custom property 'name' to this Event Type
+        // call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
         $nameProperty = $hubSpot->timeline()->createEventTypeProperty(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $invitationEventType->getData()->id,
@@ -55,8 +56,8 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
             'Invitation Name',
             'String'
         );
-        //add custom property 'action' to this Event Type
-        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
+        // add custom property 'action' to this Event Type
+        // call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
         $actionProperty = $hubSpot->timeline()->createEventTypeProperty(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $invitationEventType->getData()->id,
@@ -65,8 +66,8 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
             'String'
         );
 
-        //add custom property 'event_url' to this Event Type
-        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
+        // add custom property 'event_url' to this Event Type
+        // call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
         $actionProperty = $hubSpot->timeline()->createEventTypeProperty(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $invitationEventType->getData()->id,

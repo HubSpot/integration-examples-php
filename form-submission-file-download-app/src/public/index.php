@@ -13,37 +13,45 @@ try {
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     if ('/' === $uri) {
         header('Location: /contacts/list');
-        exit();
+
+        exit;
     }
 
     if (in_array($uri, $protectedRoutes)) {
         if (!\Helpers\OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login');
-            exit();
+
+            exit;
         }
 
         if (!in_array($uri, ['/forms/init', '/webhooks/init'])) {
             if (empty($_SESSION['FORM'])) {
                 header('Location: /forms/init');
-                exit();
+
+                exit;
             }
 
             if (empty($_SESSION['WEBHOOKS'])) {
                 header('Location: /webhooks/init');
-                exit();
+
+                exit;
             }
         }
     }
 
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
         http_response_code(404);
-        exit();
+
+        exit;
     }
 
     $path = __DIR__.'/../actions'.$uri.'.php';
+
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();
+
     include __DIR__.'/../views/error.php';
-    exit();
+
+    exit;
 }

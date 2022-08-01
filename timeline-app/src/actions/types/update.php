@@ -33,4 +33,5 @@ if (!isset($type)) {
     }
     $type = (array) $typeResponse->getData();
 }
+
 include __DIR__.'/../../views/types/form.php';

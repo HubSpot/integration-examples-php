@@ -13,7 +13,7 @@ if (!HubspotClientHelper::isResponseSuccessful($response)) {
 }
 $type = $response->getData();
 
-//http://developers.hubspot.com/docs/methods/timeline/get-timeline-event-type-properties
+// http://developers.hubspot.com/docs/methods/timeline/get-timeline-event-type-properties
 $propertiesResponse = $hubSpot->timeline()->getEventTypeProperties($_ENV['HUBSPOT_APPLICATION_ID'], intval($_GET['id']));
 if (!HubspotClientHelper::isResponseSuccessful($propertiesResponse)) {
     throw new Exception($propertiesResponse->getReasonPhrase());

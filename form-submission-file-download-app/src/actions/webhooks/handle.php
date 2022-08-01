@@ -10,7 +10,8 @@ $requestBody = file_get_contents('php://input');
 
 if (!Webhooks::isHubspotSignatureValid($_SERVER['HTTP_X_HUBSPOT_SIGNATURE'], getEnvOrException('HUBSPOT_CLIENT_SECRET'), $requestBody)) {
     header('HTTP/1.1 401 Unauthorized');
-    exit();
+
+    exit;
 }
 
 $events = json_decode($requestBody, true);
@@ -23,7 +24,7 @@ foreach ($events as $event) {
     if ('contact.propertyChange' == $event['subscriptionType']
             && $event['propertyName'] == $protectedProperty) {
         if (!empty($event['propertyValue'])) {
-            //Get file from the form  https://developers.hubspot.com/docs/methods/form-integrations/v1/uploaded-files/signed-url-redirect
+            // Get file from the form  https://developers.hubspot.com/docs/methods/form-integrations/v1/uploaded-files/signed-url-redirect
             $response = $hubSpot->forms()->getUploadedFileByUrl($event['propertyValue']);
 
             // Then upload this file via file maneger https://developers.hubspot.com/docs/methods/files/post_files

@@ -11,4 +11,5 @@ if (!HubspotClientHelper::isResponseSuccessful($response)) {
 }
 
 $types = $response->getData();
+
 include __DIR__.'/../../views/types/list.php';

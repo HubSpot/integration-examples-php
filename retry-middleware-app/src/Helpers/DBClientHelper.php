@@ -6,7 +6,7 @@ use PDO;
 
 class DBClientHelper
 {
-    private static $dbClient = null;
+    private static $dbClient;
 
     public static function getClient()
     {

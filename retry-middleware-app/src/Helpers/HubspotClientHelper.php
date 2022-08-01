@@ -17,7 +17,7 @@ use SevenShores\Hubspot\RetryMiddlewareFactory;
 
 class HubspotClientHelper
 {
-    const HTTP_OK = 200;
+    public const HTTP_OK = 200;
 
     public static function createFactory(): Factory
     {

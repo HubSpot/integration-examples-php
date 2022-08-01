@@ -38,7 +38,8 @@ if (isset($_POST['name'])) {
 
     if (HubspotClientHelper::isResponseSuccessful($response)) {
         header('Location: /companies/show?'.http_build_query($redirectParams));
-        exit();
+
+        exit;
     }
 
     $errorResponse = $response;

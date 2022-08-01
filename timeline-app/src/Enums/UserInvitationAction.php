@@ -4,7 +4,7 @@ namespace Enums;
 
 class UserInvitationAction
 {
-    const RECEIVED = 'received';
-    const ACCEPTED = 'accepted';
-    const REJECTED = 'rejected';
+    public const RECEIVED = 'received';
+    public const ACCEPTED = 'accepted';
+    public const REJECTED = 'rejected';
 }
