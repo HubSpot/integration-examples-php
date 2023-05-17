@@ -12,7 +12,7 @@ use SevenShores\Hubspot\Delay;
 use SevenShores\Hubspot\Factory;
 use SevenShores\Hubspot\Http\Client;
 use SevenShores\Hubspot\Http\Response;
-use SevenShores\Hubspot\Resources\OAuth2;
+use SevenShores\Hubspot\Endpoints\OAuth2;
 use SevenShores\Hubspot\RetryMiddlewareFactory;
 
 class HubspotClientHelper
