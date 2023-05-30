@@ -49,7 +49,13 @@ The best way to run this project (with the least configuration), is using docker
 docker-compose up --build
 ```
 
-Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.
+Copy Ngrok url from console and designate this on your app's Auth settings page. Now you should now be able to navigate to that url and use the application.
+
+### Configure OAuth
+
+Required redirect URL should look like https://***.ngrok-free.app/oauth/callback
+Every time the app is § you should update the redirect URL.
+[Learn more.](https://developers.hubspot.com/docs/api/oauth-quickstart-guide)
 
 ### NOTE about Ngrok Too Many Connections error
 
