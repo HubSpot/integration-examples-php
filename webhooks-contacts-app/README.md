@@ -58,7 +58,7 @@ This is caused by a large amount of weebhooks events being sent to Ngrok tunnel.
 
 ### Configure webhooks
 
-Required webhooks url should look like https://***.ngrok.io/webhooks/handle
+Required webhooks url should look like https://***.ngrok-free.app/webhooks/handle
 
 Following [Webhooks Setup](https://developers.hubspot.com/docs/methods/webhooks/webhooks-overview) guide please note:
 - Every time the app is restarted you should update the webhooks url
