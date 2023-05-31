@@ -2,14 +2,15 @@ version: '3.5'
 
 services:
   zookeeper:
-    image: zookeeper:3.5
+    image: zookeeper:3.8.1
     ports:
       - "2181:2181"
     logging:
       driver: none
     tmpfs: "/datalog"
+    restart: unless-stopped
   kafka:
-    image: wurstmeister/kafka:2.12-2.3.0
+    image: wurstmeister/kafka:2.13-2.8.1
     ports:
       - "9092:9092"
     depends_on:
@@ -22,6 +23,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
   web:
     env_file:
       - .env
