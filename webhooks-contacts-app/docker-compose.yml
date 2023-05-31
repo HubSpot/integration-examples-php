@@ -61,7 +61,7 @@ services:
       MYSQL_USER: events
       MYSQL_PASSWORD: events
   ngrok:
-    image: gtriggiano/ngrok-tunnel
+    build: ./docker/ngrok/
     ports:
       - 4040:4040
     environment:

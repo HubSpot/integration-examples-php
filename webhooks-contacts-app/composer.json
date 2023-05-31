@@ -1,11 +1,11 @@
 {
     "require": {
-        "hubspot/hubspot-php": "~4.0",
+        "hubspot/hubspot-php": "5.*",
         "ext-curl": "*",
         "ext-json": "*",
         "nmred/kafka-php": "0.2.*",
         "ext-pdo": "*",
-        "byjg/migration": "4.0.*"
+        "byjg/migration": "4.*"
     },
     "autoload": {
         "files": [

@@ -4,7 +4,7 @@ namespace Helpers;
 
 class OAuth2Helper
 {
-    public const APP_REQUIRED_SCOPES = ['contacts'];
+    public const APP_REQUIRED_SCOPES = ['crm.objects.contacts.read'];
     public const CALLBACK_PATH = '/oauth/callback';
     public const SESSION_TOKENS_KEY = 'tokens';
 
@@ -49,7 +49,7 @@ class OAuth2Helper
         return isset($_SESSION[static::SESSION_TOKENS_KEY]);
     }
 
-    public static function refreshAndGetAccessToken(): string
+    public static function refreshAndGetAccessToken(): ?string
     {
         if (empty($_SESSION[static::SESSION_TOKENS_KEY])) {
             throw new \Exception('Please authorize via OAuth2');
