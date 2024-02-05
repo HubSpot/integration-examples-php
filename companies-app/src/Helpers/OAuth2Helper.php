@@ -4,7 +4,7 @@ namespace Helpers;
 
 class OAuth2Helper
 {
-    public const APP_REQUIRED_SCOPES = ['contacts'];
+    public const APP_REQUIRED_SCOPES = ['crm.objects.companies.read', 'crm.objects.companies.write'];
     public const CALLBACK_PATH = '/oauth/callback';
     public const SESSION_TOKENS_KEY = 'tokens';
 
