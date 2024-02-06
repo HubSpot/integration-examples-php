@@ -15,12 +15,7 @@ class OAuth2Helper
 
     public static function getClientSecret(): string
     {
-        $clientSecret = $_ENV['HUBSPOT_CLIENT_SECRET'];
-        if (empty($clientSecret)) {
-            throw new \Exception('Please specify HUBSPOT_CLIENT_SECRET in .env');
-        }
-
-        return $clientSecret;
+        return getEnvOrException('HUBSPOT_CLIENT_SECRET');
     }
 
     public static function getRedirectUri(): string
