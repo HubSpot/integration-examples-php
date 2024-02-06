@@ -10,7 +10,7 @@ if (OAuth2Helper::isAuthenticated()) {
     $response = $hubSpot->contacts()->all([
         'count' => 10,
     ]);
-    $contacts = $response['contacts'];
+    $contacts = $response->getData()->contacts;
 
     include __DIR__.'/../../views/contacts/list.php';
 } else {
