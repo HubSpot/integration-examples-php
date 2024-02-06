@@ -333,16 +333,16 @@
         },
         {
             "name": "hubspot/hubspot-php",
-            "version": "5.1.1",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/HubSpot/hubspot-php.git",
-                "reference": "3918e2fdcd7bdb93ac539b4046a5cebf30a5ecdc"
+                "reference": "61b1acfb223ee13dc17b62828780155cbdf47ee9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/3918e2fdcd7bdb93ac539b4046a5cebf30a5ecdc",
-                "reference": "3918e2fdcd7bdb93ac539b4046a5cebf30a5ecdc",
+                "url": "https://api.github.com/repos/HubSpot/hubspot-php/zipball/61b1acfb223ee13dc17b62828780155cbdf47ee9",
+                "reference": "61b1acfb223ee13dc17b62828780155cbdf47ee9",
                 "shasum": ""
             },
             "require": {
@@ -383,9 +383,9 @@
             ],
             "support": {
                 "issues": "https://github.com/HubSpot/hubspot-php/issues",
-                "source": "https://github.com/HubSpot/hubspot-php/tree/v5.1.1"
+                "source": "https://github.com/HubSpot/hubspot-php/tree/v5.2.0"
             },
-            "time": "2023-06-02T12:53:14+00:00"
+            "time": "2024-02-06T09:59:04+00:00"
         },
         {
             "name": "psr/http-client",
