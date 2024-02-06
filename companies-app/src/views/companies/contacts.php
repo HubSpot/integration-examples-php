@@ -32,7 +32,7 @@ $hubSpot->contacts()->search($search)
       <?php foreach ($contacts as $contact) { ?>
         <tr>
             <td><?php echo htmlentities($contact->vid); ?></td>
-            <td><?php echo htmlentities($contact->properties->firstname->value.' '.$contact->properties->firstname->value); ?></td>
+            <td><?php echo htmlentities($contact->properties->firstname->value.' '.outProperty($contact, 'lastname')); ?></td>
             <td><?php if (in_array($contact->vid, $associatedContacts)) {?>Associated<?php } else { ?>-<?php } ?></td>
             <td><input type="checkbox" name="contactsIds[<?php echo htmlentities($contact->vid); ?>]" /></td>
         </tr>
