@@ -2,9 +2,12 @@
     "require": {
         "ext-curl": "*",
         "ext-json": "*",
-        "hubspot/hubspot-php": "~4.0"
+        "hubspot/hubspot-php": "^5"
     },
     "autoload": {
+        "files": [
+            "src/Helpers/functions.php"
+        ],
         "psr-4": {
             "": "src/"
         }
