@@ -88,7 +88,7 @@ $hubSpot->crmAssociations()->get(
                 <?php foreach ($contacts as $contact) { ?>
                     <tr>
                         <td><?php echo htmlentities($contact['id']); ?></td>
-                        <td><?php echo htmlentities($contact['firstname'].''.$contact['lastname']); ?></td>
+                        <td><?php echo htmlentities($contact['firstname'].' '.$contact['lastname']); ?></td>
                     </tr>
                 <?php }?>
                 </tbody>

@@ -5,6 +5,9 @@
         "ext-json": "*"
     },
     "autoload": {
+        "files": [
+            "src/Helpers/functions.php"
+        ],
         "psr-4": {
             "": "src/"
         }

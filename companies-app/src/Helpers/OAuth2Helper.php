@@ -10,22 +10,12 @@ class OAuth2Helper
 
     public static function getClientId(): string
     {
-        $clientId = $_ENV['HUBSPOT_CLIENT_ID'];
-        if (empty($clientId)) {
-            throw new \Exception('Please specify HUBSPOT_CLIENT_ID in .env');
-        }
-
-        return $clientId;
+        return getEnvOrException('HUBSPOT_CLIENT_ID');
     }
 
     public static function getClientSecret(): string
     {
-        $clientSecret = $_ENV['HUBSPOT_CLIENT_SECRET'];
-        if (empty($clientSecret)) {
-            throw new \Exception('Please specify HUBSPOT_CLIENT_SECRET in .env');
-        }
-
-        return $clientSecret;
+        return getEnvOrException('HUBSPOT_CLIENT_SECRET');
     }
 
     public static function getRedirectUri(): string

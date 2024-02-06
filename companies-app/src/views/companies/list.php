@@ -40,8 +40,8 @@ $hubSpot->companies()->all([
   <?php foreach ($companies as $company) { ?>
     <tr>
       <td><a href="/companies/show?id=<?php echo htmlentities($company->companyId); ?>"><?php echo htmlentities($company->companyId); ?></a></td>
-      <td><?php echo htmlentities($company->properties->name->value); ?></td>
-      <td><?php echo htmlentities($company->properties->domain->value); ?></td>
+      <td><?php echo outString(outProperty($company, 'name'));?></td>
+      <td><?php echo outString(outProperty($company, 'domain')); ?></td>
     </tr>
   <?php }?>
   </tbody>
