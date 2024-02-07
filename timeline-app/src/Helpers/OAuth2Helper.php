@@ -6,28 +6,18 @@ use Repositories\TokensRepository;
 
 class OAuth2Helper
 {
-    public const APP_REQUIRED_SCOPES = ['contacts', 'timeline'];
+    public const APP_REQUIRED_SCOPES = ['crm.objects.contacts.read', 'timeline'];
     public const CALLBACK_PATH = '/oauth/callback';
     public const SESSION_TOKENS_KEY = 'tokens';
 
-    public static function getClientId()
+    public static function getClientId(): string
     {
-        $clientId = $_ENV['HUBSPOT_CLIENT_ID'];
-        if (empty($clientId)) {
-            throw new \Exception('Please specify HUBSPOT_CLIENT_ID in .env');
-        }
-
-        return $clientId;
+        return getEnvOrException('HUBSPOT_CLIENT_ID');
     }
 
-    public static function getClientSecret()
+    public static function getClientSecret(): string
     {
-        $clientSecret = $_ENV['HUBSPOT_CLIENT_SECRET'];
-        if (empty($clientSecret)) {
-            throw new \Exception('Please specify HUBSPOT_CLIENT_SECRET in .env');
-        }
-
-        return $clientSecret;
+        return getEnvOrException('HUBSPOT_CLIENT_SECRET');
     }
 
     public static function getRedirectUri()
