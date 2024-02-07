@@ -12,7 +12,6 @@ function getValueOrNull(string $name, array $array)
 }
 
 /**
- * @param null $default
  *
  * @return null|mixed
  */
