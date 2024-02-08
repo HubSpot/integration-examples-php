@@ -9,7 +9,7 @@ include_once '../../vendor/autoload.php';
 session_start();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-//try {
+try {
     \Helpers\DBClientHelper::runMigrations();
 
     $publicRoutes = require '../routes/public.php';
@@ -39,10 +39,10 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     $path = __DIR__.'/../actions'.$uri.'.php';
 
     require $path;
-// } catch (Throwable $throwable) {
-//     $message = $throwable->getMessage();
+} catch (Throwable $throwable) {
+    $message = $throwable->getMessage();
 
-//     include __DIR__.'/../views/error.php';
+    include __DIR__.'/../views/error.php';
 
-//     exit;
-// }
+    exit;
+}
