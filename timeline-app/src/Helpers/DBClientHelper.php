@@ -3,6 +3,9 @@
 namespace Helpers;
 
 use PDO;
+use ByJG\Util\Uri;
+use ByJG\DbMigration\Migration;
+use ByJG\DbMigration\Database\MySqlDatabase;
 
 class DBClientHelper
 {
@@ -22,9 +25,9 @@ class DBClientHelper
     public static function runMigrations()
     {
         $uri = 'mysql://'.$_ENV['DB_USERNAME'].':'.$_ENV['DB_PASSWORD'].'@'.$_ENV['DB_HOST'].'/'.$_ENV['DB_NAME'];
-        $connectionUri = new \ByJG\Util\Uri($uri);
-        $migration = new \ByJG\DbMigration\Migration($connectionUri, __DIR__.'/../../sql');
-        $migration->registerDatabase('mysql', \ByJG\DbMigration\Database\MySqlDatabase::class);
+        $connectionUri = new Uri($uri);
+        $migration = new Migration($connectionUri, __DIR__.'/../../sql');
+        $migration->registerDatabase(MySqlDatabase::class);
 
         try {
             $migration->getCurrentVersion();

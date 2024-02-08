@@ -4,29 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02d2b21106d6026dbfbdba17717fa722",
+    "content-hash": "2323aafcab15b5ca2855656223595f7b",
     "packages": [
         {
             "name": "byjg/anydataset",
-            "version": "4.0.1",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/php-anydataset.git",
-                "reference": "73be85447d4a4c21541f576ecbee09fe59a0abd8"
+                "reference": "34151425e07227b8cf61543d9f38a2b3430c26ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/php-anydataset/zipball/73be85447d4a4c21541f576ecbee09fe59a0abd8",
-                "reference": "73be85447d4a4c21541f576ecbee09fe59a0abd8",
+                "url": "https://api.github.com/repos/byjg/php-anydataset/zipball/34151425e07227b8cf61543d9f38a2b3430c26ad",
+                "reference": "34151425e07227b8cf61543d9f38a2b3430c26ad",
                 "shasum": ""
             },
             "require": {
-                "byjg/serializer": "1.0.*",
-                "byjg/xmlutil": "1.0.*",
-                "php": ">=5.6.0"
+                "byjg/serializer": "4.9.*",
+                "byjg/xmlutil": "4.9.*",
+                "php": ">=7.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "5.7.*|7.4.*"
+                "phpunit/phpunit": "^9.6",
+                "vimeo/psalm": "^4.24"
             },
             "suggest": {
                 "ext-dom": "*"
@@ -41,39 +42,33 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
             "description": "Anydataset is an agnostic data source abstraction layer in PHP. Core Module.",
             "support": {
                 "issues": "https://github.com/byjg/php-anydataset/issues",
-                "source": "https://github.com/byjg/php-anydataset/tree/4.0.1"
+                "source": "https://github.com/byjg/php-anydataset/tree/4.9.1"
             },
-            "time": "2020-04-11T16:50:42+00:00"
+            "time": "2024-01-03T23:58:39+00:00"
         },
         {
             "name": "byjg/anydataset-array",
-            "version": "4.0.0",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/php-anydataset-array.git",
-                "reference": "e66aa343b8ccd32baec0545120ea9948e1d0b0c5"
+                "reference": "189c5d4f8dc8183a4e6409f216309b9d21923e9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/php-anydataset-array/zipball/e66aa343b8ccd32baec0545120ea9948e1d0b0c5",
-                "reference": "e66aa343b8ccd32baec0545120ea9948e1d0b0c5",
+                "url": "https://api.github.com/repos/byjg/php-anydataset-array/zipball/189c5d4f8dc8183a4e6409f216309b9d21923e9e",
+                "reference": "189c5d4f8dc8183a4e6409f216309b9d21923e9e",
                 "shasum": ""
             },
             "require": {
-                "byjg/anydataset": "4.0.*",
-                "php": ">=5.6.0"
+                "byjg/anydataset": "4.9.*",
+                "php": ">=7.4"
             },
             "require-dev": {
-                "phpunit/phpunit": ">5.7"
+                "phpunit/phpunit": "5.7.*|7.4.*|^9.5"
             },
             "type": "library",
             "autoload": {
@@ -85,47 +80,42 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
             "description": "Anydataset Array abstraction. Anydataset is an agnostic data source abstraction layer in PHP.",
             "support": {
                 "issues": "https://github.com/byjg/php-anydataset-array/issues",
-                "source": "https://github.com/byjg/php-anydataset-array/tree/4.0.0"
+                "source": "https://github.com/byjg/php-anydataset-array/tree/4.9.1"
             },
-            "time": "2018-11-24T15:20:06+00:00"
+            "time": "2024-01-04T01:38:57+00:00"
         },
         {
             "name": "byjg/anydataset-db",
-            "version": "4.1.2",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/php-anydataset-db.git",
-                "reference": "eed317115beb1ae30091684dfb9e8052ee7f5ede"
+                "reference": "7d98610ba32ec568b845205c7beac3d5ac2bbcc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/php-anydataset-db/zipball/eed317115beb1ae30091684dfb9e8052ee7f5ede",
-                "reference": "eed317115beb1ae30091684dfb9e8052ee7f5ede",
+                "url": "https://api.github.com/repos/byjg/php-anydataset-db/zipball/7d98610ba32ec568b845205c7beac3d5ac2bbcc1",
+                "reference": "7d98610ba32ec568b845205c7beac3d5ac2bbcc1",
                 "shasum": ""
             },
             "require": {
-                "byjg/anydataset": "4.0.*",
-                "byjg/anydataset-array": "4.0.*",
-                "byjg/uri": "2.1.*",
+                "byjg/anydataset-array": "4.9.*",
+                "byjg/uri": "4.9.*",
+                "ext-json": "*",
                 "ext-pdo": "*",
-                "php": ">=5.6.0",
-                "psr/cache": "1.0.*"
+                "php": ">=7.4",
+                "psr/cache": "^1.0",
+                "psr/log": "^1.0"
             },
             "require-dev": {
-                "byjg/cache-engine": "4.0.*",
-                "phpunit/phpunit": "5.7.*|7.4.*"
+                "byjg/cache-engine": "4.9.*",
+                "phpunit/phpunit": "5.7.*|7.4.*|^9.5"
             },
             "suggest": {
-                "byjg/cache-engine": "4.0.*",
+                "byjg/cache-engine": "4.9.*",
                 "ext-curl": "*",
                 "ext-oci8": "*",
                 "ext-pdo_mysql": "*",
@@ -141,39 +131,33 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
             "description": "Anydataset Database Relational abstraction. Anydataset is an agnostic data source abstraction layer in PHP.",
             "support": {
                 "issues": "https://github.com/byjg/php-anydataset-db/issues",
-                "source": "https://github.com/byjg/php-anydataset-db/tree/4.1.2"
+                "source": "https://github.com/byjg/php-anydataset-db/tree/4.9.1"
             },
-            "time": "2021-01-17T00:31:53+00:00"
+            "time": "2024-01-04T21:05:41+00:00"
         },
         {
             "name": "byjg/migration",
-            "version": "4.2.3",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/php-migration.git",
-                "reference": "7b5cca52d64ba41cf7023b6dfca4e5929ba8f2c0"
+                "reference": "2fc29688b3011c6a96210d65052a9893467203c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/php-migration/zipball/7b5cca52d64ba41cf7023b6dfca4e5929ba8f2c0",
-                "reference": "7b5cca52d64ba41cf7023b6dfca4e5929ba8f2c0",
+                "url": "https://api.github.com/repos/byjg/php-migration/zipball/2fc29688b3011c6a96210d65052a9893467203c8",
+                "reference": "2fc29688b3011c6a96210d65052a9893467203c8",
                 "shasum": ""
             },
             "require": {
-                "byjg/anydataset-db": "4.1.*",
+                "byjg/anydataset-db": "4.9.*",
                 "ext-pdo": "*"
             },
             "require-dev": {
-                "phpunit/phpunit": "5.7.*|7.4.*|^9.5"
+                "phpunit/phpunit": "5.7.*|7.4.*|^9.6"
             },
             "type": "library",
             "autoload": {
@@ -185,39 +169,34 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "jg",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
             "description": "Simple library in PHP for database version control. Supports Sqlite, MySql, Sql Server and Postgres.",
             "support": {
                 "issues": "https://github.com/byjg/php-migration/issues",
-                "source": "https://github.com/byjg/php-migration/tree/4.2.3"
+                "source": "https://github.com/byjg/php-migration/tree/4.9.1"
             },
-            "time": "2022-03-17T01:04:41+00:00"
+            "time": "2024-01-05T20:21:35+00:00"
         },
         {
             "name": "byjg/serializer",
-            "version": "1.0.7",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/php-serializer.git",
-                "reference": "229882fbe5efe0edf195937a39aa2d48912a3f8d"
+                "reference": "6f612579863836ae3fcd5a05f998cfc3b81ac2bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/php-serializer/zipball/229882fbe5efe0edf195937a39aa2d48912a3f8d",
-                "reference": "229882fbe5efe0edf195937a39aa2d48912a3f8d",
+                "url": "https://api.github.com/repos/byjg/php-serializer/zipball/6f612579863836ae3fcd5a05f998cfc3b81ac2bd",
+                "reference": "6f612579863836ae3fcd5a05f998cfc3b81ac2bd",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=5.5"
+                "php": ">=7.4",
+                "symfony/yaml": "> 4"
             },
             "require-dev": {
-                "phpunit/phpunit": ">5.7"
+                "phpunit/phpunit": "5.7.*|7.4.*|^9.5"
             },
             "suggest": {
                 "ext-curl": "*"
@@ -225,7 +204,6 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Tests\\": "tests",
                     "ByJG\\Serializer\\": "src/"
                 }
             },
@@ -233,31 +211,25 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
             "description": "Serialize any object into array and format it JSON or XML",
             "support": {
                 "issues": "https://github.com/byjg/php-serializer/issues",
-                "source": "https://github.com/byjg/php-serializer/tree/1.0.7"
+                "source": "https://github.com/byjg/php-serializer/tree/4.9.1"
             },
-            "time": "2018-03-09T05:59:31+00:00"
+            "time": "2024-01-03T23:50:43+00:00"
         },
         {
             "name": "byjg/uri",
-            "version": "2.1.3",
+            "version": "4.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/php-uri.git",
-                "reference": "2e5a2e4359c783dca98802f2b2fd61104233ade1"
+                "reference": "c1467fd5ed953c760cb54d2475ce9bc743d73948"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/php-uri/zipball/2e5a2e4359c783dca98802f2b2fd61104233ade1",
-                "reference": "2e5a2e4359c783dca98802f2b2fd61104233ade1",
+                "url": "https://api.github.com/repos/byjg/php-uri/zipball/c1467fd5ed953c760cb54d2475ce9bc743d73948",
+                "reference": "c1467fd5ed953c760cb54d2475ce9bc743d73948",
                 "shasum": ""
             },
             "require": {
@@ -277,38 +249,33 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
             "description": "An implementation of PSR UriInterface ",
             "support": {
                 "issues": "https://github.com/byjg/php-uri/issues",
-                "source": "https://github.com/byjg/php-uri/tree/2.1.3"
+                "source": "https://github.com/byjg/php-uri/tree/4.9.0"
             },
-            "time": "2022-04-27T20:12:24+00:00"
+            "time": "2022-06-15T13:17:35+00:00"
         },
         {
             "name": "byjg/xmlutil",
-            "version": "1.0.6",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/php-xmlutil.git",
-                "reference": "9f82339931252b7990596d07f365c765e3dbbad3"
+                "reference": "a3ac978e11406982611d3988fbbae516b77e4929"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/php-xmlutil/zipball/9f82339931252b7990596d07f365c765e3dbbad3",
-                "reference": "9f82339931252b7990596d07f365c765e3dbbad3",
+                "url": "https://api.github.com/repos/byjg/php-xmlutil/zipball/a3ac978e11406982611d3988fbbae516b77e4929",
+                "reference": "a3ac978e11406982611d3988fbbae516b77e4929",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "ext-xml": "*",
+                "php": ">=7.4"
             },
             "require-dev": {
-                "phpunit/phpunit": ">5.7"
+                "phpunit/phpunit": "^9.5"
             },
             "type": "library",
             "autoload": {
@@ -320,18 +287,12 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
             "description": "A utility class to make easy work with XML in PHP.",
             "support": {
                 "issues": "https://github.com/byjg/php-xmlutil/issues",
-                "source": "https://github.com/byjg/php-xmlutil/tree/1.0.6"
+                "source": "https://github.com/byjg/php-xmlutil/tree/4.9.1"
             },
-            "time": "2018-03-10T14:43:36+00:00"
+            "time": "2024-01-03T23:22:50+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -716,16 +677,16 @@
         },
         {
             "name": "longman/telegram-bot",
-            "version": "0.75.0",
+            "version": "0.82.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-telegram-bot/core.git",
-                "reference": "13879c499af126d9211751597fd2aaf7a1bcb094"
+                "reference": "26433b3d29f31c7760ba881490f84640ebef2652"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/13879c499af126d9211751597fd2aaf7a1bcb094",
-                "reference": "13879c499af126d9211751597fd2aaf7a1bcb094",
+                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/26433b3d29f31c7760ba881490f84640ebef2652",
+                "reference": "26433b3d29f31c7760ba881490f84640ebef2652",
                 "shasum": ""
             },
             "require": {
@@ -735,15 +696,20 @@
                 "ext-pdo": "*",
                 "guzzlehttp/guzzle": "^6.0|^7.0",
                 "php": "^7.3|^8.0",
-                "psr/log": "^1.1"
+                "psr/log": "^1.1|^2.0|^3.0"
             },
             "require-dev": {
                 "dms/phpunit-arraysubset-asserts": "^0.2",
                 "monolog/monolog": "^2.1",
                 "phpunit/phpunit": "^9.5",
-                "squizlabs/php_codesniffer": "^3.5"
+                "squizlabs/php_codesniffer": "^3.6"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.81.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Longman\\TelegramBot\\": "src"
@@ -813,7 +779,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-29T05:36:01+00:00"
+            "time": "2023-10-26T20:16:16+00:00"
         },
         {
             "name": "psr/cache",
@@ -1185,25 +1151,25 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.5.2",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66"
+                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
-                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
+                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=8.0.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "3.0-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -1232,7 +1198,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.2"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.2"
             },
             "funding": [
                 {
@@ -1248,7 +1214,160 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2022-01-02T09:55:41+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.29.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "ef4d7e442ca910c4764bce785146269b30cb5fc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ef4d7e442ca910c4764bce785146269b30cb5fc4",
+                "reference": "ef4d7e442ca910c4764bce785146269b30cb5fc4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "provide": {
+                "ext-ctype": "*"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.29.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-01-29T20:11:03+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v6.0.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "deec3a812a0305a50db8ae689b183f43d915c884"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/deec3a812a0305a50db8ae689b183f43d915c884",
+                "reference": "deec3a812a0305a50db8ae689b183f43d915c884",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "conflict": {
+                "symfony/console": "<5.4"
+            },
+            "require-dev": {
+                "symfony/console": "^5.4|^6.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "bin": [
+                "Resources/bin/yaml-lint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Loads and dumps YAML files",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/yaml/tree/v6.0.19"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-01-11T11:50:03+00:00"
         }
     ],
     "packages-dev": [],
