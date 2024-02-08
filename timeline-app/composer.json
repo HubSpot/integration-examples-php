@@ -4,8 +4,8 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-pdo": "*",
-        "byjg/migration": "4.2.*",
-        "longman/telegram-bot": "^0.75.0",
+        "byjg/migration": "4.9.*",
+        "longman/telegram-bot": "^0.82",
         "spomky-labs/base64url": "^2.0"
     },
     "autoload": {
